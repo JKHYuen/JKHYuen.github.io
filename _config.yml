@@ -24,12 +24,17 @@ description: >- # this means to ignore newlines until "baseurl:"
   Game dev portfolio for Jeffrey (Ka Hin) Yuen.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: https://JKHYuen.github.io # the base hostname & protocol for your site, e.g. http://example.com
-# twitter_username: jekyllrb
-# github_username:  jekyll
+
+# homepage tiles
+tiles-source: pages # accepts "posts" or "pages"
+tiles-count: 6
+
+markdown: kramdown
+
+sass:
+  style: compressed
 
 # Build settings
-markdown: GFM
-theme: minima
 plugins:
   - jekyll-feed
 
