@@ -20,8 +20,8 @@
 
 title: Jeffrey (Ka Hin) Yuen
 email: jkhyuen@hotmail.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Game dev portfolio for Jeffrey (Ka Hin) Yuen.
+discord: "@kh_y"
+description: Game Designer and Programmer
 baseurl: "" # the subpath of your site, e.g. /blog
 url: https://JKHYuen.github.io # the base hostname & protocol for your site, e.g. http://example.com
 

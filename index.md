@@ -1,7 +1,7 @@
 ---
 layout: home
 title: Home
-landing-title: 'Game Dev Portfolio'
+landing-title: 'Jeffrey (Ka Hin) Yuen'
 description: null
 image: null
 author: null
