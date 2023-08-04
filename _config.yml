@@ -25,11 +25,17 @@ description: Game Designer and Programmer
 baseurl: "" # the subpath of your site, e.g. /blog
 url: https://JKHYuen.github.io # the base hostname & protocol for your site, e.g. http://example.com
 
+lsi: false
+safe: true
+incremental: false
+
 # homepage tiles
 tiles-source: pages # accepts "posts" or "pages"
 tiles-count: 6
 
 markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
 
 sass:
   style: compressed
