@@ -16,10 +16,12 @@
 
 			> * {
 				@include padding(4em, 3em);
-			    border-left: solid 1px _palette(border);
-			    border-right: solid 1px _palette(border);
 				width: 50%;
 				z-index: 1;
+				
+				&:first-child {
+					border-right: solid 1px _palette(border);
+				}
 			}
 
 			// > :nth-child(2n - 1) {
