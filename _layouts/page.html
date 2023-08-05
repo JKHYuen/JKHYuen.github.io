@@ -12,8 +12,18 @@
 	<div id="main" class="alt">
     <script type="text/javascript">document.body.classList.add("is-loading");</script>
 
-    {% include header.html %} {{ content }} {% include footer.html %}
+    {% include header.html %} 
+
+	<div class="inner">
+		<header class="major">
+			<h1>{{ page.title }}</h1>
+		</header>
+		{{ content }}
 	</div>
+
+</div>
 </body>
+
+{% include footer.html %}
 
 </html>
