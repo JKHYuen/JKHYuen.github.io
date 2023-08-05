@@ -2,7 +2,9 @@
 layout: page
 title: Palindrome
 description: Proof of Concept
+summary: Interactive Sandbox/Visualizer
 image: assets/images/nothing_matters.png
+nav-menu: true
 ---
 <div id="main" class="alt">
 <div class="inner">

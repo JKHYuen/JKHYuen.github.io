@@ -2,7 +2,9 @@
 layout: page
 title: "PHYSARUM: Slime Mold Simulator"
 description: Interactive Sandbox/Visualizer
+summary: Interactive Sandbox/Visualizer
 image: assets/images/physarum.png
+nav-menu: true
 ---
 <div id="main" class="alt">
 <div class="inner">

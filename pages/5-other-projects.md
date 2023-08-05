@@ -2,7 +2,9 @@
 layout: page
 title: Other Projects
 description: 
+summary: Interactive Sandbox/Visualizer
 image: assets/images/nothing_matters.png
+nav-menu: true
 ---
 <div id="main" class="alt">
 <div class="inner">

@@ -2,7 +2,9 @@
 layout: page
 title: Untitled RPG
 description: video game
+summary: Interactive Sandbox/Visualizer
 image: assets/images/rpgDemo.gif
+nav-menu: true
 ---
 <div id="main" class="alt">
 <div class="inner">
