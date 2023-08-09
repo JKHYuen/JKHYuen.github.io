@@ -1,9 +1,8 @@
 ---
 layout: page
-title: Untitled RPG
-description: video game
-summary: Interactive Sandbox/Visualizer
-image: assets/images/rpgDemo.gif
+title: Other Projects
+description: 
+image: assets/images/nothing_matters.png
 nav-menu: true
 ---
 <div id="main" class="alt">

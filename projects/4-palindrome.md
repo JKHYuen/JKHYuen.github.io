@@ -1,8 +1,7 @@
 ---
 layout: page
 title: Palindrome
-description: Proof of Concept
-summary: Interactive Sandbox/Visualizer
+description: Proof of concept game demo inspired by Christopher Nolan's <i>Tenet</i>
 image: assets/images/nothing_matters.png
 nav-menu: true
 ---

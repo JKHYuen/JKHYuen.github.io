@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Other Projects
-description: 
-summary: Interactive Sandbox/Visualizer
-image: assets/images/nothing_matters.png
+title: "PHYSARUM: Slime Mold Simulator"
+description: Interactive Sandbox/Visualizer
+image: assets/images/physarum.jpg
+permalink: /physarum
 nav-menu: true
 ---
 <div id="main" class="alt">
