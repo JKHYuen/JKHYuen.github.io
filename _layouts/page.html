@@ -9,20 +9,33 @@
 {% include head.html %}
 
 <body>
-	<div id="main" class="alt">
-    <script type="text/javascript">document.body.classList.add("is-loading");</script>
 
     {% include header.html %} 
 
+<div id="main">
+<script type="text/javascript">document.body.classList.add("is-loading");</script>
+
+<section id="banner">
 	<div class="inner">
+		<span class="image">
+			<img src="{{ site.baseurl }}/{{ page.image }}">
+		</span>
 		<header class="major">
 			<h1>{{ page.title }}</h1>
-			<div class="content">
-                <p>{{ page.description }}</p>
-            </div>
 		</header>
-		{{ content }}
+		<div class="content">
+			<p>{{ page.description }}</p>
+		</div>
+		{% if page.buttonURL %}
+		<a href="{{ page.buttonURL }}" target="_blank" rel="noopener noreferrer" class="button icon fa-download">{{ page.buttonText }}</a>
+		{% endif %}
 	</div>
+</section>
+
+<!-- override border top in _main.scss -->
+<div class="inner" style="border-top: 0; padding-top: 2em;">
+	{{ content }}
+</div>
 
 </div>
 </body>

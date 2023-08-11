@@ -186,6 +186,13 @@
 				padding: 0 1em;
 			}
 
+			// Hide Header Subtitle
+			.logo {
+				span {
+					display: none;
+				}
+			}
+
 			nav {
 				a {
 					padding: 0 0.5em;
@@ -214,6 +221,7 @@
 		}
 
 		@include breakpoint(xsmall) {
+			// Hide Header Subtitle
 			.logo {
 				span {
 					display: none;

@@ -22,7 +22,7 @@ title: Jeffrey (Ka Hin) Yuen
 subtitle: Game Dev Portfolio
 email: jkhyuen@hotmail.com
 discord: "@kh_y"
-description: Game Designer and Programmer
+description: Video Game Designer and Programmer
 baseurl: "" # the subpath of your site, e.g. /blog
 url: https://JKHYuen.github.io # the base hostname & protocol for your site, e.g. http://example.com
 
@@ -37,6 +37,9 @@ tiles-count: 6
 markdown: kramdown
 kramdown:
   syntax_highlighter: rouge
+  input: GFM
+  auto_ids:       true
+  toc_levels:     1..3
 
 sass:
   style: compressed

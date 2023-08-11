@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "PHYSARUM: Slime Mold Simulator"
-description: Interactive Sandbox/Visualizer
+description: Interactive Sandbox/Visualizer of the real life organism <i>physarum polycephalum</i>.
 image: assets/images/physarum.jpg
 permalink: /physarum
 nav-menu: true
