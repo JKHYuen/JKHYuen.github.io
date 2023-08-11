@@ -17,10 +17,14 @@ buttonText: Download Tech Demo
 </ul>
 </div>
 
-
-<div id=video style="margin:0 auto; width:960px; height: 540px">
-    <iframe width="960" height="540" style="border:3px solid #ffffff;" src="https://www.youtube.com/embed/u5lX2zunj7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<section id="video">
+<div class=container>
+    <iframe src="https://www.youtube.com/embed/u5lX2zunj7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
+</section>
+
+
+
 
 
 
