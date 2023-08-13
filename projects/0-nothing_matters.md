@@ -4,6 +4,10 @@ title: nothing_matters
 description: video game
 image: assets/images/nothing_matters.png
 nav-menu: true
+
+button-url: https://store.steampowered.com/app/2260800/nothing_matters/
+button-text: Steam Store Page
+button-icon: fa-steam
 ---
 <div id="main" class="alt">
 <div class="inner">

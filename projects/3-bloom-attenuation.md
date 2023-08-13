@@ -1,7 +1,8 @@
 ---
 layout: page
+permalink: /bloom-attenuation
 title: Bloom Attenuation
-description: A solution to common issues with the bloom post processing effect.
+description: A solution to common issues with the bloom post processing effect
 image: assets/images/bloomAttenuation.png
 nav-menu: true
 
@@ -12,8 +13,8 @@ button-text: Download Tech Demo
 <div class=nav>
 <h4>Contents</h4>
 <ul>
-    <li><a href="#overview" class="button small scrolly">Overview</a></li>
-    <li><a href="#shader" class="button small scrolly">Implementation</a></li>
+    <li><a href="#overview" class="button small scrolly">1. Overview</a></li>
+    <li><a href="#shader" class="button small scrolly">2. Implementation</a></li>
 </ul>
 </div>
 
@@ -24,11 +25,13 @@ button-text: Download Tech Demo
 </div>
 </section>
 
-My custom shader implementation of bloom to make the popular post processing effect more appealing. I call this solution "bloom attenuation", the shader simulates light fall off in the post processing step by using the camera depth texture as a bloom intensity multiplier. This effectively prevents bloom from oversaturating the screen and better differentiates bright objects with different distances from the player camera. See video above for a full project and implementation overview.
+My custom shader implementation of bloom to make the popular post processing effect more appealing. The shader simulates light fall off in the post processing step by using the camera depth texture as a bloom intensity multiplier, I call this solution "bloom attenuation". This effectively prevents bloom from oversaturating the screen and better differentiates bright objects with different distances from the player camera. See video above for a full project and implementation overview.
 
 Try the <a href="https://github.com/JKHYuen/BloomAttenuationBuild" target="_blank" rel="noopener noreferrer">playable tech demo</a> to change the bloom shader parameters and see the individual bloom rendering steps in real time!
 
 <header id="shader" class="major"><h3>Implementation</h3></header>
+
+
 {% highlight hlsl linenos %}
 Shader "Custom/Bloom" {
 	Properties{
