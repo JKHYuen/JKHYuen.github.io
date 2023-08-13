@@ -26,9 +26,18 @@
 		<div class="content">
 			<p>{{ page.description }}</p>
 		</div>
+		<!-- Optional External Link Button -->
 		{% if page.button-url %}
-		<a href="{{ page.button-url }}" target="_blank" rel="noopener noreferrer" class="button icon fa-download">{{ page.button-text }}</a>
+		<a href="{{ page.button-url }}" target="_blank" rel="noopener noreferrer" 
+		class="button icon {% if page.button-icon %}{{page.button-icon}}{% else %}fa-download{% endif %}">{{ page.button-text }}
+		</a>
 		{% endif %}
+		<!-- Team Description -->
+		<div style="font-size: 0.8em; margin-top: 2em">
+			<span class="icon fa-users"></span><span style="margin-left: 0.5em;">
+				{% if page.team-text %}{{page.team-text}}{% else %}Solo Project{% endif %}
+			</span>
+		</div>
 	</div>
 </section>
 

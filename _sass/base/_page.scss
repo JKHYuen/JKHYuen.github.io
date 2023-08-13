@@ -38,11 +38,11 @@
 		// Navigation Button List
 		.nav {
 
-			margin: 2em 0 4em 0;
+			margin: 1em 0 2em 0;
 
 			// Nav list title
 			h4 {
-				text-transform: uppercase;
+				// text-transform: uppercase;
 				margin-bottom: 0;
 			}
 
@@ -56,8 +56,14 @@
 				display: inline-block;
 
 				> li {
+
+					span {
+						font-weight: _font(weight);
+					}
+
 					// override default box-shadow in _button.scss 
 					a.button {
+						font-weight: _font(weight);
 						font-size: 0.8em;
 						box-shadow: inset 0 0 0 0px _palette(fg-bold);
 						text-transform: none;
@@ -95,16 +101,20 @@
 			}
 		}
 
-
 		.highlight {
-			display: block;
 			width: 100%; 
 			margin: 0 auto;
-
+			
+			// code, preformatted
 			 > pre {
 				tab-size: 2em;
-				max-height: 800px; /* Change to your desired max height */
-				overflow-y: scroll;
+				max-height: 800px; 
+				overflow-y: auto;
+			}
+			
+			// line numbers, preformatted
+			pre.lineno {
+				text-align: right;
 			}
 		}
 	}

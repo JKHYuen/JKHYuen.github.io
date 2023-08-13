@@ -182,16 +182,16 @@
 		$query: 'screen';
 
 		// Breakpoint.
-			@if $breakpoint and map-has-key($breakpoints, $breakpoint) {
-				$query: $query + ' and ' + map-get($breakpoints, $breakpoint);
-			}
+		@if $breakpoint and map-has-key($breakpoints, $breakpoint) {
+			$query: $query + ' and ' + map-get($breakpoints, $breakpoint);
+		}
 
 		// Queries.
-			@if $queries {
-				@each $k, $v in $queries {
-					$query: $query + ' and (' + $k + ':' + $v + ')';
-				}
+		@if $queries {
+			@each $k, $v in $queries {
+				$query: $query + ' and (' + $k + ':' + $v + ')';
 			}
+		}
 
         @media #{$query} {
             @content;
