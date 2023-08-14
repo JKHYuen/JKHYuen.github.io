@@ -28,7 +28,7 @@ url: https://JKHYuen.github.io # the base hostname & protocol for your site, e.g
 
 lsi: false
 safe: true
-incremental: true
+incremental: false
 
 # homepage tiles
 tiles-source: pages # accepts "posts" or "pages"

@@ -27,19 +27,30 @@ body {
 	}
 
 	// override _wrapper.scss
-	.inner {
+	.inner.page {
 		border-top: 0 !important;
 		padding-top: 2em !important; 
+
+		width: calc(100% - 30em) !important;
+		min-width: 25em;
 	}
 
 	// Override _banner.scss because we have additional elements in page banner
-	#banner {
+	#banner.page {
 		@include padding(4em, 0, (2em, 0, 2em, 0));
-	}
 
-	header.major {
-		margin: 3em 0 2em 0;
-	}	
+		h1 {
+			font-size: 2.5em;
+		}
+
+		.content p {
+			font-size: 0.6em;
+		}
+
+		header.major {
+			margin: 3em 0 2em 0;
+		}	
+	}
 
 	.team-info {
 		font-size: 0.8em;
@@ -51,15 +62,17 @@ body {
 		color: rgb(196, 196, 196);
 	}
 
-	// For work highlights section
+	// For highlights section
 	ul.highlights-list {
 		list-style-type: square;
-		margin: 0;
+
+		.sub {
+			margin: 0;
+		}
 	}
 
 	// Navigation Button List
 	.nav {
-
 		margin: 1em 0 2em 0;
 
 		// Nav list title
@@ -139,11 +152,6 @@ body {
 		pre.lineno {
 			text-align: right;
 		}
-	}
-
-	.inner {
-		width: calc(100% - 30em) !important;
-		min-width: 25em;
 	}
 }
 

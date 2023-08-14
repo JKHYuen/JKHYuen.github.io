@@ -4,6 +4,7 @@ permalink: /bloom-attenuation
 title: Bloom Attenuation
 description: A solution to common issues with the bloom post processing effect
 image: assets/images/bloomAttenuation.png
+page-banner: assets/images/bloomAttenuation.png
 nav-menu: true
 
 button-url: https://github.com/JKHYuen/BloomAttenuationBuild
@@ -36,14 +37,14 @@ Try the <a href="https://github.com/JKHYuen/BloomAttenuationBuild" target="_blan
     <li>Novel bloom solution, implemented from scratch</li>
     <li>Extensive Cg/HLSL shader and graphics rendering work</li>
     <li>Playable <a href="https://github.com/JKHYuen/BloomAttenuationBuild" target="_blank" rel="noopener noreferrer">Unity tech demo</a>
-		<ul class="highlights-list">
+		<ul class="highlights-list sub">
 			<li>Adjust all bloom shader parameters and see individual rendering steps with a custom UI in real time</li>
 			<li>Experience the effect with a custom first person controller</li>
 			<li>Use the on rails demo camera (as shown in video) to adjust parameters on the move</li>
 		</ul>
 	</li>
     <li>Project overview <a href="#video" class="scrolly">video</a>
-		<ul class="highlights-list">
+		<ul class="highlights-list sub">
 			<li>Scripting, video editing, and narration</li>
 			<li>Full explanation of how post processing bloom works, with animated diagrams</li>
 			<li>Tech and game design analysis of bloom use in other games</li>

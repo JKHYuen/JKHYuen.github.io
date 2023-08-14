@@ -15,10 +15,10 @@
 <div id="main">
 <script type="text/javascript">document.body.classList.add("is-loading");</script>
 
-<section id="banner">
-	<div class="inner">
+<section id="banner" class="page">
+	<div class="inner page">
 		<span class="image">
-			<img src="{{ site.baseurl }}/{{ page.image }}">
+			<img src="{{ site.baseurl }}/{{ page.page-banner }}">
 		</span>
 
 		<header class="major">
@@ -37,17 +37,19 @@
 		{% endif %}
 
 		<!-- Team Description -->
+		{% unless page.disable-team-info %}
 		<div class="team-info">
 			<span class="icon fa-users"></span>
 			<span style="margin-left: 0.5em;">
 				{% if page.team-text %}{{page.team-text}}{% else %}Solo Project{% endif %}
 			</span>
 		</div>
+		{% endunless %}
 
 	</div>
 </section>
 
-<div class="inner">
+<div class="inner page">
 	{{ content }}
 </div>
 

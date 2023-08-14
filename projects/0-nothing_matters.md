@@ -1,18 +1,27 @@
 ---
 layout: page
 title: nothing_matters
-description: video game
+description: An experimental point & click narrative game inspired by my indie game dev career.
 image: assets/images/nothing_matters.png
+page-banner: assets/images/nothing_matters.png
 nav-menu: true
 
 button-url: https://store.steampowered.com/app/2260800/nothing_matters/
 button-text: Steam Store Page
 button-icon: fa-steam
 ---
-<div id="main" class="alt">
-<div class="inner">
 
-{% highlight hlsl %}
+<div class=nav>
+<h4>Contents</h4>
+<ul>
+    <li><a href="#overview" class="button small scrolly"><span class="number">1.</span> Overview</a></li>
+    <li><a href="#highlights" class="button small scrolly"><span class="number">2.</span> Highlights</a></li>
+    <li><a href="#features" class="button small scrolly"><span class="number">3.</span> Game Features</a></li>
+    <li><a href="#implementation" class="button small scrolly"><span class="number">4.</span> Implementation</a></li>
+</ul>
+</div>
+
+{% highlight hlsl linenos %}
 struct appdata {
     float4 vertex : POSITION;
     float2 uv : TEXCOORD0;
@@ -78,6 +87,3 @@ fixed4 frag (v2f i) : SV_Target {
     return finalColor;
 }
 {% endhighlight %}
-
-</div>
-</div>
