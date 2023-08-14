@@ -20,29 +20,34 @@
 		<span class="image">
 			<img src="{{ site.baseurl }}/{{ page.image }}">
 		</span>
+
 		<header class="major">
 			<h1>{{ page.title }}</h1>
 		</header>
+
 		<div class="content">
 			<p>{{ page.description }}</p>
 		</div>
+
 		<!-- Optional External Link Button -->
 		{% if page.button-url %}
 		<a href="{{ page.button-url }}" target="_blank" rel="noopener noreferrer" 
 		class="button icon {% if page.button-icon %}{{page.button-icon}}{% else %}fa-download{% endif %}">{{ page.button-text }}
 		</a>
 		{% endif %}
+
 		<!-- Team Description -->
-		<div style="font-size: 0.8em; margin-top: 2em">
-			<span class="icon fa-users"></span><span style="margin-left: 0.5em;">
+		<div class="team-info">
+			<span class="icon fa-users"></span>
+			<span style="margin-left: 0.5em;">
 				{% if page.team-text %}{{page.team-text}}{% else %}Solo Project{% endif %}
 			</span>
 		</div>
+
 	</div>
 </section>
 
-<!-- override border top in _main.scss -->
-<div class="inner" style="border-top: 0; padding-top: 2em;">
+<div class="inner">
 	{{ content }}
 </div>
 

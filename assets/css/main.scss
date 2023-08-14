@@ -44,7 +44,7 @@
 			margin: 0 auto;
 
 			max-width: _size(inner);
-			width: calc(100% - 20em);
+			width: calc(100% - 6em);
 
 			@include breakpoint(small) {
 				@include padding(3em, 0);
