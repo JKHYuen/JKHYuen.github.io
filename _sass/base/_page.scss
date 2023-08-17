@@ -31,9 +31,14 @@ body {
 		border-top: 0 !important;
 		padding-top: 2em !important; 
 
-		width: calc(100% - 30em) !important;
+		width: calc(100% - 35em) !important;
 		min-width: 25em;
 	}
+
+	// Headers for sections in nav
+	header.major.page-header {
+		margin: 3em 0 1em 0;
+	}	
 
 	// Override _banner.scss because we have additional elements in page banner
 	#banner.page {
@@ -73,7 +78,7 @@ body {
 
 	// Navigation Button List
 	.nav {
-		margin: 1em 0 2em 0;
+		margin: 1em 0 1em 0;
 
 		// Nav list title
 		h4 {
@@ -142,7 +147,7 @@ body {
 		margin: 0 auto 2em auto;
 		
 		// code, preformatted
-			> pre {
+		> pre {
 			tab-size: 2em;
 			max-height: 800px; 
 			overflow-y: auto;

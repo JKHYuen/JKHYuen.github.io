@@ -67,6 +67,10 @@
 					width: auto;
 
 					&:after {
+						// @include vendor('transition', (
+						// 	'width 3s ease',
+						// ));
+						// width: 100%;
 						max-width: 100%;
 					}
 				}

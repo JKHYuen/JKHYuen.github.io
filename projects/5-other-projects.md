@@ -15,6 +15,7 @@ disable-team-info: I can write anything here
 <ul>
     <li><a href="#alto" class="button small scrolly"><span class="number">1.</span> Alto Clone</a></li>
     <li><a href="#dd-shader" class="button small scrolly"><span class="number">2.</span> Darkest Dungeon II Shader</a></li>
-    <li><a href="#tutoring" class="button small scrolly"><span class="number">3.</span> Twitch/Discord Programming Tutoring</a></li>
+    <li><a href="#tutoring" class="button small scrolly"><span class="number">3.</span> This Website</a></li>
+    <li><a href="#tutoring" class="button small scrolly"><span class="number">4.</span> Twitch/Discord Programming Tutoring</a></li>
 </ul>
 </div>

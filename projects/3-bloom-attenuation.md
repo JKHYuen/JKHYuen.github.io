@@ -4,7 +4,7 @@ permalink: /bloom-attenuation
 title: Bloom Attenuation
 description: A solution to common issues with the bloom post processing effect
 image: assets/images/bloomAttenuation.png
-page-banner: assets/images/bloomAttenuation.png
+page-banner: assets/images/bloom-page-banner.jpg
 nav-menu: true
 
 button-url: https://github.com/JKHYuen/BloomAttenuationBuild
@@ -17,11 +17,11 @@ button-text: Download Tech Demo
     <li><a href="#overview" class="button small scrolly"><span class="number">1.</span> Overview</a></li>
     <li><a href="#highlights" class="button small scrolly"><span class="number">2.</span> Highlights</a></li>
     <li><a href="#shader" class="button small scrolly"><span class="number">3.</span> Implementation</a></li>
-    <li><a href="#other-shaders" class="button small scrolly sub-section"><span class="number">3.1</span> Other Shaders</a></li>
+    	<li><a href="#other-shaders" class="button small scrolly sub-section"><span class="number">3.1</span> Other Shaders</a></li>
 </ul>
 </div>
 
-<header id="overview" class="major"><h2><span class="number">1.</span> Overview</h2></header>
+<header id="overview" class="major page-header"><h2><span class="number">1.</span> Overview</h2></header>
 <section id="video">
 <div class=container>
     <iframe src="https://www.youtube.com/embed/u5lX2zunj7g" title="YouTube video player" allowfullscreen></iframe>
@@ -32,7 +32,7 @@ My custom shader implementation of bloom to make the popular post processing eff
 
 Try the <a href="https://github.com/JKHYuen/BloomAttenuationBuild" target="_blank" rel="noopener noreferrer">playable tech demo</a> to change the bloom shader parameters and see the individual bloom rendering steps in real time!
 
-<header id="highlights" class="major"><h2><span class="number">2.</span> Highlights</h2></header>
+<header id="highlights" class="major page-header"><h2><span class="number">2.</span> Highlights</h2></header>
 <ul class="highlights-list">
     <li>Novel bloom solution, implemented from scratch</li>
     <li>Extensive Cg/HLSL shader and graphics rendering work</li>
@@ -52,7 +52,7 @@ Try the <a href="https://github.com/JKHYuen/BloomAttenuationBuild" target="_blan
 	</li>
 </ul>
 
-<header id="shader" class="major"><h2><span class="number">3.</span> Implementation</h2></header>
+<header id="shader" class="major page-header"><h2><span class="number">3.</span> Implementation</h2></header>
 This project is done in Unity 2019, using the built-in render pipeline. To apply the depth bloom intensity multiplier, post processing bloom had to be implemented from scratch. This is done with a Cg/HLSL multi-pass bloom shader applied to the main camera's final image using Unity's ```OnRenderImage()``` function in C#.
 
 <h4>Snippet of Custom Bloom Shader</h4>
