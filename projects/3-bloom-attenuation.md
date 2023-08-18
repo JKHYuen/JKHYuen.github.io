@@ -240,7 +240,7 @@ private void OnRenderImage(RenderTexture source, RenderTexture destination) {
 }
 {% endhighlight %}
 
-<header id="other-shaders"><h2><span class="number">3.1</span> Other Shaders</h2></header>
+<header id="other-shaders" class="page-header"><h2><span class="number">3.1</span> Other Shaders</h2></header>
 <h4>Depth Camera Shader</h4>
 Since we are using the default forward renderer, a second camera is needed to render depth into a render texture. This texture is sampled in the bloom shader as the attenuation multiplier. Having a second camera also allows us to fine tune the attenuation distance scale (i.e. set the distance where attenuation is max, with zero bloom) since we can set the far plane of the depth camera independently from the main camera. This can be adjusted in real time with the "Distance Scale" parameter in the tech demo. 
 {% highlight hlsl linenos %}

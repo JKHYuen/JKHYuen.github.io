@@ -13,8 +13,6 @@ button-text: Steam Store Page
 team-text: Solo Project, with help from a composer for trailer and gameplay music
 ---
 
- <!-- https://uwe-repository.worktribe.com/output/980579 -->
-
 <div class=nav>
 <h4>Contents</h4>
 <ul>
@@ -53,7 +51,7 @@ Discovery is a core theme for this game, there are no intrusive tutorials (see <
 
 <!-- TODO: Randomize Gif -->
 
-<header id="customize"><h2><span class="number">3.1</span> Fully Customizable Simulation</h2></header>
+<header id="customize" class="page-header"><h2><span class="number">3.1</span> Fully Customizable Simulation</h2></header>
 
 Take full control of the simulation with a completely custom UI built in the Unity game engine. The game UI is compatible with any screen resolution/aspect ratio. Users can edit the simulation resolution/aspect ratio separately from the screen UI for a flexible simulation experience.  
 
@@ -66,7 +64,7 @@ The UI is designed to be as simplistic as possible to condense all the simulatio
 
 <!-- TODO: tooltip gif -->
 
-<header id="game-modes"><h2><span class="number">3.2</span> Game Modes</h2></header>
+<header id="game-modes" class="page-header"><h2><span class="number">3.2</span> Game Modes</h2></header>
 Media can be uploaded to direct the slime mold into any shape or pattern. The media acts as a permanent chemoattractant in the background layer (i.e. environment) of the simulation. This means slime particles will prefer colours that match the background, allowing for more user experimentation. The different environmental background options are separated into "game modes":
 
 <ul>
@@ -78,19 +76,30 @@ Media can be uploaded to direct the slime mold into any shape or pattern. The me
 
 <!-- TODO: Webcam gif -->
 
-<header id="morph"><h2><span class="number">3.3</span> Morph</h2></header>
+<header id="morph" class="page-header"><h2><span class="number">3.3</span> Morph</h2></header>
 The morph feature allows users to linearly interpolate between two snapshotted simulation states. This effectively make slime molds look like they are mutating into each other in real time.
 
 <!-- TODO: morph gif -->
 
-<header id="share"><h2><span class="number">3.4</span> Share</h2></header>
+<header id="share" class="page-header"><h2><span class="number">3.4</span> Share</h2></header>
+Simulation sessions in can be snapshotted at anytime with an export feature. Every parameter in the simulation can be encoded into a easily sharable string. These strings can be imported into *PHYSARUM: Slime Mold Simulator* running on another computer to obtain an identical simulation (initial conditions only, individual particle positions are not encoded). A custom encoder was implemented to ensure that these sharable codes are both backward compatible with previous versions of the game and culture-insensitive.
 
+<div class="box" markdown="1">
+*Development Anecdote:*\\
+The custom encoder was not culture-insensitive on release, this caused import issues when codes were generated and imported in regions that use different decimal separators (i.e. 0.5 vs 0,5). This was promptly fixed after a user bug report was made. Lesson learned.
+</div>
 
-<header id="learn"><h2><span class="number">3.5</span> Learn</h2></header>
-*PHYSARUM: Slime Mold Simulator* encourages users to explore and learn in the interactive space.
+<!-- TODO: share gif -->
 
+<header id="learn" class="page-header"><h2><span class="number">3.5</span> Learn</h2></header>
+
+<div class="row">
+<div class="6u"><span class="image fit"><img src="{% link assets/images/phys-learn-1.jpg %}" alt="" /></span></div>
+<div class="6u"><span class="image fit"><img src="{% link assets/images/phys-learn-2.jpg %}" alt="" /></span></div>
+</div>
 
 <header id="marketing" class="major page-header"><h2><span class="number">4.</span> Marketing and Release</h2></header>
-<header id="implementation" class="major page-header"><h2><span class="number">5.</span> Implementation</h2></header>
 
+<header id="implementation" class="major page-header"><h2><span class="number">5.</span> Implementation</h2></header>
+<!-- color picker, tooltip for all resolutions, compute shader,  https://uwe-repository.worktribe.com/output/980579 -->
 

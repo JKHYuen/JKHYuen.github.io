@@ -35,9 +35,13 @@ body {
 		min-width: 25em;
 	}
 
+	blockquote {
+		margin: 2em 0 1.5em 0;
+	}
+
 	// Headers for sections in nav
-	header.major.page-header {
-		margin: 3em 0 1em 0;
+	header.page-header.major {
+		margin: 3em 0 1em 0; 
 	}	
 
 	// Override _banner.scss because we have additional elements in page banner
@@ -97,7 +101,7 @@ body {
 
 			> li {
 				a.sub-section {
-					margin: 0 0 0 2em;
+					margin: 0 0 0 1.3em;
 				}
 
 				// override default box-shadow in _button.scss 
