@@ -50,6 +50,11 @@
 				@include padding(3em, 0);
 				width: calc(100% - 3em);
 			}
+
+			@include breakpoint(medium) {
+				@include padding(3em, 0);
+				width: calc(100% - 3em);
+			}
 		}
 	}
 

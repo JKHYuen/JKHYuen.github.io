@@ -33,6 +33,16 @@ body {
 
 		width: calc(100% - 40em) !important;
 		min-width: 25em;
+
+		@include padding(4em, 0);
+		margin: 0 auto;
+
+		max-width: _size(inner);
+
+		@include breakpoint(small) {
+			@include padding(3em, 0);
+			width: calc(100% - 3em);
+		}
 	}
 
 	blockquote {
