@@ -38,14 +38,12 @@ body {
 
 		@include breakpoint(small) {
 			@include padding(3em, 0);
-			width: calc(100% - 3em);
-			min-width: 25em;
+			width: calc(100% - 3em) !important;
 		}
 
 		@include breakpoint(medium) {
 			@include padding(3em, 0);
-			width: calc(100% - 3em);
-			min-width: 25em;
+			width: calc(100% - 3em) !important;
 		}
 	}
 
