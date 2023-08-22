@@ -21,6 +21,12 @@ button-icon: fa-steam
 </ul>
 </div>
 
+<header id="overview" class="major page-header"><h2><span class="number">1.</span> Overview</h2></header>
+<header id="highlights" class="major page-header"><h2><span class="number">2.</span> Highlights</h2></header>
+<header id="features" class="major page-header"><h2><span class="number">3.</span> Game Features</h2></header>
+<header id="implementation" class="major page-header"><h2><span class="number">3.</span> Implementation</h2></header>
+
+
 {% highlight hlsl linenos %}
 struct appdata {
     float4 vertex : POSITION;

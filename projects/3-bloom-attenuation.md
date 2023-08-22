@@ -22,11 +22,11 @@ button-text: Download Tech Demo
 </div>
 
 <header id="overview" class="major page-header"><h2><span class="number">1.</span> Overview</h2></header>
-<section id="video">
+<div id="video" class="embedded-video">
 <div class=container>
     <iframe src="https://www.youtube.com/embed/u5lX2zunj7g" title="YouTube video player" allowfullscreen></iframe>
 </div>
-</section>
+</div>
 
 My custom shader implementation of bloom to make the popular post processing effect more appealing. The shader simulates light fall off in the post processing step by using the camera depth texture as a bloom intensity multiplier, I call this solution "bloom attenuation". This effectively prevents bloom from oversaturating the screen and better differentiates bright objects with different distances from the player camera. See video above for a full project and implementation overview.
 

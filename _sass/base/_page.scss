@@ -31,7 +31,7 @@ body {
 		border-top: 0 !important;
 		padding-top: 2em !important; 
 
-		width: calc(100% - 35em) !important;
+		width: calc(100% - 40em) !important;
 		min-width: 25em;
 	}
 
@@ -117,8 +117,20 @@ body {
 		}
 	}
 
+	.image.centred {
+		display: block;
+		width: 70%;
+		margin: 1em auto;
+	}
+
+	video {
+		margin: 0 auto 1em auto;
+		border: 3px solid #ffffff;
+		width: 100%;
+	}
+
 	// embedded youtube videos (16:9 auto sizing)
-	#video {
+	.embedded-video {
 		margin: 2em auto;
 
 		// Control width of auto sized container
