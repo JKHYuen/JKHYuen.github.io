@@ -32,7 +32,6 @@ body {
 		padding-top: 2em !important; 
 
 		width: calc(100% - 40em) !important;
-
 		min-width: 25em;
 
 		@include breakpoint(small) {
