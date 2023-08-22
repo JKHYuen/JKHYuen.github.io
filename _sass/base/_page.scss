@@ -32,11 +32,20 @@ body {
 		padding-top: 2em !important; 
 
 		width: calc(100% - 40em) !important;
-		min-width: 25em;
+
+		// Breaks mobile inner margin
+		// min-width: 25em;
 
 		@include breakpoint(small) {
 			@include padding(3em, 0);
-			width: calc(100% - 3em) !important;
+			width: calc(100% - 3em);
+			min-width: 25em;
+		}
+
+		@include breakpoint(medium) {
+			@include padding(3em, 0);
+			width: calc(100% - 3em);
+			min-width: 25em;
 		}
 	}
 
