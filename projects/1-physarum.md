@@ -29,7 +29,7 @@ date-text: April 2021 - August 2021
 </ul>
 </div>
 
-<header id="overview" class="major page-header"><h2><span class="number">1.</span> Overview</h2></header>
+<header id="overview" class="major page-header"><h1><span class="number">1.</span> Overview</h1></header>
 <div id="video" class="embedded-video">
 <div class=container>
     <iframe src="https://www.youtube.com/embed/rW9ZsO6LYdk" title="YouTube video player" allowfullscreen></iframe>
@@ -43,7 +43,8 @@ Users can simulate an arbitrary amount of slime "species" and morph (lerp) betwe
 
 *Note: UI aesthetic design is not finalized in the trailer, see screenshots on <a href="https://store.steampowered.com/app/1667120/PHYSARUM_Slime_Mold_Simulator/" target="_blank" rel="noopener noreferrer">Steam</a> or below for the final UI look.*
 
-<header id="highlights" class="major page-header"><h2><span class="number">2.</span> Highlights</h2></header>
+<header id="highlights" class="major page-header"><h1><span class="number">2.</span> Highlights</h1></header>
+
 <ul class="highlights-list">
     <li>Simulation and UI implementation done in the Unity game engine, with the built-in renderer
         <ul class="highlights-list sub">
@@ -77,7 +78,7 @@ Users can simulate an arbitrary amount of slime "species" and morph (lerp) betwe
     <li>Collaborated with composer to create the <i>PHYSARUM</i> soundtrack and trailer score</li>
 </ul>
 
-<header id="features" class="major page-header"><h2><span class="number">3.</span> Game Features</h2></header>
+<header id="features" class="major page-header"><h1><span class="number">3.</span> Game Features</h1></header>
 > Watch the slime mold Physarum polycephalum grow in real time as you tweak and mutate its properties. Learn about the real life organism and discover different ways to manipulate its behavior. Encounter countless unique and organic looking patterns with a seemingly simple multi-agent chemoattractant system.
 
 Discovery is a core theme for this game, there are no intrusive tutorials (see <a href="#learn" class="scrolly">3.5 Learn</a> for more details). The simulation starts immediately after the main menu; users are implicitly motivated by curiosity to discover the possibilities of the game. 
@@ -156,7 +157,7 @@ For users who are curious about the inner workings of the simulation or want to 
 <div class="6u"><span class="image fit"><img src="{% link assets/images/phys-learn-2.jpg %}" alt="" /></span></div> 
 </div>
 
-<header id="implementation" class="major page-header"><h2><span class="number">4.</span> Implementation</h2></header>
+<header id="implementation" class="major page-header"><h1><span class="number">4.</span> Implementation</h1></header>
 
 <!-- color picker, tooltip for all resolutions, compute shader - slime + drawing,  https://uwe-repository.worktribe.com/output/980579 -->
 

@@ -52,10 +52,17 @@ body {
 		margin: 2em 0 1.5em 0;
 	}
 
-	// Headers for sections in nav
-	header.page-header.major {
+	// TODO: add top margin on subsections as well
+	// Headers for sections nav links leads to
+	header.major.page-header {
 		margin: 3em 0 1em 0; 
 	}	
+
+	// Css magic to select only first header (use smaller top margin for nav list spacing)
+	// see: https://stackoverflow.com/a/68964419
+	.page-header:not(.page-header ~ .page-header) {
+		margin: 2em 0 1em 0;
+	}
 
 	// Override _banner.scss because we have additional elements in page banner
 	#banner.page {
@@ -79,6 +86,7 @@ body {
 		margin: 2em 0 4em 0;
 	}
 
+	// For numbers in nav and section headers
 	span.number {
 		font-size: 0.9em;
 		color: rgb(196, 196, 196);
@@ -87,9 +95,13 @@ body {
 	// For highlights section
 	ul.highlights-list {
 		list-style-type: square;
+		font-weight: _font(weight-bold);
 
 		.sub {
-			margin: 0;
+			list-style-type: circle;
+			font-weight: _font(weight);
+			// color: #f0f0f0;
+			margin: 0 0 0 0.5em;
 		}
 	}
 
@@ -138,7 +150,7 @@ body {
 	}
 
 	video {
-		margin: 0 auto 1em auto;
+		margin: 1em auto;
 		border: 3px solid #ffffff;
 		width: 100%;
 	}

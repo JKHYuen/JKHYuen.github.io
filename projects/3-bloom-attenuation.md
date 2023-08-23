@@ -21,7 +21,7 @@ button-text: Download Tech Demo
 </ul>
 </div>
 
-<header id="overview" class="major page-header"><h2><span class="number">1.</span> Overview</h2></header>
+<header id="overview" class="major page-header"><h1><span class="number">1.</span> Overview</h1></header>
 
 <video autoplay muted controls poster="{{ site.baseurl }}/assets/images/bloomAttenuation.png">
   <source src="{{ site.baseurl }}/assets/videos/bloom-preview.mp4" type="video/mp4">
@@ -37,7 +37,7 @@ See video below for a full project and implementation overview.
 </div>
 </div>
 
-<header id="highlights" class="major page-header"><h2><span class="number">2.</span> Highlights</h2></header>
+<header id="highlights" class="major page-header"><h1><span class="number">2.</span> Highlights</h1></header>
 <ul class="highlights-list">
     <li>Novel bloom solution, implemented from scratch</li>
     <li>Extensive Cg/HLSL shader and graphics rendering work, with C# programming for demo game logic</li>
@@ -57,7 +57,7 @@ See video below for a full project and implementation overview.
 	</li>
 </ul>
 
-<header id="shader" class="major page-header"><h2><span class="number">3.</span> Implementation</h2></header>
+<header id="shader" class="major page-header"><h1><span class="number">3.</span> Implementation</h1></header>
 This project is done in Unity 2019, using the built-in render pipeline. To apply the depth bloom intensity multiplier, post processing bloom had to be implemented from scratch. This is done with a Cg/HLSL multi-pass bloom shader applied to the main camera's final image using Unity's ```OnRenderImage()``` function in C#.
 
 <h4>Snippet of Custom Bloom Shader</h4>
