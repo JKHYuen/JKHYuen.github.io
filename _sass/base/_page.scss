@@ -26,6 +26,7 @@ body {
 		}
 	}
 
+	// TODO: for pages only, don't override home page banner
 	// override _wrapper.scss
 	.inner.page {
 		border-top: 0 !important;
@@ -92,6 +93,7 @@ body {
 		}
 	}
 
+	// TODO: make non nested list elements font bigger
 	// Navigation Button List
 	.nav {
 		margin: 1em 0 1em 0;

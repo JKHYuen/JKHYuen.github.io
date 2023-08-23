@@ -11,6 +11,7 @@ button-icon: fa-steam
 button-url: https://store.steampowered.com/app/1667120/PHYSARUM_Slime_Mold_Simulator/
 button-text: Steam Store Page
 team-text: Solo Project, with help from a composer for trailer and gameplay music
+date-text: April 2021 - August 2021
 ---
 
 <div class=nav>
@@ -24,8 +25,7 @@ team-text: Solo Project, with help from a composer for trailer and gameplay musi
 			<li><a href="#morph" class="button small scrolly sub-section"><span class="number">3.3</span> Morph</a></li>
 			<li><a href="#share" class="button small scrolly sub-section"><span class="number">3.4</span> Share</a></li>
 			<li><a href="#learn" class="button small scrolly sub-section"><span class="number">3.5</span> Learn</a></li>
-    <li><a href="#marketing" class="button small scrolly"><span class="number">4.</span> Marketing and Release</a></li>
-    <li><a href="#implementation" class="button small scrolly"><span class="number">5.</span> Implementation</a></li>
+    <li><a href="#implementation" class="button small scrolly"><span class="number">4.</span> Implementation</a></li>
 </ul>
 </div>
 
@@ -36,15 +36,45 @@ team-text: Solo Project, with help from a composer for trailer and gameplay musi
 </div>
 </div>
 
+<!-- TODO: mention first steam release -->
 A project that evolved into a fully featured Steam release while learning how to make compute shaders. *PHYSARUM: Slime Mold Simulator* is an interactive sandbox visualizer of the real life organism *Physarum polycephalum*, all simulated on a single compute shader. The GPU bound AI easily allows for millions of slime agents (i.e. particles) to be simulated in real time.
 
 Users can simulate an arbitrary amount of slime "species" and morph (lerp) between them to discover unique and mesmerizing organic patterns. Although not a traditional "game", *PHYSARUM: Slime Mold Simulator* is designed to encourage users to explore and discover in the sandbox environment for entertainment value. See trailer above for a full feature showcase. 
 
-*Note: UI aesthetics are not finalized the trailer, see screenshots on <a href="https://store.steampowered.com/app/1667120/PHYSARUM_Slime_Mold_Simulator/" target="_blank" rel="noopener noreferrer">Steam</a> or below for the final UI look.*
+*Note: UI aesthetic design is not finalized in the trailer, see screenshots on <a href="https://store.steampowered.com/app/1667120/PHYSARUM_Slime_Mold_Simulator/" target="_blank" rel="noopener noreferrer">Steam</a> or below for the final UI look.*
 
 <header id="highlights" class="major page-header"><h2><span class="number">2.</span> Highlights</h2></header>
 <ul class="highlights-list">
-    <li></li>
+    <li>Simulation and UI implementation done in the Unity game engine, with the built-in renderer
+        <ul class="highlights-list sub">
+			<li>C# and Cg/HLSL programming</li>
+            <li>Compute shaders, game logic and UI implementations coded solo from scratch, without plug-ins or store assets</li>
+        </ul>
+    </li>
+    <li>UX/UI design
+        <ul class="highlights-list sub">
+			<li>UI designed and implemented with base Unity UI components</li>
+            <li>Some icons used from <a href="https://kenney.nl/assets/game-icons" target="_blank" rel="noopener noreferrer">Kenney's game icons</a>, others are custom made</li>
+        </ul>
+    </li>
+    <li>Zero budget marketing
+        <ul class="highlights-list sub">
+			<li>Live development twitch streams 5+ days a week</li>
+			<li><a href="https://youtu.be/rW9ZsO6LYdk" target="_blank" rel="noopener noreferrer">Full game trailer</a>, with <a href="https://youtu.be/sfBsXX5rWfY" target="_blank" rel="noopener noreferrer">several</a> <a href="https://youtu.be/fkV4ea-P8Ic" target="_blank" rel="noopener noreferrer">teasers</a>: storyboarding, scripting, and video editing</li>
+			<li>Successful reddit posts: <a href="https://www.reddit.com/r/Simulated/comments/pekgaj/physarum_slime_mold_simulator_is_now_out_on_steam/?utm_source=share&utm_medium=web2x&context=3" target="_blank" rel="noopener noreferrer">(1)</a> <a href="https://www.reddit.com/r/proceduralgeneration/comments/oo6suw/recently_announced_physarum_slime_mold_simulator/?utm_source=share&utm_medium=web2x&context=3" target="_blank" rel="noopener noreferrer">(2)</a> <a href="https://www.reddit.com/r/proceduralgeneration/comments/pekbck/physarum_slime_mold_simulator_is_now_out_on_steam/?utm_source=share&utm_medium=web2x&context=3" target="_blank" rel="noopener noreferrer">(3)</a></li>
+			<li>Facebook Ad, funded by a Facebook employee connection</li>
+			<li>A marketing post mortem <a href="https://youtu.be/EsHigYW1Qb8" target="_blank" rel="noopener noreferrer">video</a></li>
+		</ul>
+    </li>
+    <li>Customer support
+        <ul class="highlights-list sub">
+			<li>Discord server: personally responding to bug reports and questions about the product</li>
+			<li>Tech support on Steam discussion forums</li>
+			<li>Answering questions about the product during live development streams</li>
+			<li>Most user reported bugs fixed the day of report</li>
+        </ul>
+    </li>
+    <li>Collaborated with composer to create the <i>PHYSARUM</i> soundtrack and trailer score</li>
 </ul>
 
 <header id="features" class="major page-header"><h2><span class="number">3.</span> Game Features</h2></header>
@@ -106,10 +136,10 @@ Lastly, users can interact with the slime mold simulation with a live video feed
   morph video
 </video>
 
-The morph feature allows users to linearly interpolate between two snapshotted simulation states. This effectively make slime molds look like they are mutating into each other in real time.
+The morph feature allows users to linearly interpolate between two simulation states. This effectively make slime molds look like they are mutating and evolving into each other in real time.
 
 <header id="share" class="page-header"><h2><span class="number">3.4</span> Share</h2></header>
-Simulation sessions in can be snapshotted at anytime with an export feature. Every parameter in the simulation can be encoded into a easily sharable string. These strings can be imported into *PHYSARUM: Slime Mold Simulator* running on another computer to obtain an identical simulation (initial conditions only, individual particle positions are not encoded). A custom encoder was implemented to ensure that these sharable codes are both backward compatible with previous versions of the game and culture-insensitive.
+Simulation sessions can be serialized at anytime with an export feature. Every parameter in the simulation can be encoded into an easily sharable string. These strings can be imported into *PHYSARUM: Slime Mold Simulator* running on another computer to obtain an identical simulation (initial conditions only, individual particle positions are not encoded). A custom encoder was implemented to ensure that these sharable codes are both backward compatible with previous versions of the game and culture-insensitive.
 
 <div class="box" markdown="1">
 *Development Anecdote:*\\
@@ -119,16 +149,14 @@ The custom encoder was not culture-insensitive on release, this caused import is
 <!-- TODO: share gif -->
 
 <header id="learn" class="page-header"><h2><span class="number">3.5</span> Learn</h2></header>
-For users who are curious about the inner workings of the simulation or want to understand the slime particle parameters better, a detailed description is provided with an interactive demo.
+For users who are curious about the inner workings of the simulation or want to understand the slime particle parameters better, a detailed description is provided with an interactive slime particle visualizer.
 
 <div class="row">
 <div class="6u"><span class="image fit"><img src="{% link assets/images/phys-learn-1.jpg %}" alt="" /></span></div>
-<!-- TODO: typo -->
 <div class="6u"><span class="image fit"><img src="{% link assets/images/phys-learn-2.jpg %}" alt="" /></span></div> 
 </div>
 
-<header id="marketing" class="major page-header"><h2><span class="number">4.</span> Marketing and Release</h2></header>
+<header id="implementation" class="major page-header"><h2><span class="number">4.</span> Implementation</h2></header>
 
-<header id="implementation" class="major page-header"><h2><span class="number">5.</span> Implementation</h2></header>
 <!-- color picker, tooltip for all resolutions, compute shader - slime + drawing,  https://uwe-repository.worktribe.com/output/980579 -->
 
