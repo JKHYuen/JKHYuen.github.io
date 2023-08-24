@@ -52,10 +52,17 @@ body {
 		margin: 2em 0 1.5em 0;
 	}
 
-	// TODO: add top margin on subsections as well
 	// Headers for sections nav links leads to
-	header.major.page-header {
+	header.page-header {
 		margin: 3em 0 1em 0; 
+
+		h2 {
+			margin: 0; 
+		}
+
+		&.major {
+			margin: 4em 0 1em 0; 
+		}
 	}	
 
 	// Css magic to select only first header (use smaller top margin for nav list spacing)
@@ -97,15 +104,21 @@ body {
 		list-style-type: square;
 		font-weight: _font(weight-bold);
 
+		> li {
+			margin: 0 0 0.5em 0;
+		}
+
 		.sub {
 			list-style-type: circle;
 			font-weight: _font(weight);
-			// color: #f0f0f0;
-			margin: 0 0 0 0.5em;
+			margin: 0;
+
+			> li {
+				margin: 0;
+			}
 		}
 	}
 
-	// TODO: make non nested list elements font bigger
 	// Navigation Button List
 	.nav {
 		margin: 1em 0 1em 0;
@@ -140,6 +153,14 @@ body {
 				}
 				padding: 0;
 			}
+		}
+	}
+
+	// Style box title (should always be italicized)
+	.box {
+		em {
+			display: inline-block;
+			margin: 0 0 0.5em 0;
 		}
 	}
 
