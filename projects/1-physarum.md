@@ -176,7 +176,9 @@ An early alpha of *PHYSARUM: Slime Mold Simulator* was sent to Sebastian Lague a
 <!-- TODO: Show early sims, early compute shader stuff -->
 
 <header id="tooltip" class="page-header"><h2><span class="number">4.1</span> Tooltip Framework</h2></header>
-Tooltips are challenging because they must stay within a screen of any resolution/aspect ratio, while having an arbitrary width and height to fit tooltip content. Additionally, we must account for scale of the UI element we are spawning the tooltip from, this is because the game features a scalable UI. I use a solution I developed in a previous Unity project: use a base UI resolution of 1920 x 1080 and fit arbitrary aspect ratios by height.
+Tooltips are challenging because they must stay within a screen of any resolution/aspect ratio, while having an arbitrary width and height to fit tooltip content. Additionally, we must account for scale of the UI element we are spawning the tooltip from, this is because the game features a scalable UI. 
+
+I used a solution I developed in a previous Unity project: use a reference UI resolution of 1920 x 1080 and fit arbitrary aspect ratios by height. This means we don't have to worry about vertical position as it will be normalized and horizontal screen placement can be managed by anchors. The Unity <a href="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/script-CanvasScaler.html" target="_blank" rel="noopener noreferrer">canvas scaler</a> does this by altering the scale of the UI objects. Which is why the "lossy scale" (i.e. global scale) is used to get a coefficient representing the aspect ratio difference between the run time screen and the reference resolution (line 14 of code snippet below).
 
 <h4>Function used to position text tooltips of arbitrary size:</h4>
 {% highlight csharp linenos %}
@@ -238,8 +240,21 @@ private IEnumerator CalculateTooltipPosition(RectTransform targetObjectRect, Vec
 }
 {% endhighlight %}
 
-<header id="color-picker" class="page-header"><h2><span class="number">4.2</span> Color Picker</h2></header>
+<header class="page-header"><h3>Non-Text Tooltips</h3></header>
+Menus like the color picker and "randomize settings" menu have a similar placement requirement of fitting within any screen size, but I used more ad hoc solutions. This reduced the need to make a overly robust (i.e. buggy) solution when simpler solutions work fine for the scope of this project.
 
+For example, it is an invariant in the UI design that the color picker menu will always show on the right side of the color picker buttons. By default, color picker menus are always placed with the same horizontal offset from the button, with the top of the button flush with the top of the menu. Therefore, we only need to check if the bottom of the color picker goes lower than the bottom of the screen and adjust accordingly since color picker buttons are never above the screen.
+
+<!--TODO: video of color picker and randomize settings opening -->
+
+<header id="color-picker" class="page-header"><h2><span class="number">4.2</span> Color Picker</h2></header>
+Since the base Unity UI components do not provide a color picking interface, a custom solution was made. The interface uses HSL color representation for intuitive color picking. Hue can be chosen in a vertical gradient on the side and the main square. Saturation and lightness is represented as the x and y (respectively) in the main color picking square. RGB sliders with input boxes can also be used as an alternative. 
+
+The saturation/lightness square is rendered via uv coordinate interpolation and mouse coordinates are normalized, which means the color picker will work with any width and height without changing any code. 
+
+<!--TODO: color picker video -->
+
+<h4>Saturation/Lightness Square Fragment Shader:</h4>
 {% highlight hlsl linenos %}
 fixed4 frag (v2f i) : SV_Target {
     fixed4 col = lerp(
@@ -251,6 +266,36 @@ fixed4 frag (v2f i) : SV_Target {
     return col;
 }
 {% endhighlight %}
+
+*Note: i.color is the hue of the square, which is updated externally*
+
+<h4>Hue Gradient Fragment Shader:</h4>
+{% highlight hlsl linenos %}
+// From https://en.wikipedia.org/wiki/HSL_and_HSV#HSL_to_RGB_alternative
+float HSL2RGB(float n, float H, float a, float L) {
+    float k = fmod(n + (H / 30), 12);
+    return L - a * max(-1, min(k - 3, min(9 - k, 1)));
+}
+
+fixed4 frag (v2f i) : SV_Target
+{
+    float H = i.uv.y * 360;
+    float L = 0.5;
+    float S = 1;
+
+    float a = S * min(L, 1 - L);
+
+    fixed4 col = fixed4(
+        HSL2RGB(0, H, a, L),
+        HSL2RGB(8, H, a, L),
+        HSL2RGB(4, H, a, L),
+        i.color.a
+    );
+
+    return col;
+}
+{% endhighlight %}
+
 
 <!--TODO: compute shader: slime + drawing -->
 
