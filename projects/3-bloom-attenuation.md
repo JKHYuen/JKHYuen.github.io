@@ -168,7 +168,7 @@ SubShader{
 }
 {% endhighlight %}
 
-<h4>Applying Shader in C#</h4>
+<h4>Applying the Screen Shader in C#</h4>
 {% highlight csharp linenos %}
 private void OnRenderImage(RenderTexture source, RenderTexture destination) {
 	if(bloom == null) {

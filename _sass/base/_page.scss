@@ -26,16 +26,12 @@ body {
 		}
 	}
 
-	// TODO: for pages only, don't override home page banner
 	// override _wrapper.scss
 	.inner.page {
 		border-top: 0 !important;
 		padding-top: 2em !important; 
 
-		width: calc(100% - 40em) !important;
-
-		// Breaks mobile inner margin
-		// min-width: 25em;
+		width: calc(100% - 45em) !important;
 
 		@include breakpoint(small) {
 			@include padding(3em, 0);
@@ -64,6 +60,10 @@ body {
 			margin: 4em 0 1em 0; 
 		}
 	}	
+
+	h4 {
+		margin: 0; 
+	}
 
 	// Css magic to select only first header (use smaller top margin for nav list spacing)
 	// see: https://stackoverflow.com/a/68964419
@@ -164,9 +164,9 @@ body {
 		}
 	}
 
-	// For italic notes after code snippets
-	.highlight ~ p {
-		em {
+	// For italic notes after code snippets and videos
+	.highlight, .embedded-video {
+		+ p em {
 			display: block;
 			margin: -1.5em 0 0em 0 !important;
 		}
@@ -217,17 +217,19 @@ body {
 		width: 100%; 
 		margin: 0 auto 2em auto;
 		
-		// code, preformatted
-		> pre {
-			tab-size: 2em;
-			max-height: 800px; 
-			overflow-y: auto;
-		}
+		// // code, preformatted
+		// > pre {
+		// 	height: 800px;
+		// 	tab-size: 2em;
+		// 	// max-height: 800px; 
+		// 	overflow-y: auto;
+		// 	overflow-x: auto;
+		// }
 		
-		// line numbers, preformatted
-		pre.lineno {
-			text-align: right;
-		}
+		// // line numbers, preformatted
+		// pre.lineno {
+		// 	text-align: right;
+		// }
 	}
 }
 
