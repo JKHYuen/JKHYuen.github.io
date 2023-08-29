@@ -9,6 +9,8 @@ nav-menu: true
 button-url: https://store.steampowered.com/app/2260800/nothing_matters/
 button-text: Steam Store Page
 button-icon: fa-steam
+
+date-text: April 2022 - June 2023
 ---
 
 <div class=nav>

@@ -38,14 +38,21 @@
 
 		<!-- Team Description -->
 		{% unless page.disable-team-info %}
-		<div class="team-info">
-			<span class="icon fa-users"></span>
-			<span style="margin-left: 0.5em;">
-				{% if page.team-text %}{{page.team-text}}{% else %}Solo Project{% endif %}
-			</span>
+		<div class="project-icon-info">
+			<div>
+				<span class="icon fa-users"></span>
+				<span>{% if page.team-text %}{{page.team-text}}{% else %}Solo Project{% endif %}</span>
+			</div>
+
+			<!-- Optional Project Date Text -->
+			{% if page.date-text %}
+			<div>
+				<span class="icon fa-calendar-days"></span>
+				<span>{{ page.date-text }}</span>
+			</div>
+			{% endif %}
 		</div>
 		{% endunless %}
-
 	</div>
 </section>
 

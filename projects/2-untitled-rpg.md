@@ -1,10 +1,14 @@
 ---
 layout: page
-title: Untitled RPG
+title: Last Secutor
 description: video game
 image: assets/images/rpgDemo.gif
 page-banner: assets/images/rpgDemo.gif
 nav-menu: true
+
+button-url: https://github.com/JKHYuen/BloomAttenuationBuild
+button-text: Download Demo
+date-text: 2015 - 2022
 ---
 
 <div class=nav>

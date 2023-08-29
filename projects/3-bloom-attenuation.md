@@ -9,6 +9,8 @@ nav-menu: true
 
 button-url: https://github.com/JKHYuen/BloomAttenuationBuild
 button-text: Download Tech Demo
+
+date-text: November 2021 - December 2021
 ---
 
 <div class=nav>
