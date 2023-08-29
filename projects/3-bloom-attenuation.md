@@ -25,7 +25,7 @@ date-text: November 2021 - December 2021
 
 <header id="overview" class="major page-header"><h1><span class="number">1.</span> Overview</h1></header>
 
-<video autoplay muted controls poster="{{ site.baseurl }}/assets/images/bloomAttenuation.png">
+<video class="scroll-auto" muted controls poster="{{ site.baseurl }}/assets/images/bloomAttenuation.png">
   <source src="{{ site.baseurl }}/assets/videos/bloom-preview.mp4" type="video/mp4">
   bloom preview video
 </video>
