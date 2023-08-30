@@ -74,7 +74,7 @@ body {
 		margin: 0; 
 	}
 
-	// Css magic to select only first header (use smaller top margin for nav list spacing)
+	// CSS magic to select only first header (use smaller top margin for nav list spacing)
 	// see: https://stackoverflow.com/a/68964419
 	.page-header:not(.page-header ~ .page-header) {
 		margin: 2em 0 1em 0;
@@ -97,8 +97,14 @@ body {
 		}	
 	}
 
-	.project-icon-info {
+	// Icon with text of Team and date project info (Below page banners and headers in "Other Projects" page)
+	div.project-icon-info {
 		margin: 2em 0 3em 0; 
+
+		// margin for icon div assuming there is a button, see below for no button margin
+		&.other-projects {
+			margin: -1em 0 1em 0;
+		}
 
 		> div {
 			font-size: 0.75em;
@@ -113,6 +119,10 @@ body {
 		}
 	}
 
+	// If in directly under header in "Other Projects" page i.e. no button
+	header + .other-projects {
+		margin: 0em 0 1em 0 !important;
+	}
 
 	// For numbers in nav and section headers
 	span.number {
