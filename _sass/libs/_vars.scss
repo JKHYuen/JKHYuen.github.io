@@ -21,7 +21,8 @@
 // Font.
 	$font: (
 		family:				('Source Sans Pro', Helvetica, sans-serif),
-		family-fixed:		('Courier New', monospace),
+		// code font
+		family-fixed:		('Monaco', monospace),
 		weight:				300,
 		weight-bold:		600,
 		letter-spacing:		0.025em,

@@ -2,13 +2,15 @@
 layout: page
 permalink: /bloom-attenuation
 title: Bloom Attenuation
-description: A solution to common issues with the bloom post processing effect
+description: My solution to common issues with the bloom post processing effect
 image: assets/images/bloomAttenuation.png
 page-banner: assets/images/bloom-page-banner.jpg
 nav-menu: true
 
 button-url: https://github.com/JKHYuen/BloomAttenuationBuild
 button-text: Download Tech Demo
+
+date-text: November 2021 — December 2021
 ---
 
 <div class=nav>
@@ -21,26 +23,31 @@ button-text: Download Tech Demo
 </ul>
 </div>
 
-<header id="overview" class="major page-header"><h2><span class="number">1.</span> Overview</h2></header>
+<header id="overview" class="major page-header"><h1><span class="number">1.</span> Overview</h1></header>
+
+<video class="scroll-auto" muted controls poster="{{ site.baseurl }}/assets/images/bloomAttenuation.png">
+  <source src="{{ site.baseurl }}/assets/videos/bloom-preview.mp4" type="video/mp4">
+  bloom preview video
+</video>
+
+My custom shader implementation of bloom to make the popular post processing effect more appealing. The shader simulates light fall off in the post processing step by using the camera depth texture as a bloom intensity multiplier, I call this solution "bloom attenuation". This effectively prevents bloom from oversaturating the screen and better differentiates bright objects with different distances from the player camera. Try the <a href="https://github.com/JKHYuen/BloomAttenuationBuild" target="_blank" rel="noopener noreferrer">playable tech demo</a> to change the bloom shader parameters and see the individual bloom rendering steps in real time!
+
+See video below for a full project and implementation overview.
 <div id="video" class="embedded-video">
 <div class=container>
     <iframe src="https://www.youtube.com/embed/u5lX2zunj7g" title="YouTube video player" allowfullscreen></iframe>
 </div>
 </div>
 
-My custom shader implementation of bloom to make the popular post processing effect more appealing. The shader simulates light fall off in the post processing step by using the camera depth texture as a bloom intensity multiplier, I call this solution "bloom attenuation". This effectively prevents bloom from oversaturating the screen and better differentiates bright objects with different distances from the player camera. See video above for a full project and implementation overview.
-
-Try the <a href="https://github.com/JKHYuen/BloomAttenuationBuild" target="_blank" rel="noopener noreferrer">playable tech demo</a> to change the bloom shader parameters and see the individual bloom rendering steps in real time!
-
-<header id="highlights" class="major page-header"><h2><span class="number">2.</span> Highlights</h2></header>
+<header id="highlights" class="major page-header"><h1><span class="number">2.</span> Highlights</h1></header>
 <ul class="highlights-list">
     <li>Novel bloom solution, implemented from scratch</li>
-    <li>Extensive Cg/HLSL shader and graphics rendering work</li>
+    <li>Extensive Cg/HLSL shader and graphics rendering work, with C# programming for demo game logic</li>
     <li>Playable <a href="https://github.com/JKHYuen/BloomAttenuationBuild" target="_blank" rel="noopener noreferrer">Unity tech demo</a>
 		<ul class="highlights-list sub">
 			<li>Adjust all bloom shader parameters and see individual rendering steps with a custom UI in real time</li>
 			<li>Experience the effect with a custom first person controller</li>
-			<li>Use the on rails demo camera (as shown in video) to adjust parameters on the move</li>
+			<li>On rails demo camera (as shown in video) to adjust parameters on the move</li>
 		</ul>
 	</li>
     <li>Project overview <a href="#video" class="scrolly">video</a>
@@ -52,7 +59,7 @@ Try the <a href="https://github.com/JKHYuen/BloomAttenuationBuild" target="_blan
 	</li>
 </ul>
 
-<header id="shader" class="major page-header"><h2><span class="number">3.</span> Implementation</h2></header>
+<header id="shader" class="major page-header"><h1><span class="number">3.</span> Implementation</h1></header>
 This project is done in Unity 2019, using the built-in render pipeline. To apply the depth bloom intensity multiplier, post processing bloom had to be implemented from scratch. This is done with a Cg/HLSL multi-pass bloom shader applied to the main camera's final image using Unity's ```OnRenderImage()``` function in C#.
 
 <h4>Snippet of Custom Bloom Shader</h4>
@@ -163,7 +170,7 @@ SubShader{
 }
 {% endhighlight %}
 
-<h4>Applying Shader in C#</h4>
+<h4>Applying the Screen Shader in C#</h4>
 {% highlight csharp linenos %}
 private void OnRenderImage(RenderTexture source, RenderTexture destination) {
 	if(bloom == null) {

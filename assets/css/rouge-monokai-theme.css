@@ -5,6 +5,16 @@
 .highlight pre code { 
     padding: 0;
     line-height: 1.2em; 
+
+    display: block;
+
+    tab-size: 2em;
+    max-height: 800px; 
+    overflow-y: auto;
+}
+
+pre.lineno {
+    text-align: right;
 }
 
 .highlight table { 

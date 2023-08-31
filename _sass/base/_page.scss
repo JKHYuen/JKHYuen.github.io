@@ -31,10 +31,7 @@ body {
 		border-top: 0 !important;
 		padding-top: 2em !important; 
 
-		width: calc(100% - 40em) !important;
-
-		// Breaks mobile inner margin
-		// min-width: 25em;
+		width: calc(100% - 45em) !important;
 
 		@include breakpoint(small) {
 			@include padding(3em, 0);
@@ -45,27 +42,54 @@ body {
 			@include padding(3em, 0);
 			width: calc(100% - 3em) !important;
 		}
+
+		@include breakpoint(large) {
+			@include padding(3em, 0);
+			width: calc(100% - 3em) !important;
+		}
+		@include breakpoint(xlarge) {
+			@include padding(3em, 0);
+			width: calc(100% - 3em) !important;
+		}
 	}
 
 	blockquote {
 		margin: 2em 0 1.5em 0;
 	}
 
-	// Headers for sections in nav
-	header.page-header.major {
-		margin: 3em 0 1em 0; 
+	// Headers for sections nav links leads to
+	header.page-header {
+		margin: 3em 0 0.5em 0; 
+
+		h2, h3 {
+			margin: 0; 
+		}
+
+		&.major {
+			margin: 4em 0 1em 0; 
+		}
 	}	
+
+	h4 {
+		margin: 0; 
+	}
+
+	// CSS magic to select only first header (use smaller top margin for nav list spacing)
+	// see: https://stackoverflow.com/a/68964419
+	.page-header:not(.page-header ~ .page-header) {
+		margin: 2em 0 1em 0;
+	}
 
 	// Override _banner.scss because we have additional elements in page banner
 	#banner.page {
-		@include padding(4em, 0, (2em, 0, 2em, 0));
+		@include padding(4em, 0, (1em, 0, 1em, 0));
 
 		h1 {
 			font-size: 2.5em;
 		}
 
 		.content p {
-			font-size: 0.6em;
+			font-size: 0.55em;
 		}
 
 		header.major {
@@ -73,11 +97,34 @@ body {
 		}	
 	}
 
-	.team-info {
-		font-size: 0.8em;
-		margin: 2em 0 4em 0;
+	// Icon with text of Team and date project info (Below page banners and headers in "Other Projects" page)
+	div.project-icon-info {
+		margin: 2em 0 3em 0; 
+
+		// margin for icon div assuming there is a button, see below for no button margin
+		&.other-projects {
+			margin: -1em 0 1em 0;
+		}
+
+		> div {
+			font-size: 0.75em;
+			margin: 0.5em 0;
+
+			span:first-child {
+				display: inline-block;
+				width: 1.25em;
+				text-align: center;
+				margin-right: 0.25em;
+			}
+		}
 	}
 
+	// If in directly under header in "Other Projects" page i.e. no button
+	header + .other-projects {
+		margin: 0em 0 1em 0 !important;
+	}
+
+	// For numbers in nav and section headers
 	span.number {
 		font-size: 0.9em;
 		color: rgb(196, 196, 196);
@@ -86,9 +133,20 @@ body {
 	// For highlights section
 	ul.highlights-list {
 		list-style-type: square;
+		font-weight: _font(weight-bold);
+
+		> li {
+			margin: 0 0 0.5em 0;
+		}
 
 		.sub {
+			list-style-type: circle;
+			font-weight: _font(weight);
 			margin: 0;
+
+			> li {
+				margin: 0;
+			}
 		}
 	}
 
@@ -129,6 +187,22 @@ body {
 		}
 	}
 
+	// Style box title (should always be italicized)
+	.box {
+		em {
+			display: inline-block;
+			margin: 0 0 0.5em 0;
+		}
+	}
+
+	// For italic notes after code snippets and videos
+	.highlight, .embedded-video {
+		+ p em {
+			display: block;
+			margin: -1.5em 0 0em 0 !important;
+		}
+	}
+
 	.image.centred {
 		display: block;
 		width: 70%;
@@ -136,7 +210,7 @@ body {
 	}
 
 	video {
-		margin: 0 auto 1em auto;
+		margin: 1em auto;
 		border: 3px solid #ffffff;
 		width: 100%;
 	}
@@ -173,18 +247,6 @@ body {
 	.highlight {
 		width: 100%; 
 		margin: 0 auto 2em auto;
-		
-		// code, preformatted
-		> pre {
-			tab-size: 2em;
-			max-height: 800px; 
-			overflow-y: auto;
-		}
-		
-		// line numbers, preformatted
-		pre.lineno {
-			text-align: right;
-		}
 	}
 }
 
