@@ -10,8 +10,8 @@ nav-menu: true
 button-icon: fa-steam
 button-url: https://store.steampowered.com/app/1667120/PHYSARUM_Slime_Mold_Simulator/
 button-text: Steam Store Page
-team-text: Solo Project, with help from a composer for trailer and gameplay music
-date-text: April 2021 - August 2021
+team-text: Solo project, with help from a composer for trailer and gameplay music
+date-text: April 2021 — August 2021
 ---
 
 <div class=nav>

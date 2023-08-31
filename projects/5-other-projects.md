@@ -35,11 +35,13 @@ disable-team-info: I can write anything here to disable header icons
         <span>January 3 2022</span>
     </div>
 </div>
-After seeing a prominent effect in some Darkest Dungeon II gameplay, I challenged myself to recreate the effect as close as possible in a day. The "flaming" edges are implemented with a classic noise alpha cutoff and Voronoi noise was used as an alpha mask to create the circular holes. UVs can be stretched via variables in the shader to get the more uneven look.
+After seeing a widely used effect in some Darkest Dungeon II gameplay, I challenged myself to recreate the effect as close as possible in a day. The effect is created completely procedurally in an HLSL shader, with no pre-made textures.
+
+<h4>Fragment Shader</h4>
+The "flaming" edges are implemented with a noise alpha cutoff, with a ```step``` function to get the hard edges. Voronoi noise was used as an alpha mask to create the familiar circular holes. These holes was the most recognizable feature that prompted me to attempt to recreate the effect. UVs can be stretched via variables in the shader to get the more uneven look.
 
 <!-- TODO: talk about angle mask -->
 
-<h4>Fragment Shader</h4>
 {% highlight hlsl linenos %}
 fixed4 frag(v2f i) : SV_Target {
     float2 unscaledUV = i.uv;
@@ -85,7 +87,7 @@ fixed4 frag(v2f i) : SV_Target {
     </div>
     <div>
         <span class="icon fa-calendar-days"></span>
-        <span>July 25 2020 - July 27 2020</span>
+        <span>July 25 2020 — July 27 2020</span>
     </div>
 </div>
 A recreation of the mobile game *<a href="https://www.youtube.com/watch?v=Wk5JupHelAg" target="_blank" rel="noopener noreferrer">Alto's Adventure</a>* in Unity; made in a 2 day weekend as a challenge. Recreation features similar visuals, backflip boost mechanic and faux slide physics.
@@ -105,6 +107,6 @@ My first website.\\
 <div class="project-icon-info other-projects">
     <div>
         <span class="icon fa-calendar-days"></span>
-        <span>2020 - Present</span>
+        <span>2020 — Present</span>
     </div>
 </div>

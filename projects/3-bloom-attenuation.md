@@ -2,7 +2,7 @@
 layout: page
 permalink: /bloom-attenuation
 title: Bloom Attenuation
-description: A solution to common issues with the bloom post processing effect
+description: My solution to common issues with the bloom post processing effect
 image: assets/images/bloomAttenuation.png
 page-banner: assets/images/bloom-page-banner.jpg
 nav-menu: true
@@ -10,7 +10,7 @@ nav-menu: true
 button-url: https://github.com/JKHYuen/BloomAttenuationBuild
 button-text: Download Tech Demo
 
-date-text: November 2021 - December 2021
+date-text: November 2021 — December 2021
 ---
 
 <div class=nav>

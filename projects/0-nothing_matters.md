@@ -1,7 +1,8 @@
 ---
 layout: page
 title: nothing_matters
-description: An experimental point & click narrative game inspired by my indie game dev career.
+permalink: /nothing-matters
+description: An experimental point & click narrative game inspired by my indie game dev career
 image: assets/images/nothing_matters.png
 page-banner: assets/images/nothing_matters.png
 nav-menu: true
@@ -10,7 +11,7 @@ button-url: https://store.steampowered.com/app/2260800/nothing_matters/
 button-text: Steam Store Page
 button-icon: fa-steam
 
-date-text: April 2022 - June 2023
+date-text: April 2022 — June 2023
 ---
 
 <div class=nav>
