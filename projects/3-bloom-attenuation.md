@@ -32,7 +32,7 @@ date-text: November 2021 — December 2021
 
 My custom shader implementation of bloom to make the popular post processing effect more appealing. The shader simulates light fall off in the post processing step by using the camera depth texture as a bloom intensity multiplier, I call this solution "bloom attenuation". This effectively prevents bloom from oversaturating the screen and better differentiates bright objects with different distances from the player camera. Try the <a href="https://github.com/JKHYuen/BloomAttenuationBuild" target="_blank" rel="noopener noreferrer">playable tech demo</a> to change the bloom shader parameters and see the individual bloom rendering steps in real time!
 
-See video below for a full project and implementation overview.
+See video below for a full project explanation.
 <div id="video" class="embedded-video">
 <div class=container>
     <iframe src="https://www.youtube.com/embed/u5lX2zunj7g" title="YouTube video player" allowfullscreen></iframe>
@@ -260,8 +260,7 @@ Linear depth was used for this tech demo for simplicity, but the default non-lin
 <h4>Moon Billboard</h4>
 The moon in the tech demo is rendered as a relatively far away billboard sprite. This is done as opposed to using a skybox texture so we can better fine tune bloom intensity and make it look like a far away object at the same time.
 {% highlight hlsl linenos %}
-v2f vert(appdata v)
-{
+v2f vert(appdata v) {
 	v2f o;
 	o.pos = UnityObjectToClipPos(v.vertex);
 	o.uv = v.uv.xy;

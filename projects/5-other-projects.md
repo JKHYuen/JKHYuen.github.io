@@ -3,8 +3,8 @@ layout: page
 permalink: /other-projects
 title: Other Projects
 description: 
-image: assets/images/nothing_matters.png
-page-banner: assets/images/nothing_matters.png
+image: assets/images/other-projects.jpg
+page-banner: assets/images/other-projects.jpg
 nav-menu: true
 
 disable-team-info: I can write anything here to disable header icons
@@ -24,7 +24,7 @@ disable-team-info: I can write anything here to disable header icons
 
 <!-- TODO: Upload Build, video -->
 <header id="dd-shader" class="major page-header"><h1><span class="number">1.</span> Darkest Dungeon II Shader</h1></header>
-<a href="https://github.com/JKHYuen/BloomAttenuationBuild" target="_blank" rel="noopener noreferrer" class="button icon fa-download">Download Interactive Demo</a>
+<a href="https://github.com/JKHYuen/DarkestDungeonII-ShaderDemo" target="_blank" rel="noopener noreferrer" class="button icon fa-download">Download Interactive Demo</a>
 <div class="project-icon-info other-projects">
     <div>
         <span class="icon fa-users"></span>
@@ -40,7 +40,7 @@ After seeing a widely used effect in some Darkest Dungeon II gameplay, I challen
 <h4>Fragment Shader</h4>
 The "flaming" edges are implemented with a noise alpha cutoff, with a ```step``` function to get the hard edges. Voronoi noise was used as an alpha mask to create the familiar circular holes. These holes was the most recognizable feature that prompted me to attempt to recreate the effect. UVs can be stretched via variables in the shader to get the more uneven look.
 
-<!-- TODO: talk about angle mask -->
+<!-- TODO: talk about angle mask, gradient mask -->
 
 {% highlight hlsl linenos %}
 fixed4 frag(v2f i) : SV_Target {
@@ -74,12 +74,13 @@ fixed4 frag(v2f i) : SV_Target {
     return _Color * noise * vOut;
 }
 {% endhighlight %}
-
 *Note: Voronoi implmentation (```Unity_Voronoi_float``` in line 14) is taken from the Voronoi Node in <a href="https://docs.unity3d.com/Packages/com.unity.shadergraph@6.9/manual/Voronoi-Node.html" target="_blank" rel="noopener noreferrer">Unity's Shader Graph documentation.</a>*
+
+
 
 <!-- TODO: Upload Build, video -->
 <header id="alto" class="major page-header"><h1><span class="number">2.</span> Alto Clone</h1></header>
-<a href="https://github.com/JKHYuen/BloomAttenuationBuild" target="_blank" rel="noopener noreferrer" class="button icon fa-download">Download Playable Build</a>
+<a href="https://github.com/JKHYuen/AltoCloneBuild" target="_blank" rel="noopener noreferrer" class="button icon fa-download">Download Playable Build</a>
 <div class="project-icon-info other-projects">
     <div>
         <span class="icon fa-users"></span>

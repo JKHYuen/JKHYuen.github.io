@@ -38,17 +38,16 @@ date-text: April 2021 — August 2021
 </div>
 *Note: UI aesthetic design was not finalized in the trailer, see screenshots on <a href="https://store.steampowered.com/app/1667120/PHYSARUM_Slime_Mold_Simulator/" target="_blank" rel="noopener noreferrer">Steam</a> or below for the final UI look.*
 
-A project that evolved into a fully featured product while learning how to make compute shaders. I took the opportunity to release this small game publicly to also learn the process of shipping a game on Steam.
+A project that evolved into a fully featured product while learning how to make <a href="https://learn.microsoft.com/en-us/windows/win32/direct3d11/direct3d-11-advanced-stages-compute-shader" red="noopner noreferrer">compute shaders</a>. I took the opportunity to release this small game publicly to also learn the process of marketing and shipping a game on Steam.
 
-*PHYSARUM: Slime Mold Simulator* is an interactive sandbox visualizer of the real life organism *Physarum polycephalum*; all simulated on a single compute shader (simulation model of the slime mold is based on <a href="https://uwe-repository.worktribe.com/output/980579" target="_blank" rel="noopener noreferrer">this paper</a>). The GPU bound AI easily allows for millions of slime agents to be simulated in real time.
-
-Although not a traditional "game", *PHYSARUM: Slime Mold Simulator* is designed to encourage users to explore and discover in the sandbox environment for entertainment value. See trailer above for a full feature showcase.
+*PHYSARUM: Slime Mold Simulator* is an interactive sandbox visualizer of the real life organism *Physarum polycephalum*; all simulated on a single compute shader (simulation model of the slime mold is based on <a href="https://uwe-repository.worktribe.com/output/980579" target="_blank" rel="noopener noreferrer">this paper</a>). The GPU bound AI easily allows for millions of slime agents to be simulated in real time. Although not a traditional "game", *PHYSARUM: Slime Mold Simulator* is designed to encourage users to explore and discover in the sandbox environment for entertainment value. See trailer above for a full feature showcase.
 
 <header id="highlights" class="major page-header"><h1><span class="number">2.</span> Highlights</h1></header>
 <ul class="highlights-list">
     <li>Simulation and UI implementation done in the Unity game engine, with the built-in renderer
         <ul class="highlights-list sub">
 			<li>C# and Cg/HLSL programming</li>
+			<li>Experience dispatching GPU processes with compute shaders</li>
             <li>All shaders, game logic and UI implementations coded solo from scratch, without plug-ins or store assets (See <a href="#implementation" class="scrolly">5. Implementation</a> for examples)</li>
         </ul>
     </li>
@@ -60,7 +59,8 @@ Although not a traditional "game", *PHYSARUM: Slime Mold Simulator* is designed 
     </li>
     <li>Full product launch on Steam
         <ul class="highlights-list sub">
-			<li>Store page set up with custom marketing assets</li>
+			<li>Free Demo for users to test hardware requirements</li>
+			<li>Steam store page set up with custom marketing assets</li>
 			<li>Experience with the Steamworks SDK to create and deliver builds</li>
 			<li>Positive Steam reviews (See <a href="#reception" class="scrolly">4. Reception</a> for details)</li>
         </ul>
