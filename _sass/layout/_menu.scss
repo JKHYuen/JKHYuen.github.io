@@ -43,7 +43,7 @@
 			overflow: auto;
 			text-align: center;
 			visibility: hidden;
-			width: 30%;
+			width: fit-content;
 
 			> :first-child {
 				margin-top: _size(element-margin);

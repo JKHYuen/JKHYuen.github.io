@@ -24,7 +24,12 @@ date-text: April 2022 — June 2023
 </ul>
 </div>
 
+<header id="overview" class="major page-header"><h1><span class="number">1.</span> Overview</h1></header>
 
+
+<header id="overview" class="major page-header"><h1><span class="number">2.</span> Highlights</h1></header>
+<header id="overview" class="major page-header"><h1><span class="number">3.</span> Game Features</h1></header>
+<header id="overview" class="major page-header"><h1><span class="number">4.</span> Implementation</h1></header>
 {% highlight hlsl linenos %}
 struct appdata {
     float4 vertex : POSITION;
