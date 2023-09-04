@@ -2,7 +2,7 @@
 layout: page
 title: Palindrome
 permalink: /palindrome
-description: Proof of concept game demo inspired by Christopher Nolan's <i>Tenet</i>
+description: 2D arena shooter proof of concept demo inspired by Christopher Nolan's <i>Tenet</i>
 image: assets/images/palindrome.jpg
 # TODO: get a different page-banner
 page-banner: assets/images/palindrome.jpg
@@ -35,10 +35,9 @@ Players can shoot, throw grenades, jump, climb walls, crouch, and dive. All acti
 <header id="highlights" class="major page-header"><h1><span class="number">2.</span> Highlights</h1></header>
 
 <header id="features" class="major page-header"><h1><span class="number">3.</span> Game Features</h1></header>
-<!-- TODO: bunch of combat videos -->
 
 <header id="time-reversal" class="page-header"><h2><span class="number">3.1</span> Combat</h2></header>
-<!-- TODO: bunch of combat videos -->
+<!-- TODO: bunch of combat videos, time controls/bar mechanic -->
 
 <header id="gameplay-loop" class="page-header"><h2><span class="number">3.2</span> Gameplay Loop</h2></header>
 The proof of concept demo has all the features for two local players to play competitively. When a player dies, world time is slowed down for dramatic effect, then time for the dead player will be rewound for 5 seconds to revive them (the other player can't move during this time for fairness). This is called a *Timeline Inversion Revive*, and each player gets one per game, indicated by a glowing red orb in the UI. Players have unlimited ammo, but limited grenades. Health, revive, and grenade pickups are spawned in random locations on the stage at random times during gameplay.
