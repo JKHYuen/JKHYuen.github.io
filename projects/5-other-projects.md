@@ -35,10 +35,10 @@ disable-team-info: I can write anything here to disable header icons
         <span>January 3 2022</span>
     </div>
 </div>
-After seeing a widely used effect in some Darkest Dungeon II gameplay, I challenged myself to recreate the effect as close as possible in a day. The effect is created completely procedurally in an HLSL shader, with no pre-made textures.
+After seeing a widely used effect in some Darkest Dungeon II gameplay, I challenged myself to recreate the effect as close as possible in a day. Although it is possible the original effect used a scrolling texture, my version is created with procedural noise in an HLSL shader.
 
-<h4>Fragment Shader</h4>
-The "flaming" edges are implemented with a noise alpha cutoff, with a ```step``` function to get the hard edges. Voronoi noise was used as an alpha mask to create the familiar circular holes. These holes was the most recognizable feature that prompted me to attempt to recreate the effect. UVs can be stretched via variables in the shader to get the more uneven look.
+<h4>The Fragment Shader</h4>
+The "flaming" edges are implemented with a noise alpha cutoff, with a ```step``` function to get the hard edges. Voronoi noise was used as an alpha mask to create the circular holes. These holes were the most recognizable feature that prompted me to attempt to recreate the effect. UVs can be stretched via variables in the shader to get the more uneven look.
 
 <!-- TODO: talk about angle mask, gradient mask -->
 
@@ -74,8 +74,7 @@ fixed4 frag(v2f i) : SV_Target {
     return _Color * noise * vOut;
 }
 {% endhighlight %}
-*Note: Voronoi implmentation (```Unity_Voronoi_float``` in line 14) is taken from the Voronoi Node in <a href="https://docs.unity3d.com/Packages/com.unity.shadergraph@6.9/manual/Voronoi-Node.html" target="_blank" rel="noopener noreferrer">Unity's Shader Graph documentation.</a>*
-
+*Note: Functions ```Unity_Voronoi_float(...)```, ```Unity_Remap_float(...)```, and ```Unity_SimpleNoise_float(...)``` are adapted from <a href="https://docs.unity3d.com/Packages/com.unity.shadergraph@6.9/manual/Voronoi-Node.html" target="_blank" rel="noopener noreferrer">Unity's Shader Graph documentation.</a>*
 
 
 <!-- TODO: Upload Build, video -->

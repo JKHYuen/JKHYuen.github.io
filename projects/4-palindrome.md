@@ -20,13 +20,18 @@ date-text: Oct 6 2020 — Oct 12 2020
     <li><a href="#overview" class="button small scrolly"><span class="number">1.</span> Overview</a></li>
     <li><a href="#highlights" class="button small scrolly"><span class="number">2.</span> Highlights</a></li>
     <li><a href="#features" class="button small scrolly"><span class="number">3.</span> Game Features</a></li>
+        <li><a href="#combat" class="button small scrolly sub-section"><span class="number">3.1</span> Time Reverse Combat</a></li>
+        <li><a href="#gameplay-loop" class="button small scrolly sub-section"><span class="number">3.2</span> Gameplay Loop</a></li>
     <li><a href="#implementation" class="button small scrolly"><span class="number">4.</span> Implementation</a></li>
+        <li><a href="#time-reversal" class="button small scrolly sub-section"><span class="number">4.1</span> Time Reversal</a></li>
+        <li><a href="#bullets" class="button small scrolly sub-section"><span class="number">4.2</span> Bullets</a></li>
+        <li><a href="#grenades" class="button small scrolly sub-section"><span class="number">4.3</span> Grenades</a></li>
 </ul>
 </div>
 
 <!-- TODO: github readme, known bug if player dies during revive -->
 <header id="overview" class="major page-header"><h1><span class="number">1.</span> Overview</h1></header>
-*Palindrome* was a project I started immediately after watching <a href="https://www.imdb.com/title/tt6723592/" target="_blank" rel="noopener noreferrer">Tenet</a>. I spent 6 days to make a proof of concept game demo that features similar time rewind combat mechanics from the movie. The game is a 2D local multiplayer arena shooter where two players can rewind time for their character at any time. Each player has their own timeline that is separate from the world timeline. This means a player in normal time can actively fight an opponent who is going backwards in time. 
+*Palindrome* was a project I started immediately after watching <a href="https://youtu.be/4xj0KRqzo-0?si=C0E3o7mncO0CjlLk" target="_blank" rel="noopener noreferrer">Tenet</a>. I spent 6 days to make a proof of concept game demo that features similar time rewind combat mechanics from the movie. The game is a 2D local multiplayer arena shooter where two players can rewind time for their character at any time. Each player has their own timeline that is separate from the world timeline. This means a player in normal time can actively fight an opponent who is going backwards in time. 
 
 Players can shoot, throw grenades, jump, climb walls, crouch, and dive. All actions, audio, and visual effects will reverse during time rewind as expected. This includes blood particles, bullet impacts particles, bullet trails, and damage taken. Unique combat situations arise with time reversal combat, such as not needing to reload when the bullets reenter the player's gun, damaging your opponent with bullets going backwards, and watching blood go back into your character after rewinding a bullet wound.
 
@@ -36,7 +41,7 @@ Players can shoot, throw grenades, jump, climb walls, crouch, and dive. All acti
 <ul class="highlights-list">
     <li>Unique multiplayer time reversal combat
     <ul class="highlights-list sub">
-        <li>Inspired by <a href="https://www.imdb.com/title/tt6723592/" target="_blank" rel="noopener noreferrer">Tenet</a>, started project after walking out of the movie theatre</li>
+        <li>Inspired by <a href="https://youtu.be/4xj0KRqzo-0?si=C0E3o7mncO0CjlLk" target="_blank" rel="noopener noreferrer">Tenet</a>, started project after walking out of the movie theatre</li>
         <li>Reversible player actions, audio, and visual effects</li>
         <li>Management of 3 independent timelines</li>
     </ul>
@@ -118,7 +123,7 @@ time.Do(
 
 An additional ```Plan()``` function is nested in the ```forward``` delegate in ```line 17```. ```Plan()``` is the same as ```Do()```, except it has an additional delay parameter to schedule it forward in time. This is useful for managing rewindable audio clips, since we can line up the backwards audio clip in the future with the length of the audio clip (```line 18```). Setting pitch to -1 in the Unity audio component plays audio backwards (```line 23```) , so we don't need to create new audio clips. All audio effects in the game are added to a timeline and reversed using this method.
 
-<header id="time-reversal" class="page-header"><h2><span class="number">4.2</span> Bullets</h2></header>
+<header id="bullets" class="page-header"><h2><span class="number">4.2</span> Bullets</h2></header>
 <!-- TODO: short video showing bullet shooting and reversing -->
 <h4>The Problem</h4>
 Reversible bullets pose a unique problem since they have trails effects. Traditionally, trails are created by procedurally adding and removing vertices to generate a 2D mesh (usually as a billboard) behind a moving object; the length of the trail is determined by the speed of the projectile. 
@@ -146,7 +151,7 @@ To fix this problem, **two** invisible projectiles are launched when a player sh
 
 This method creates the desired reversible trails by recording and reversing the positions of the two projectiles and leaving the line renderer on. There is no need to keep track of anything with the line itself, and the taper will face the right way since it only depends on the initial bullet velocity rather than the real time velocity.
 
-<header id="time-reversal" class="page-header"><h2><span class="number">4.3</span> Grenades</h2></header>
+<header id="grenades" class="page-header"><h2><span class="number">4.3</span> Grenades</h2></header>
 <!-- TODO: Grenade reversing video -->
 Reversible grenades are implemented by combining methods shown above. Grenades shoots the same bullet projectiles in random directions (to simulate shrapnel) with a reversible audio effect and sprite animation. 
 

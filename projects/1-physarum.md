@@ -20,13 +20,16 @@ date-text: April 2021 — August 2021
     <li><a href="#overview" class="button small scrolly"><span class="number">1.</span> Overview</a></li>
     <li><a href="#highlights" class="button small scrolly"><span class="number">2.</span> Highlights</a></li>
     <li><a href="#features" class="button small scrolly"><span class="number">3.</span> Game Features</a></li>
-			<li><a href="#customize" class="button small scrolly sub-section"><span class="number">3.1</span> Fully Customizable Simulation</a></li>
-			<li><a href="#game-modes" class="button small scrolly sub-section"><span class="number">3.2</span> Game Modes</a></li>
-			<li><a href="#morph" class="button small scrolly sub-section"><span class="number">3.3</span> Morph</a></li>
-			<li><a href="#share" class="button small scrolly sub-section"><span class="number">3.4</span> Share</a></li>
-			<li><a href="#learn" class="button small scrolly sub-section"><span class="number">3.5</span> Learn</a></li>
+        <li><a href="#customize" class="button small scrolly sub-section"><span class="number">3.1</span> Fully Customizable Simulation</a></li>
+        <li><a href="#game-modes" class="button small scrolly sub-section"><span class="number">3.2</span> Game Modes</a></li>
+        <li><a href="#morph" class="button small scrolly sub-section"><span class="number">3.3</span> Morph</a></li>
+        <li><a href="#share" class="button small scrolly sub-section"><span class="number">3.4</span> Share</a></li>
+        <li><a href="#learn" class="button small scrolly sub-section"><span class="number">3.5</span> Learn</a></li>
     <li><a href="#reception" class="button small scrolly"><span class="number">4.</span> Reception</a></li>
     <li><a href="#implementation" class="button small scrolly"><span class="number">5.</span> Implementation</a></li>
+        <li><a href="#compute-shaders" class="button small scrolly sub-section"><span class="number">5.1</span> Compute Shaders</a></li>
+        <li><a href="#tooltip" class="button small scrolly sub-section"><span class="number">5.2</span> Tooltip Framework</a></li>
+        <li><a href="#color-picker" class="button small scrolly sub-section"><span class="number">5.3</span> Color Picker</a></li>
 </ul>
 </div>
 
@@ -173,21 +176,18 @@ See below for some code examples and implementation details from the project. Th
 An early alpha of *PHYSARUM: Slime Mold Simulator* was sent to Sebastian Lague and Dr. Jones before release. Both were very gracious and enjoyed the game. Dr. Jones was responsible for suggesting a periodic boundary feature and a scalable UI.
 </div>
 
+<header id="compute-shaders" class="page-header"><h2><span class="number">5.1</span> Compute Shaders</h2></header>
 <!-- TODO: Show early sims, early compute shader stuff -->
+<!-- TODO: drawing + slimes -->
 
-<header id="tooltip" class="page-header"><h2><span class="number">4.1</span> Compute Shaders</h2></header>
-<!-- drawing + slimes -->
-
-
-<header id="tooltip" class="page-header"><h2><span class="number">4.2</span> Tooltip Framework</h2></header>
+<header id="tooltip" class="page-header"><h2><span class="number">5.2</span> Tooltip Framework</h2></header>
 Text tooltips can be challenging because they must stay within a screen of any resolution/aspect ratio, while having an arbitrary width and height to fit text content. Additionally, we must account for scale of the UI element we are creating the tooltip from, this is because the game features a scalable UI. 
 
-I used a solution I developed in a previous Unity project: use a reference UI resolution of 1920 x 1080 and fit arbitrary resolutions by height. The Unity <a href="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/script-CanvasScaler.html" target="_blank" rel="noopener noreferrer">canvas scaler</a> component does this by altering the scale of all UI objects. Which is why the "lossy scale" (i.e. the global scale: this includes the canvas scaler multiplier AND the scale multiplier from my scalable UI feature) is used to get a coefficient representing the aspect ratio difference between the run time screen and the reference resolution (line 14 of code snippet below). Using this method with the appropriate position anchors also allows the UI as a whole to work predictably with any screen size and aspect ratio.
+I used a solution I developed in a previous Unity project: use a reference UI resolution of 1920 x 1080 and fit arbitrary resolutions by height. The Unity <a href="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/script-CanvasScaler.html" target="_blank" rel="noopener noreferrer">canvas scaler</a> component does this by altering the scale of all UI objects. Which is why the "lossy scale" (i.e. the global scale: this includes the canvas scaler multiplier AND the scale multiplier from my scalable UI feature) is used to get a coefficient representing the aspect ratio difference between the run time screen and the reference resolution (line 13 of code snippet below). Using this method with the appropriate position anchors also allows the UI as a whole to work predictably with any screen size and aspect ratio.
 
 <h4>Function used to position text tooltips of arbitrary size:</h4>
 {% highlight csharp linenos %}
 private IEnumerator CalculateTooltipPosition(RectTransform targetObjectRect, Vector2 customOffset) {
-
     LayoutRebuilder.ForceRebuildLayoutImmediate(tooltipRectTransform);
     yield return new WaitForEndOfFrame();
 
@@ -251,8 +251,8 @@ For example, it is an invariant in the UI design that the color picker menu will
 
 <!--TODO: video of color picker and randomize settings opening -->
 
-<header id="color-picker" class="page-header"><h2><span class="number">4.3</span> Color Picker</h2></header>
-Since the base Unity UI components do not provide a color picking interface, a custom solution was made. My interface uses HSL color representation for intuitive color picking. Hue can be chosen in a vertical gradient on the side. Saturation and lightness is represented by the horizontal and vertical (respectively) 2D texture coordinates in the main color picking square. RGB sliders with input boxes can also be used as an alternative. 
+<header id="color-picker" class="page-header"><h2><span class="number">5.3</span> Color Picker</h2></header>
+Many UI elements are custom solutions built from scratch in Unity. One of the more complex elements is the color picker. My interface uses HSL color representation for intuitive color picking. Saturation and lightness is represented by the horizontal and vertical (respectively) 2D texture coordinates in the main color picking square; hue can be chosen in a vertical gradient on the side. RGB sliders with input boxes can also be used as an alternative. When one color representation value (i.e. HSL or RGB) is changed, the other color representation values and UI elements are updated in real time. 
 
 The hue gradient and saturation/lightness square are rendered via uv coordinate interpolation and mouse coordinates are normalized, this means the color picker will work with any width and height without changing any code.
 
@@ -278,7 +278,7 @@ fixed4 frag (v2f i) : SV_Target {
 *Note: i.color is the hue of the square, which is updated externally*
 
 <h4>Hue Gradient Fragment Shader:</h4>
-For the vertical hue selector, the vertical uv coordinates [0, 1] are scaled to hue values [0, 360]. The final HSL color is calculated using an algorithm found on <a href="https://en.wikipedia.org/wiki/HSL_and_HSV#HSL_to_RGB_alternative" target="_blank" rel="noopener noreferrer">wikipedia</a>, with locked S and L values.
+For the vertical hue selector, the vertical uv coordinates [0, 1] are scaled to hue values [0, 360]. The final HSL color is calculated using a formula found on <a href="https://en.wikipedia.org/wiki/HSL_and_HSV#HSL_to_RGB_alternative" target="_blank" rel="noopener noreferrer">wikipedia</a>, with locked S and L values.
 
 {% highlight hlsl linenos %}
 float HSL2RGB(float n, float H, float a, float L) {
