@@ -81,7 +81,7 @@ Below are a few code examples of how the time reversal effects are implemented. 
 <header id="time-reversal" class="page-header"><h2><span class="number">4.1</span> Time Reversal</h2></header>
 To save time, I used <a href="https://ludiq.io/chronos/features" target="_blank" rel="noopener noreferrer">Chronos</a> (a deprecated framework) to keep track of time events in individual timelines. Although it works great for this proof of concept, the implementation is relatively crude, with little to no space optimization (a non-trivial problem to solve unless you are <a href="https://www.youtube.com/watch?v=8dinUbg2h70" target="_blank" rel="noopener noreferrer">Jonathan Blow </a>). The plugin comes with accurate-enough position tracking, however other time reverse effects require additional code. 
 
-Chronos allows for time events to be scheduled into timelines, a delegate is given for the forward passage of the event, and a different delegate for the backwards passage. For example, the following is the scheduling of events for a bullet impact on a wall using the ```Do()``` function from Chronos, with ```time``` as one of the player's timeline:
+Chronos allows for time events to be scheduled into timelines, a delegate is given for the forward passage of the event, and a different delegate for the backwards passage. For example, the following is the scheduling of events for a bullet impact on a wall using the ```Do(...)``` function from Chronos, with ```time``` as one of the player's timeline:
 
 {% highlight csharp linenos %}
 time.Do(
@@ -119,9 +119,9 @@ time.Do(
     }
 );
 {% endhighlight %}
-*Note: ```Do()``` function signature: ```Do<T>(bool repeatable, ForwardFunc<T> forward, BackwardFunc<T> backward)```*
+*Note: ```Do``` function signature: ```Do<T>(bool repeatable, ForwardFunc<T> forward, BackwardFunc<T> backward)```*
 
-An additional ```Plan()``` function is nested in the ```forward``` delegate in ```line 17```. ```Plan()``` is the same as ```Do()```, except it has an additional delay parameter to schedule it forward in time. This is useful for managing rewindable audio clips, since we can line up the backwards audio clip in the future with the length of the audio clip (```line 18```). Setting pitch to -1 in the Unity audio component plays audio backwards (```line 23```) , so we don't need to create new audio clips. All audio effects in the game are added to a timeline and reversed using this method.
+An additional ```Plan(...)``` function is nested in the ```forward``` delegate in ```line 17```. ```Plan(...)``` is the same as ```Do(...)```, except it has an additional delay parameter to schedule it forward in time. This is useful for managing rewindable audio clips, since we can line up the backwards audio clip in the future with the length of the audio clip (```line 18```). Setting pitch to -1 in the Unity audio component plays audio backwards (```line 23```) , so we don't need to create new audio clips. All audio effects in the game are added to a timeline and reversed using this method.
 
 <header id="bullets" class="page-header"><h2><span class="number">4.2</span> Bullets</h2></header>
 <!-- TODO: short video showing bullet shooting and reversing -->
@@ -155,7 +155,7 @@ This method creates the desired reversible trails by recording and reversing the
 <!-- TODO: Grenade reversing video -->
 Reversible grenades are implemented by combining methods shown above. Grenades shoots the same bullet projectiles in random directions (to simulate shrapnel) with a reversible audio effect and sprite animation. 
 
-To make grenades more threatening, players will take additional damage if they are within a certain radius during the explosion. If implemented naively, players can be hit through walls with this damage. To check for obstacle blocking, we first check if there are colliders within a radius using the Unity physics engine (```Physics2D.OverlapCircleAll()```), then we do a raycast from the centre of the explosion to the centre of each object in the radius to see if there is any stage geometry in between. This single raycast check is crude, but it suffices for most situations in this demo. 
+To make grenades more threatening, players will take additional damage if they are within a certain radius during the explosion. If implemented naively, players can be hit through walls with this damage. To check for obstacle blocking, we first check if there are colliders within a radius using the Unity physics engine (```Physics2D.OverlapCircleAll(...)```), then we do a raycast from the centre of the explosion to the centre of each object in the radius to see if there is any stage geometry in between. This single raycast check is crude, but it suffices for most situations in this demo. 
 
 {% highlight csharp linenos %}
 public void ExplosionRadiusCheck(bool isInversed) {
@@ -202,5 +202,5 @@ public void ExplosionRadiusCheck(bool isInversed) {
 {% endhighlight %}
 *Note: the stage raycast check loop (```line 15 — 25```) can be simplified to an if statement with a ```LayerMask``` <a href="https://docs.unity3d.com/ScriptReference/Physics2D.Raycast.html" target="_blank" rel="noopener noreferrer">raycast</a>*
 
-Finding every collider in the radius with ```Physics2D.OverlapCircleAll()``` is relatively slow. It would be much faster to just raycast each player to check for distance and stage geometry at the same time. However, this was done so other physics enabled objects can also react to the explosion; such as pushing away other grenades, bullets and dropped weapons (when a player dies). Ultimately, this method performs with no issues in the limited scenarios created by two players.
+Finding every collider in the radius with ```Physics2D.OverlapCircleAll(...)``` is relatively slow. It would be much faster to just raycast each player to check for distance and stage geometry at the same time. However, this was done so other physics enabled objects can also react to the explosion; such as pushing away other grenades, bullets and dropped weapons (when a player dies). Ultimately, this method performs with no issues in the limited scenarios created by two players.
 

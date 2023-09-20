@@ -7,8 +7,8 @@ image: assets/images/rpgDemo.gif
 page-banner: assets/images/rpgDemo.gif
 nav-menu: true
 
-button-url: https://github.com/JKHYuen/BloomAttenuationBuild
-button-text: Download Playable Demo
+button-url: UPDATE THIS
+button-text: Download Tech Demo
 
 team-text: Solo Project, with help on 2D sprite art
 date-text: 2014 — 2022
@@ -44,7 +44,7 @@ I worked on this game for 8 years — first 6 years while in university, and 2 y
 
 I experimented a lot over the years and learned to code common game systems from scratch, many of the implementations in *Last Secutor* have been completely rewritten multiple times. This experience allowed me to quickly develop improved versions for my future projects by avoiding implementation pitfalls (i.e. weighing the pros and cons of different implementations I've tried in the past), improving object-oriented design, and adapting to the unique requirements of each project. 
 
-Several of my projects (including my <a href="{{ site.baseurl }}/nothing-matters" target="_blank" rel="noopener noreferrer">two</a> <a href="{{ site.baseurl }}/physarum" target="_blank" rel="noopener noreferrer">games</a> released on Steam) use improved systems that were first developed in this project; such as serialization (user saves), shaders (e.g. procedural texture effects and material manipulation), UI that works on any resolution/aspect ratio, and a tooltip framework that positions tooltips of arbitrary sizes. 
+Several of my projects (including my <a href="{{ site.baseurl }}/nothing-matters" target="_blank" rel="noopener noreferrer">two</a> <a href="{{ site.baseurl }}/physarum" target="_blank" rel="noopener noreferrer">games</a> released on Steam) use improved systems that were first developed in this project; such as serialization (user saves), shaders (e.g. procedural texture effects and material manipulation), UI that works on any resolution/aspect ratio, and a tooltip framework that positions tooltips of any size. 
 
 <header id="highlights" class="major page-header"><h1><span class="number">2.</span> Highlights</h1></header>
 <ul class="highlights-list">
@@ -77,9 +77,9 @@ Several of my projects (including my <a href="{{ site.baseurl }}/nothing-matters
         <ul class="highlights-list sub">
             <li>Grid based inventory/stash supporting items of any size, with serialization support for player saves</li>
             <li>Equipment slots that alter player sprite's look</li>
-            <li>System to manage multi-layered character effects (i.e. freezing, fire, bloody, etc.), custom shaders written from scratch in HLSL</li>
+            <li><a href="#material-stack" class="scrolly">System to manage multi-layered character effects</a> (i.e. freezing, fire, bloody, etc.), custom shaders written in HLSL</li>
             <li>Character stat system, that interacts with equipped items, buffs/debuffs, and skill trees during gameplay</li>
-            <li>AI framework built with Unity coroutines, to create arbitrary enemy behaviors in the game's 2D turn based combat system (example AI with different combat styles is shown in playable demo)</li>
+            <li>AI framework built with Unity coroutines, to create a variety of enemy behaviors in the game's 2D turn based combat system (example AI with different combat styles is shown in the <a href="https://github.com/JKHYuen/BloomAttenuationBuild" target="_blank" rel="noopener noreferrer">playable demo</a>)</li>
             <li>Custom RPG UI featuring compare tooltips, draggable skill tree windows, character sheets, a game glossary with searchable key words, a quest journal, a combat log, and skill bars</li>
             <li>Quest and dialogue system</li>
             <li>Item rewards with randomized, tiered and categorized stat affixes</li>
@@ -103,9 +103,14 @@ The intent of this skill tree design is to encourage players to experiment with 
 
 <!-- TODO: Combat positioning/effects - Combat Log -->
 <header id="combat" class="page-header"><h2><span class="number">3.2</span> 2D Turn Based Combat</h2></header>
-During a combat turn, Players and NPCs will take turns performing actions until they run out of resources.  
+During a combat turn, Players and NPCs will take turns performing actions until they run out of resources. Skills costs can use any consumable resource, including health, armor, stamina and *adrenaline*. Adrenaline is a resource that is gained only if dealing and taking damage. 
+
+<h4>Damage</h4>
+
 
 <h4 id="reactions">Reactions</h4>
+<!-- TODO: video of reactions -->
+*Last Secutor*'s turn based combat features "reactions" — a special kind of skill that queues up actions that will trigger if certain conditions are met. This creates a way for players to try and gain an advantage during the enemy turn, at he cost of turn resources. NPCs combatant will use these skills as well. Players will be able to see how many queued up reactions the AI has, but will not be able to see what they are.
 
 <h4>Skills</h4>
 Although not completely finished, many skills were designed to encourage combinations and deliberate positioning.
@@ -113,8 +118,12 @@ Although not completely finished, many skills were designed to encourage combina
 <!-- TODO: show knife throw skill -->
 <!-- TODO: show marker skill -->
 
-<header id="itemization" class="page-header"><h2><span class="number">3.3</span> RPG Itemization and Stats</h2></header>
+<!-- TODO: video showing all skills -->
 
+<header id="itemization" class="page-header"><h2><span class="number">3.3</span> RPG Itemization and Stats</h2></header>
+<!-- TODO: video equipping items, show stats changing, show enemy stats -->
+
+*Last Secutor* uses an item affix system similar to other RPGs. Item stats, or *affixes*, are separated into three pools. Currently, when an item is generated, one affix from each pool is randomly picked and added to the item.
 
 <header id="story-plans" class="page-header"><h2><span class="number">3.4</span> Story Plans</h2></header>
 The game had extensive plans for a story lead by a mysterious interdimensional cult: *The Unseen Adventists*; a cult comprised of powerful members known to invade and destroy every world they visit. The cultists' motivations remain unknown throughout the game, however they claim to have *seen* something that allowed them to understand the nature of the universe. 
@@ -134,15 +143,52 @@ Early in development, I decided to implement game systems in such a way that peo
 
 
 <header id="shaders" class="page-header"><h2><span class="number">4.3</span> Custom Shader Effects</h2></header>
-<!-- TODO: character material stack -->
 As a solo programmer with no experience hand drawing 2D illustrations, obtaining art assets are often a road block in game development. At first, I used shaders found online to easily add visual flair at first, but this quickly became a hinderance as I could not make specific effects to my liking.
 
 I soon decided (~2015) the best way to move forward was to learn how to write low-level HLSL shaders myself to create whatever effect I needed. Although daunting at first, this was one of the most valuable skills I learned from this project. This not only allowed me to create countless custom effects in my future projects, but also allowed me to work on my projects without the need to hire other artists. 
 
 I focused on learning to writing shaders in HLSL as opposed to using popular visual programming (i.e. Shader Graph) solutions because I wanted to learn a skill that would be easily transferrable to other engines/frameworks (including other shader graphs).
 
+<h4 id="material-stack">The Character Material Stack</h4>
+Every status effect in the game has an optional accompanying shader effect (controlled by the <a href="#scriptable-objects" class="scrolly">scriptable object</a>). Each time a status effect applies a new shader effect, a material instance is created for each body part (characters are comprised of multiple sprite objects for animation/ragdolls) and stored into a dictionary for the character. This is to ensure we don't create a new instance every time we're changing an existing effect (a Unity quirk if material is not cached), as well as only needing to load materials that are being used in the current battle. Particle effects specified by the status effect scriptable object are implemented similarly, the particles are randomly spawned on the sprite vertices.
+
+<!-- TODO: video of character with multiple materials -->
+
+I call this system the "character material stack", however it is implemented as a queue, scheduled by a coroutine. This is required because the effects are quickly interpolated by a universal shader variable to ease in the effect. The queue ensures that the last interpolation of the same effect has completed, this is done only as a aesthetic choice. The status effect shaders are all alpha blended, allowing for an arbitrary amount of character effects to be visible at once. This combined with the flexible development of status effects creates a scalable system for any character effects added in the future.
+
+The code for this system is straight forward and uninteresting, but I wanted to show the use of material property blocks. This function eases the visibility of the given shader effect (given by index) on the given renderer (character sprite part).
+
+{% highlight csharp linenos %}
+private IEnumerator ChangeFloatProperyValue(Renderer renderer, int materialIndex, float newValue, bool isInstant = false) {
+    // Get the material in materialIndex's current effect value
+    MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
+    renderer.GetPropertyBlock(propBlock, materialIndex);
+    float currentValue = propBlock.GetFloat(PROP_MAG_VAR);
+
+    // Alter material block
+    renderer.GetPropertyBlock(propBlock);
+    if(!isInstant) {
+        float timer = 0f;
+        float duration = 0.3f;
+        while(timer < duration) {
+            propBlock.SetFloat(PROP_MAG_VAR, lerp(currentValue, newValue, timer / duration));
+            renderer.SetPropertyBlock(propBlock, materialIndex);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+    }
+    
+    propBlock.SetFloat(PROP_MAG_VAR, newValue);
+    renderer.SetPropertyBlock(propBlock, materialIndex);
+}
+{% endhighlight %}
+
+The drawback of having multiple materials is that there will be multiple draw calls. I decided to use <a href="https://docs.unity3d.com/ScriptReference/MaterialPropertyBlock.html" target="_blank" rel="noopener noreferrer">Unity material property blocks</a>, which batches all of the same materials in one call while changing a shader property. This was ultimately unnecessary premature optimization since there are very few characters using the same material in the 2D combat scenes (lesson learned once again). It's possible that using a monolith shader with shader keywords to conditionally calculate the needed effects is faster. However, it would be significantly less convenient to add new status effects.
+
 <header id="inventory" class="page-header"><h2><span class="number">4.4</span> Inventory</h2></header>
 The grid based inventory was one of the most tricky game systems to implement. As a challenge, I wanted to replicate *Path of Exile*'s inventory UI functionality exactly. 
+
+<!-- TODO: inventory demo video -->
 
 After an initial attempt with assumptions of how the UI worked, things felt different and less comfortable. This lead to a realization I never noticed while playing the game — which is that the grid highlighting (when hovering over grid space with an item on cursor) does not update when the cursor crosses a border of a grid square, but rather, when it crosses a **midpoint** of a grid square. To my surprise, this non-trivial difference makes a very noticeable difference to the look and feel of the inventory system.
 
@@ -150,7 +196,12 @@ After an initial attempt with assumptions of how the UI worked, things felt diff
 private void UpdateHighlightData() {
     if (isPointerInContainer && inventory.cursorItem) {
         Vector2 pointerLocalPos;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)transform, Input.mousePosition, null, out pointerLocalPos);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            (RectTransform)transform,
+            Input.mousePosition,
+            null,
+            out pointerLocalPos
+        );
 
         // Index of mouse position in grid of all half squares in inventory
         int[] halfSquareIndex = new int[2];
