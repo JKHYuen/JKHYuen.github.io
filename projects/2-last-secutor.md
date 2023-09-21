@@ -85,7 +85,7 @@ Several of my projects (including my <a href="{{ site.baseurl }}/nothing-matters
             <li>Item rewards with randomized, tiered and categorized stat affixes</li>
             <li>Skill, dialogue and quest tree framework that allows trees (technically mathematical graphs) to be built without code, using the Unity editor</li>
             <li>2D turn based (discrete tile movement) controls in combat and real time point and click continuous movement controls in town</li>
-            <li>Modular skill system with custom shader effects using <a href="https://docs.unity3d.com/Manual/class-ScriptableObject.html" target="_blank" rel="noopener noreferrer">Unity scriptable objects</a>, allowing for any skill attribute (e.g. damage ranges, crit chance, projectile style, buff/debuff application, etc.) to be tweaked easily</li>
+            <li><a href="#skill-implementation" class="scrolly">Modular skill system</a> implemented with <a href="https://docs.unity3d.com/Manual/class-ScriptableObject.html" target="_blank" rel="noopener noreferrer">Unity scriptable objects</a>, allowing for skill attributes (e.g. damage ranges, crit chance, projectile style, buff/debuff application, etc.) to be tweaked and new archetypal skills to be created without the need to add new code</li>
         </ul>
     </li>
 </ul>
@@ -103,10 +103,18 @@ The intent of this skill tree design is to encourage players to experiment with 
 
 <!-- TODO: Combat positioning/effects - Combat Log -->
 <header id="combat" class="page-header"><h2><span class="number">3.2</span> 2D Turn Based Combat</h2></header>
-During a combat turn, Players and NPCs will take turns performing actions until they run out of resources. Skills costs can use any consumable resource, including health, armor, stamina and *adrenaline*. Adrenaline is a resource that is gained only if dealing and taking damage. 
+During a combat turn, Players and NPCs will take turns performing actions until they run out of resources. Skills costs can use any consumable resource, including health, armor, stamina and *adrenaline*. Adrenaline is a resource that is gained only if dealing and taking damage. There is also a stun bar for each character. Certain skills will deal "stun" damage, adding to this bar. Once the bar is filled, the character is forced to skip a turn and the stun bar is reset. 
 
 <h4>Damage</h4>
+Like other RPGs, *Last Secutor* provides various ways to attack and defend with character stats. The damage formula involves dodge chance, critical hit chance and accuracy. See below for a visualization of how it works. [Note: all internal nodes represents a percent chance]
 
+<span class="image"><img src="{% link assets/images/ls-damage.png %}" alt="Damage Formula Figure"/></span>
+
+Once damage is taken, damage mitigation is then calculated from character stats. Each damage type (e.g. ice, fire, physical, etc.) has a corresponding percent mitigation and flat mitigation stat. Skills have a "tag" system similar to *Path of Exile*. Any damage mitigation stat that matches these tags will be used to reduce the damage taken. In the implementation, tags and damage types are all the same stat objects (see <a href="#skill-implementation" class="scrolly">4. Implementation</a> for more details), this means every tag has corresponding damage mitigation stats in this game (e.g. "Projectile", "AOE", "Buff", etc.).
+
+<!-- TODO: Show Skill tags with SS -->
+
+In this game, armor and blocking acts as an additional layer of health. Armor simply acts as health that can be healed (certain skills can add armor). Block is a little different, a character's block bar fully replenishes at the start of their turn. 
 
 <h4 id="reactions">Reactions</h4>
 <!-- TODO: video of reactions -->
@@ -138,6 +146,9 @@ The cult represents a sci-fi interpretation of *<a href="https://en.wikipedia.or
 <header id="scriptable-objects" class="page-header"><h2><span class="number">4.1</span> Scriptable Objects</h2></header>
 <h4 id="rapid-development">Rapid High Level Development</h4>
 Early in development, I decided to implement game systems in such a way that people with no programming experience could make content through the Unity GUI. This allows anyone to easily create new skill trees, skills, and enemies (See <a href="#place-holder" class="scrolly">Scriptable Objects</a> for full details). This was originally done as a programming challenge, but it was also motivated by the prospect of hiring/inviting others to work on the project. These implementations also allowed myself to quickly prototype and tweak existing game content.
+
+<h4 id="skill-implementation">Modular Skill Implementation</h4>
+<!-- TODO: video showing skill construction -->
 
 <header id="content-graphs" class="page-header"><h2><span class="number">4.2</span> Content Graph Building</h2></header>
 
@@ -183,7 +194,7 @@ private IEnumerator ChangeFloatProperyValue(Renderer renderer, int materialIndex
 }
 {% endhighlight %}
 
-The drawback of having multiple materials is that there will be multiple draw calls. I decided to use <a href="https://docs.unity3d.com/ScriptReference/MaterialPropertyBlock.html" target="_blank" rel="noopener noreferrer">Unity material property blocks</a>, which batches all of the same materials in one call while changing a shader property. This was ultimately unnecessary premature optimization since there are very few characters using the same material in the 2D combat scenes (lesson learned once again). It's possible that using a monolith shader with shader keywords to conditionally calculate the needed effects is faster. However, it would be significantly less convenient to add new status effects.
+The drawback of having multiple materials is that there will be multiple draw calls. I decided to use <a href="https://docs.unity3d.com/ScriptReference/MaterialPropertyBlock.html" target="_blank" rel="noopener noreferrer">Unity material property blocks</a>, which batches all of the same materials in one call while changing a shader property. This was ultimately unnecessary premature optimization since there are very few characters using the same material in the 2D combat scenes (lesson learned once again). It's possible that using a monolithic shader with shader keywords to conditionally calculate the needed effects is more time efficient. However, it would be significantly less convenient to add new status effects.
 
 <header id="inventory" class="page-header"><h2><span class="number">4.4</span> Inventory</h2></header>
 The grid based inventory was one of the most tricky game systems to implement. As a challenge, I wanted to replicate *Path of Exile*'s inventory UI functionality exactly. 
