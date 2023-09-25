@@ -54,13 +54,13 @@ Several of my projects (including my <a href="{{ site.baseurl }}/nothing-matters
             <li>See <a href="#implementation" class="scrolly">4. Implementation</a> for some code examples of game features that have been implemented</li> 
         </ul>
     </li>
-    <li>Created in the Unity engine. All game features, shaders and systems coded and designed <i>by myself</i> with no additional plugins or frameworks with two exceptions:
+    <li>Created in the Unity engine (Built-in Render Pipeline). All game features, shaders and systems coded (C#/HLSL) and designed <i>by myself</i> with no additional plugins or frameworks with two exceptions:
         <ul class="highlights-list sub">
-            <li>Anima2D (<a href="https://forum.unity.com/threads/discontinuing-anima2d-consider-2d-animation-for-skeletal-animation-in-unity.1037605/" target="_blank" rel="noopener noreferrer">now a base feature in Unity</a>) for 2D skinned mesh animations</li>
-            <li><a href="https://github.com/Siccity/xNode" target="_blank" rel="noopener noreferrer">xNode</a>: a low level framework to render interactable graphs in the Unity editor (used to easily create skill, dialogue, and quest trees within the Unity GUI)</li>
+            <li>Anima2D (<a href="https://forum.unity.com/threads/discontinuing-anima2d-consider-2d-animation-for-skeletal-animation-in-unity.1037605/" target="_blank" rel="noopener noreferrer">now a base feature in Unity</a>) for 2D animation rigging</li>
+            <li><a href="https://github.com/Siccity/xNode" target="_blank" rel="noopener noreferrer">xNode</a>: a low-level framework to render interactable graphs in the Unity editor (adapted to easily create skill, dialogue, and quest trees within the Unity GUI)</li>
         </ul>
     </li>
-    <li>Game systems implemented in a way that allows for <a href="#rapid-development" class="scrolly">rapid high level development</a>
+    <li>Game systems implemented in a way that allows for <a href="#rapid-development" class="scrolly">rapid high-level development</a>
         <ul class="highlights-list sub">
             <li>Allows developers with no programming experience to easily create and tweak game content through the Unity editor</li>
         </ul>
@@ -106,15 +106,20 @@ The intent of this skill tree design is to encourage players to experiment with 
 During a combat turn, Players and NPCs will take turns performing actions until they run out of resources. Skills costs can use any consumable resource, including health, armor, stamina and *adrenaline*. Adrenaline is a resource that is gained only if dealing and taking damage. There is also a stun bar for each character. Certain skills will deal "stun" damage, adding to this bar. Once the bar is filled, the character is forced to skip a turn and the stun bar is reset. 
 
 <h4>Damage</h4>
+<!-- TODO: Video of a bunch of hits -->
 Like other RPGs, *Last Secutor* provides various ways to attack and defend with character stats. The damage formula involves dodge chance, critical hit chance and accuracy. See below for a visualization of how it works. [Note: all internal nodes represents a percent chance]
 
 <span class="image"><img src="{% link assets/images/ls-damage.png %}" alt="Damage Formula Figure"/></span>
 
-Once damage is taken, damage mitigation is then calculated from character stats. Each damage type (e.g. ice, fire, physical, etc.) has a corresponding percent mitigation and flat mitigation stat. Skills have a "tag" system similar to *Path of Exile*. Any damage mitigation stat that matches these tags will be used to reduce the damage taken. In the implementation, tags and damage types are all the same stat objects (see <a href="#skill-implementation" class="scrolly">4. Implementation</a> for more details), this means every tag has corresponding damage mitigation stats in this game (e.g. "Projectile", "AOE", "Buff", etc.).
+Once damage is taken, damage mitigation is then calculated from character stats. Each damage type (e.g. ice, fire, physical, etc.) has a corresponding percent mitigation and flat mitigation stat. Skills have "tags" (Figure 1.) system similar to *Path of Exile*. Any damage mitigation stat that matches these tags will be used to reduce the damage taken. In the implementation, tags and damage types are all the same stat objects (see <a href="#skill-implementation" class="scrolly">4. Implementation</a> for more details), this means every tag has corresponding damage mitigation stats in this game (e.g. "Projectile", "AOE", "Buff", etc.).
 
-<!-- TODO: Show Skill tags with SS -->
+<img class="image center" src="{% link assets/images/ls-tooltip-1.jpg %}" alt="Tooltip Example"/>
+<em style="width:30%;">Figure 1. Skill tooltip: tags highlighted in red (not highlighted in game).</em>
 
-In this game, armor and blocking acts as an additional layer of health. Armor simply acts as health that can be healed (certain skills can add armor). Block is a little different, a character's block bar fully replenishes at the start of their turn. 
+After damage mitigation is calculated, it is finally time to apply the damage. In this game, armor and blocking acts as an additional layer of health. Armor simply acts as health that can't be healed (certain skills can add armor). Block is a little different, block success is calculated based on a character's block chance stat and damage is taken from the block bar as expected, however a character's block bar fully replenishes at the start of their turn. This creates a powerful block mechanic but character must invest in both block chance and block bar for it to be effective. Damage is first taken from block, then armor, then health (unless stated otherwise).
+
+<img class="image center" src="{% link assets/images/ls-healthbars.jpg %}" alt="Tooltip Example"/>
+<em style="width:50%;">Figure 2. HUD display for character hit points. Health is red, block is yellow, and armor is represented by a grey overlay on top of health. Aesthetics are not polished, but this is the intended UI design.</em>
 
 <h4 id="reactions">Reactions</h4>
 <!-- TODO: video of reactions -->
@@ -144,11 +149,16 @@ The cult represents a sci-fi interpretation of *<a href="https://en.wikipedia.or
 <header id="implementation" class="major page-header"><h1><span class="number">4.</span> Implementation</h1></header>
 
 <header id="scriptable-objects" class="page-header"><h2><span class="number">4.1</span> Scriptable Objects</h2></header>
-<h4 id="rapid-development">Rapid High Level Development</h4>
-Early in development, I decided to implement game systems in such a way that people with no programming experience could make content through the Unity GUI. This allows anyone to easily create new skill trees, skills, and enemies (See <a href="#place-holder" class="scrolly">Scriptable Objects</a> for full details). This was originally done as a programming challenge, but it was also motivated by the prospect of hiring/inviting others to work on the project. These implementations also allowed myself to quickly prototype and tweak existing game content.
+<h4 id="rapid-development">Rapid High-Level Development</h4>
+Early in development, I decided to implement game systems in such a way that people with no programming experience could make content through the Unity GUI. This allows anyone to easily create new skill trees, skills, and enemies. This was originally done as a programming challenge, but it was also motivated by the prospect of hiring/inviting others to work on the project. These implementations also allowed myself to quickly prototype and tweak existing game content.
+
+This is done primarily by using Unity's <a href="https://docs.unity3d.com/Manual/class-ScriptableObject.html" target="_blank" rel="noopener noreferrer">scriptable objects</a> combined with <a href="https://github.com/Siccity/xNode" target="_blank" rel="noopener noreferrer">xNode</a> to create a high-level way
+<!-- TODO: briefly explain scriptable objects -->
 
 <h4 id="skill-implementation">Modular Skill Implementation</h4>
 <!-- TODO: video showing skill construction -->
+
+<!-- TODO: avoid repetitive code/hardcoding -->
 
 <header id="content-graphs" class="page-header"><h2><span class="number">4.2</span> Content Graph Building</h2></header>
 
@@ -194,15 +204,16 @@ private IEnumerator ChangeFloatProperyValue(Renderer renderer, int materialIndex
 }
 {% endhighlight %}
 
-The drawback of having multiple materials is that there will be multiple draw calls. I decided to use <a href="https://docs.unity3d.com/ScriptReference/MaterialPropertyBlock.html" target="_blank" rel="noopener noreferrer">Unity material property blocks</a>, which batches all of the same materials in one call while changing a shader property. This was ultimately unnecessary premature optimization since there are very few characters using the same material in the 2D combat scenes (lesson learned once again). It's possible that using a monolithic shader with shader keywords to conditionally calculate the needed effects is more time efficient. However, it would be significantly less convenient to add new status effects.
+The drawback of having multiple materials is that there will be multiple draw calls. I decided to use <a href="https://docs.unity3d.com/ScriptReference/MaterialPropertyBlock.html" target="_blank" rel="noopener noreferrer">Unity material property blocks</a>, which batches all of the same materials in one call while changing a shader property. This was ultimately unnecessary premature optimization since there are very few characters using the same material in the 2D combat scenes (lesson learned once again). It's possible that using a monolithic shader with shader keywords to conditionally calculate needed effects would be more time efficient. However, it would be significantly less convenient to add new status effects; which is a much more important feature.
 
 <header id="inventory" class="page-header"><h2><span class="number">4.4</span> Inventory</h2></header>
-The grid based inventory was one of the most tricky game systems to implement. As a challenge, I wanted to replicate *Path of Exile*'s inventory UI functionality exactly. 
+The grid based inventory was one of the more tricky game systems I implemented. As a challenge, I wanted to replicate *Path of Exile*'s inventory UI functionality exactly. 
 
-<!-- TODO: inventory demo video -->
+<!-- TODO: inventory demo video: edit with path of exile -->
 
-After an initial attempt with assumptions of how the UI worked, things felt different and less comfortable. This lead to a realization I never noticed while playing the game — which is that the grid highlighting (when hovering over grid space with an item on cursor) does not update when the cursor crosses a border of a grid square, but rather, when it crosses a **midpoint** of a grid square. To my surprise, this non-trivial difference makes a very noticeable difference to the look and feel of the inventory system.
+After an initial attempt with assumptions of how the UI worked, I found that my UI felt different and less comfortable than *Path of Exile*'s. This lead to a realization I never noticed while playing the game — which is that the grid highlighting (when hovering over grid space with an item on cursor) does not update when the cursor crosses a border of a grid square, but rather, when it crosses a **midpoint** of a grid square. To my surprise, this non-trivial difference noticeably affects to the look and feel of the inventory system.
 
+<h4>Find Half Square Index From Mouse Pointer Location</h4>
 {% highlight csharp linenos %}
 private void UpdateHighlightData() {
     if (isPointerInContainer && inventory.cursorItem) {
@@ -240,8 +251,16 @@ private void UpdateHighlightData() {
     }
 }
 {% endhighlight %}
+*Note: ```position[]``` is an array with two elements representing the grid position in the inventory (this function is a member of the grid element class). This function calculates ```halfSquareIndex[]``` — a two element array representing the index on the inventory grid with 2x the resolution (i.e. each grid square is split into 4 quadrants)*
 
+<div class="box" markdown="1">
+*Development Note:*\\
+This code was written in 2018, the implementation is not very optimized and readability could be improved. I remember this algorithm being very difficult to figure out at the time, so I decided to share the original code here for posterity.
 
+For example, ```UpdateHighlightData(...)``` creates a new array every frame, causing unnecessary strain on the GC (<a href="https://ericlippert.com/2010/09/30/the-truth-about-value-types/" target="_blank" rel="nooperner noreferrer">theoretically</a>). Unity's ```Vector2``` type is a much better fit since it is a value type and it improves readability significantly. Regardless, I'm satisfied with this solution since I know it works and optimizing this early in development with no performance issues would almost definitely be a mistake.
+</div>
+
+<h4>Finding Which Inventory Squares to Highlight</h4>
 {% highlight csharp linenos %}
 private void HighlightCalc(int[] halfSquareIndex) {
     // Change inventory size to 0-index
@@ -268,7 +287,6 @@ private void HighlightCalc(int[] halfSquareIndex) {
             // Vertical index we want moves every 2 half squares: 
             // find nearest multiple of 2 to the half square index (not including top border) to figure out final index
             y = FindNearestMultipleOfTwo(halfSquareIndex[0] - itemSize[0]) / 2;
-
         }
     }
 
@@ -300,6 +318,8 @@ private void HighlightCalc(int[] halfSquareIndex) {
     inventory.Highlight(x, y, storage);
 }
 {% endhighlight %}
+*Note: indices are rounded to match Path of Exile's inventory UI*
 
 <header id="AI" class="page-header"><h2><span class="number">4.5</span> AI</h2></header>
+A comprehensive AI framework was developed to allow combat NPCs to perform any action players can, while abiding to the rules of the 2D combat system.
 

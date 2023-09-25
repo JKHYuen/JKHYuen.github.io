@@ -203,6 +203,17 @@ body {
 		}
 	}
 
+	// For centred italic notes after images
+	img {
+		+ em {
+			display: block;
+			text-align: justify;
+			margin: 0.5em auto 0 auto;
+			width: 33%;
+			font-size: 13pt;
+		}
+	}
+
 	.image.centred {
 		display: block;
 		width: 70%;
