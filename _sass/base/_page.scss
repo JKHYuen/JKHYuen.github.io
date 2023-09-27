@@ -49,7 +49,7 @@ body {
 		}
 		@include breakpoint(xlarge) {
 			@include padding(3em, 0);
-			width: calc(100% - 3em) !important;
+			width: calc(100% - 40em) !important;
 		}
 	}
 

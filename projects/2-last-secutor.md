@@ -180,7 +180,7 @@ I call this system the "character material stack", however it is implemented as 
 The code for this system is straight forward and uninteresting, but I wanted to show the use of material property blocks. This function eases the visibility of the given shader effect (given by index) on the given renderer (character sprite part).
 
 {% highlight csharp linenos %}
-private IEnumerator ChangeFloatProperyValue(Renderer renderer, int materialIndex, float newValue, bool isInstant = false) {
+private IEnumerator ChangeFloatPropertyValue(Renderer renderer, int materialIndex, float newValue, bool isInstant = false) {
     // Get the material in materialIndex's current effect value
     MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
     renderer.GetPropertyBlock(propBlock, materialIndex);
@@ -318,8 +318,94 @@ private void HighlightCalc(int[] halfSquareIndex) {
     inventory.Highlight(x, y, storage);
 }
 {% endhighlight %}
-*Note: indices are rounded to match Path of Exile's inventory UI*
+*Note: indices are rounded to match Path of Exile's inventory UI behavior*
 
 <header id="AI" class="page-header"><h2><span class="number">4.5</span> AI</h2></header>
-A comprehensive AI framework was developed to allow combat NPCs to perform any action players can, while abiding to the rules of the 2D combat system.
+Combat AI is scripted with a custom AI framework.
 
+A comprehensive AI framework was developed to allow combat NPCs to perform any action players can, while abiding to the rules of the 2D combat system. This can be challenging, since animations must be interrupted properly and mechanics like knockback can happen during any given action. Spin locks within coroutines are often used to solve these issues, however a proper state machine would probably be much more robust.
+
+Below is the code for moving within a given range, this is usually called before using a chosen skill to hit something. Some movement skills can ignore obstacles (e.g. teleport and jump), these skills have a ```b_canMoveThroughEntities``` member that will adjust this algorithm accordingly. For more complex movement behavior (e.g. moving behind the player), ```MoveTrigger()``` is called directly within the individual AI algorithms.
+
+{% highlight csharp linenos %}
+protected IEnumerator MoveInRange(int cellRange, Skill moveSkill, bool stayWithinRange = true, bool moveIntoEntities = false) {
+    // Wait for previous AI action
+    while (AIPause) {
+        yield return null;
+    }
+
+    /// Sanity Checks
+    // if cell range ends up being 0, default it to 1 so we don't have to worry about going behind the target
+    if(cellRange == 0) {
+        cellRange = 1;
+    }
+
+    if(!targetController) {
+        if(defaultTarget) {
+            targetController = defaultTarget;
+        }
+        else {
+            Debug.Log("AI Movement: AI tried to move in range without target.");
+            yield break;
+        }
+    }
+
+    if(!(moveSkill is Movement)) {
+        Debug.LogError("AI Movement: MOVEMENT skill must be used for \"MoveInRange()\".");
+        yield break;
+    }
+    ///
+
+    // cell index we are trying to move to
+    int goalIndex = targetCellIndex;
+
+    int direction = 1;
+    if (goalIndex > cellIndex) {
+        direction = -1;
+    }
+
+    if (stayWithinRange) {
+        // if already within range,
+        // do nothing
+        if (CheckInRange(cellIndex, goalIndex, cellRange)) {
+            //Debug.Log($"AI Movement: Already in Range ({cellRange})");
+            yield break;
+        }
+    }
+
+    // clamp cell range within stage
+    int clampedIndex = GridSystem.ClampGridIndex(goalIndex + (cellRange * direction));
+
+    // Check if clamped cell range is vacant, keep trying cells within range
+    // do not check for obstacles if this AI can move into entities
+    int i = clampedIndex;
+    if(!moveIntoEntities) {
+        Cell currentTargetCell = GridSystem.manager.GetCellFromIndex(i);
+        while (currentTargetCell.cellObjectUserControllers.Count > 0 && !currentTargetCell.CellTraversableCheck(userController.cellObjectType)) {
+            // no possible position, give up
+            if (GridSystem.manager.GetCellFromIndex(i).cellObjectUserControllers.Contains(targetController) || i == cellIndex) {
+                Debug.Log("AI Movement: " + userController.gameObject.name + ": No valid cell found for movement.");
+                yield break;
+            }
+
+            if (goalIndex > i) {
+                i--;
+            }
+            else {
+                i++;
+            }
+
+            // out of grid, give up
+            if (!GridSystem.IndexIsInGrid(i)) {
+                Debug.Log("AI Movement: " + userController.gameObject.name + ": No valid cell found for movement.");
+                yield break;
+            }
+        }
+    }
+
+    cellRange = Mathf.Abs(i - goalIndex) * (int)Mathf.Sign(cellRange);
+
+    // Do move to closest vacant cell within range without range check
+    yield return MoveTrigger(cellRange, moveSkill);
+}
+{% endhighlight %}
