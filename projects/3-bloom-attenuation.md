@@ -25,12 +25,12 @@ date-text: November 2021 — December 2021
 
 <header id="overview" class="major page-header"><h1><span class="number">1.</span> Overview</h1></header>
 
-<video class="scroll-auto embedded-video" muted controls poster="{{ site.baseurl }}/assets/images/bloomAttenuation.png">
+<video class="scroll-auto embedded-video" muted controls playsinline loop poster="{{ site.baseurl }}/assets/images/bloomAttenuation.png">
   <source src="{{ site.baseurl }}/assets/videos/bloom-preview.mp4" type="video/mp4">
   bloom preview video
 </video>
 
-My custom shader implementation of bloom to make the popular post processing effect more appealing. The shader simulates light fall off in the post processing step by using the camera depth texture as a bloom intensity multiplier, I call this solution "bloom attenuation". This effectively prevents bloom from oversaturating the screen and better differentiates bright objects with different distances from the player camera. Try the <a href="https://github.com/JKHYuen/BloomAttenuationBuild" target="_blank" rel="noopener noreferrer">playable tech demo</a> to change the bloom shader parameters and see the individual bloom rendering steps in real time!
+This is my custom shader implementation of bloom to make the popular post processing effect more appealing. The shader simulates light fall off in the post processing step by using the camera depth texture as a bloom intensity multiplier, I call this solution "bloom attenuation". This effectively prevents bloom from oversaturating the screen and better differentiates bright objects with different distances from the player camera. Try the <a href="https://github.com/JKHYuen/BloomAttenuationBuild" target="_blank" rel="noopener noreferrer">playable tech demo</a> to change the bloom shader parameters and see the individual bloom rendering steps in real time!
 
 See video below for a full project explanation.
 <div id="video" class="embedded-video">

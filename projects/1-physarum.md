@@ -93,7 +93,7 @@ Discovery is a core theme for this game, there are no intrusive tutorials (see <
 
 For example, the UI will appear when the cursor is placed in the left or right sections of the screen and clicking anywhere on the screen pushes or pulls (left and right click) the slimes. These kinds of user actions do not need to be explicitly told to the user, this passive design along with a calming soundtrack invites users to explore at their leisure.
 
-<video class="scroll-auto embedded-video mini" muted controls poster="{{ site.baseurl }}/assets/images/physarum.jpg">
+<video class="scroll-auto embedded-video mini" muted controls>
   <source src="{{ site.baseurl }}/assets/videos/phys-randomize.mp4" type="video/mp4">
   Randomize Video
 </video>
@@ -110,7 +110,7 @@ Take full control of the simulation with a completely custom UI built in the Uni
 
 The UI is designed to be as simplistic as possible to condense all the simulation parameters in an easy to read manner. Although possibly daunting at first, every UI element provide tooltips to emergently teach the user the purpose of every button and slider without being overwhelming.
 
-<video class="scroll-auto embedded-video mini" muted controls poster="{{ site.baseurl }}/assets/images/physarum.jpg">s
+<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/phys-tooltip.mp4" type="video/mp4">
   Tooltip Video
 </video>
@@ -120,14 +120,14 @@ Media can be uploaded/created to direct the slime mold into any shape or pattern
 
 <h4>Draw Mode</h4>
 Draw environmental attractant using the mouse. Supports line drawing with arbitrary width and color and erasing.
-<video class="scroll-auto embedded-video mini" muted controls poster="{{ site.baseurl }}/assets/images/physarum.jpg">
+<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/phys-draw.mp4" type="video/mp4">
   Draw Video
 </video>
 
 <h4>Video/Image Mode</h4>
 Upload image and/or video files to the game simply by copying them into a game folder. Images and videos can be rotated. Videos can be loaded into the simulation via URL if it is a direct path to a video file. There is also a basic playback UI with video scrubbing, pause/play, and muting.
-<video class="scroll-auto embedded-video mini" muted controls poster="{{ site.baseurl }}/assets/images/physarum.jpg">
+<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/phys-image-video.mp4" type="video/mp4">
   Video/Image Video
 </video>
@@ -143,7 +143,7 @@ Lastly, users can interact with the slime mold simulation with a live video feed
 <header id="morph" class="page-header"><h2><span class="number">3.3</span> Morph</h2></header>
 The morph feature allows users to linearly interpolate between two user defined simulation states. This effectively make slime molds look like they are mutating and evolving into each other in real time.
 
-<video class="scroll-auto embedded-video mini" muted controls poster="{{ site.baseurl }}/assets/images/physarum.jpg">
+<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/phys-morph.mp4" type="video/mp4">
   Morph Video
 </video>
@@ -151,7 +151,7 @@ The morph feature allows users to linearly interpolate between two user defined 
 <header id="share" class="page-header"><h2><span class="number">3.4</span> Share</h2></header>
 Simulation sessions can be serialized at anytime with an export feature. Every parameter in the simulation can be encoded into an easily sharable string. These strings can be imported into *PHYSARUM: Slime Mold Simulator* running on another computer to obtain an identical simulation (initial conditions only, individual particle positions are not encoded). A custom encoder was implemented to ensure that these sharable codes are both backward compatible with previous versions of the game and culture-insensitive.
 
-<video class="scroll-auto embedded-video mini" muted controls poster="{{ site.baseurl }}/assets/images/physarum.jpg">
+<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/phys-share.mp4" type="video/mp4">
   Share Video
 </video>
@@ -251,7 +251,7 @@ private IEnumerator CalculateTooltipPosition(RectTransform targetObjectRect, Vec
 <header class="page-header"><h3>Non-Text Tooltips</h3></header>
 Menus like the color picker and "randomize settings" menu have a similar placement requirement of fitting within any screen size, but I used more ad hoc solutions. This reduced the need to make a overly robust (i.e. buggy) solution when simpler solutions work fine for the scope of this project.
 
-<video class="scroll-auto embedded-video mini" muted controls  poster="{{ site.baseurl }}/assets/images/physarum.jpg">
+<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/phys-other-tooltip.mp4" type="video/mp4">
   Non-text Tooltips Video
 </video>
@@ -263,7 +263,7 @@ Many UI elements are custom solutions built from scratch in Unity. One of the mo
 
 The hue gradient and saturation/lightness square are rendered via uv coordinate interpolation and mouse coordinates are normalized, this means the color picker will work with any width and height without changing any code.
 
-<video class="scroll-auto embedded-video mini" muted controls  poster="{{ site.baseurl }}/assets/images/physarum.jpg">
+<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/phys-color-picker.mp4" type="video/mp4">
   Color Picker Video
 </video>
