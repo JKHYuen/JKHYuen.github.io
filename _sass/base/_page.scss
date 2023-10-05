@@ -201,7 +201,8 @@ body {
 	.highlight, .embedded-video {
 		+ p em {
 			display: block;
-			margin: -1.5em 0 0em 0 !important;
+			margin-top: -1.5em !important;
+			text-align: center;
 		}
 	}
 
@@ -230,11 +231,16 @@ body {
 
 	// embedded youtube videos (16:9 auto sizing)
 	.embedded-video {
-		margin: 2em auto;
 		border: 3px solid #ffffff;
+		margin: 2em auto;
 
 		// Control width of auto sized container
 		width: 100%;
+
+		&.mini {
+			display: block;
+			width: 75%;
+		}
 
 		.container {
 			position: relative;
