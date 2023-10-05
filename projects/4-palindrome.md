@@ -37,7 +37,8 @@ date-text: Oct 6 2020 — Oct 12 2020
 </div>
 </div>
 
-*Palindrome* was a project I started immediately after watching <a href="https://youtu.be/4xj0KRqzo-0?si=C0E3o7mncO0CjlLk" target="_blank" rel="noopener noreferrer">Tenet</a>. I spent 6 days to make a proof of concept game demo that features similar time rewind combat mechanics from the movie. The game is a 2D local multiplayer arena shooter where two players can rewind time for their character at any time. Each player has their own timeline that is separate from the world timeline. This means a player in normal time can actively fight an opponent who is going backwards in time. 
+<!-- Use <i> tag here instead of markdown to avoid em styling under video -->
+<i>Palindrome</i> was a project I started immediately after watching <a href="https://youtu.be/4xj0KRqzo-0?si=C0E3o7mncO0CjlLk" target="_blank" rel="noopener noreferrer">Tenet</a>. I spent 6 days to make a proof of concept game demo that features similar time rewind combat mechanics from the movie. The game is a 2D local multiplayer arena shooter where two players can rewind time for their character at any time. Each player has their own timeline that is separate from the world timeline. This means a player in normal time can actively fight an opponent who is going backwards in time. 
 
 Players can shoot, throw grenades, jump, climb walls, crouch, and dive. All actions, audio, and visual effects will reverse during time rewind as expected. This includes blood particles, bullet impacts particles, bullet trails, and damage taken. Unique combat situations arise with time reversal combat, such as not needing to reload when the bullets reenter the player's gun, damaging your opponent with bullets going backwards, and watching blood go back into your character after rewinding a bullet wound.
 

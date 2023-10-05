@@ -180,7 +180,7 @@
 
 		@include breakpoint(small) {
 			article {
-				// width: 100% !important;
+				width: 100% !important;
 
 				@include padding(3em, 1.5em);
 				height: 16em;
