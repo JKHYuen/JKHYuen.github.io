@@ -31,25 +31,27 @@ body {
 		border-top: 0 !important;
 		padding-top: 2em !important; 
 
-		width: calc(100% - 40em) !important;
+		// max-width: calc(100% - 40em);
+		width: calc(100% - 40em);
 
 		@include breakpoint(small) {
 			@include padding(3em, 0);
-			width: calc(100% - 3em) !important;
+			width: calc(100% - 3em);
 		}
 
 		@include breakpoint(medium) {
 			@include padding(3em, 0);
-			width: calc(100% - 3em) !important;
+			width: calc(100% - 3em);
 		}
 
 		@include breakpoint(large) {
 			@include padding(3em, 0);
-			width: calc(100% - 3em) !important;
+			width: calc(100% - 20em);
 		}
+
 		@include breakpoint(xlarge) {
 			@include padding(3em, 0);
-			width: calc(100% - 3em) !important;
+			width: calc(100% - 20em);
 		}
 	}
 
@@ -203,21 +205,33 @@ body {
 		}
 	}
 
+	// For centred italic notes after images
+	img {
+		+ em {
+			display: block;
+			text-align: justify;
+			margin: 0.5em auto 0 auto;
+			width: 33%;
+			font-size: 13pt;
+		}
+	}
+
 	.image.centred {
 		display: block;
 		width: 70%;
 		margin: 1em auto;
 	}
 
+	// Needed for 16:9 autosizing
 	video {
 		margin: 1em auto;
-		border: 3px solid #ffffff;
 		width: 100%;
 	}
 
 	// embedded youtube videos (16:9 auto sizing)
 	.embedded-video {
 		margin: 2em auto;
+		border: 3px solid #ffffff;
 
 		// Control width of auto sized container
 		width: 100%;
@@ -229,8 +243,7 @@ body {
 			padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
 
 			iframe {
-				max-width: 65em;
-				border: 3px solid #ffffff;
+				// max-width: 65em;
 				margin: 0 auto;
 				position: absolute;
 				top: 0;

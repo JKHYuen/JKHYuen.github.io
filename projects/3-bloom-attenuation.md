@@ -63,7 +63,7 @@ See video below for a full project explanation.
 This project is done in Unity 2019, using the built-in render pipeline. To apply the depth bloom intensity multiplier, post processing bloom had to be implemented from scratch. This is done with a Cg/HLSL multi-pass bloom shader applied to the main camera's final image using Unity's ```OnRenderImage()``` function in C#.
 
 <h4>Snippet of Custom Bloom Shader</h4>
-Note: Bloom attenuation is applied in line 38, a ```max()``` function with a tweakable ```_MaxBloomReduction``` variable is added so very far objects can still have bloom if desired (e.g. the moon). See <a href="#video" class="scrolly">video</a> for full details.
+Note: Bloom attenuation is applied in line 38, a ```max(...)``` function with a tweakable ```_MaxBloomReduction``` variable is added so very far objects can still have bloom if desired (e.g. the moon). See <a href="#video" class="scrolly">video</a> for full details.
 
 {% highlight hlsl linenos %}
 half3 Sample(float2 uv) {

@@ -24,7 +24,26 @@ date-text: April 2022 — June 2023
 </ul>
 </div>
 
+<header id="overview" class="major page-header"><h1><span class="number">1.</span> Overview</h1></header>
 
+<!-- TODO: icon design -->
+<header id="highlights" class="major page-header"><h1><span class="number">2.</span> Highlights</h1></header>
+<ul class="highlights-list">
+    <li>Three main sections to the game, with completely different visual style and gameplay</li>
+    <li>Part I: Retro Games</li>
+    <li>Part II: MalusOS</li>
+    <li>Part III: 9-5 FPS</li>
+    <li>Extensive HLSL shader and technical art work to create contrasting visual styles:
+        <ul class="highlights-list sub">
+            <li>retro scanline screen with glitch effects</li>
+            <li>fictional modern OS with a clinical visual design</li>
+            <li>stylized realistic graphics for FPS</li>
+        </ul>
+    </li>
+</ul>
+
+<header id="overview" class="major page-header"><h1><span class="number">3.</span> Game Features</h1></header>
+<header id="overview" class="major page-header"><h1><span class="number">4.</span> Implementation</h1></header>
 {% highlight hlsl linenos %}
 struct appdata {
     float4 vertex : POSITION;
