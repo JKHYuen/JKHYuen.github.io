@@ -29,11 +29,16 @@ date-text: April 2022 — June 2023
 <!-- TODO: icon design -->
 <header id="highlights" class="major page-header"><h1><span class="number">2.</span> Highlights</h1></header>
 <ul class="highlights-list">
-    <li> Multiple cohesive visual styles
-        <!-- <ul class="highlights-list sub">
-            <li>Although this game is unfinished, systems used in my <a href="{{ site.baseurl }}/nothing-matters" target="_blank" rel="noopener noreferrer">released</a> <a href="{{ site.baseurl }}/physarum" target="_blank" rel="noopener noreferrer">games</a> are based off of implementations developed in this project</li> 
-            <li>See <a href="#implementation" class="scrolly">4. Implementation</a> for some code examples of game features that have been implemented</li> 
-        </ul> -->
+    <li>Three main sections to the game, with completely different visual style and gameplay</li>
+    <li>Part I: Retro Games</li>
+    <li>Part II: MalusOS</li>
+    <li>Part III: 9-5 FPS</li>
+    <li>Extensive HLSL shader and technical art work to create contrasting visual styles:
+        <ul class="highlights-list sub">
+            <li>retro scanline screen with glitch effects</li>
+            <li>fictional modern OS with a clinical visual design</li>
+            <li>stylized realistic graphics for FPS</li>
+        </ul>
     </li>
 </ul>
 
