@@ -90,7 +90,7 @@ Several of my projects (including my <a href="{{ site.baseurl }}/nothing-matters
     </li>
 </ul>
 
-<b style="font-size:18pt; color:#ff9587;">NOTE: I could not include every detail for this multi-year project. If you have any questions or want to discuss any other aspects or implementations from this project feel free to <a href="#contact" class="scrolly">contact me!</a></b>
+<b class="alert">NOTE: I could not include every detail for this multi-year project. If you have any questions or want to discuss any other aspects or implementations from this project feel free to <a href="#contact" class="scrolly">contact me!</a></b>
 
 <header id="features" class="major page-header"><h1><span class="number">3.</span> Game Features</h1></header>
 

@@ -8,7 +8,7 @@ page-banner: assets/images/physarum-page-banner.jpg
 nav-menu: true
 
 button-icon: fa-steam
-button-url: https://store.steampowered.com/app/1667120/PHYSARUM_Slime_Mold_Simulator/
+button-url: https://store.steampowered.com/app/1667120?utm_source=portfolio
 button-text: Steam Store Page
 team-text: Solo project, with help from a composer for trailer and gameplay music
 date-text: April 2021 — August 2021
@@ -39,7 +39,7 @@ date-text: April 2021 — August 2021
     <iframe src="https://www.youtube.com/embed/rW9ZsO6LYdk" title="YouTube video player" allowfullscreen></iframe>
 </div>
 </div>
-*Note: UI aesthetic design was not finalized in the trailer, see screenshots on <a href="https://store.steampowered.com/app/1667120/PHYSARUM_Slime_Mold_Simulator/" target="_blank" rel="noopener noreferrer">Steam</a> or below for the final UI look.*
+*Note: UI aesthetic design was not finalized in the trailer, see screenshots on <a href="https://store.steampowered.com/app/1667120?utm_source=portfolio" target="_blank" rel="noopener noreferrer">Steam</a> or below for the final UI look.*
 
 A project that evolved into a fully featured product while learning how to make <a href="https://learn.microsoft.com/en-us/windows/win32/direct3d11/direct3d-11-advanced-stages-compute-shader" red="noopner noreferrer">compute shaders</a>. I took the opportunity to release this small game publicly to also learn the process of marketing and shipping a game on Steam.
 
@@ -93,7 +93,7 @@ Discovery is a core theme for this game, there are no intrusive tutorials (see <
 
 For example, the UI will appear when the cursor is placed in the left or right sections of the screen and clicking anywhere on the screen pushes or pulls (left and right click) the slimes. These kinds of user actions do not need to be explicitly told to the user, this passive design along with a calming soundtrack invites users to explore at their leisure.
 
-<video class="scroll-auto embedded-video mini" muted controls>
+<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/phys-randomize.mp4" type="video/mp4">
   Randomize Video
 </video>
