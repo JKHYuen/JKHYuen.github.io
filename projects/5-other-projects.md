@@ -22,7 +22,7 @@ disable-team-info: I can write anything here to disable header icons
 </ul>
 </div>
 
-<!-- TODO: Upload Build, video -->
+<!-- TODO: write readme for build -->
 <header id="dd-shader" class="major page-header"><h1><span class="number">1.</span> Darkest Dungeon II Shader</h1></header>
 <a href="https://github.com/JKHYuen/DarkestDungeonII-ShaderDemo" target="_blank" rel="noopener noreferrer" class="button icon fa-download">Download Interactive Demo</a>
 <div class="project-icon-info other-projects">
@@ -36,6 +36,11 @@ disable-team-info: I can write anything here to disable header icons
     </div>
 </div>
 After seeing a widely used effect in some Darkest Dungeon II gameplay, I challenged myself to recreate the effect as close as possible in a day. Although it is possible the original effect used a scrolling texture, my version is created with procedural noise in an HLSL shader.
+
+<video class="scroll-auto embedded-video" muted controls playsinline loop>
+  <source src="{{ site.baseurl }}/assets/videos/dd-demo.mp4" type="video/mp4">
+  Shader Demo Video
+</video>
 
 <h4>The Fragment Shader</h4>
 The "flaming" edges are implemented with a noise alpha cutoff, with a ```step``` function to get the hard edges. Voronoi noise was used as an alpha mask to create the circular holes. These holes were the most recognizable feature that prompted me to attempt to recreate the effect. UVs can be stretched via variables in the shader to get the more uneven look.

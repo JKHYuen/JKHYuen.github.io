@@ -36,9 +36,9 @@ date-text: April 2022 — June 2023
 
 <header id="overview" class="major page-header"><h1><span class="number">1.</span> Overview</h1></header>
 <div id="video" class="embedded-video">
-<div class=container>
-    <iframe src="https://www.youtube.com/embed/WrdCmBp1qac?si=mJD0HdX9wxjQm4lj" title="YouTube video player" allowfullscreen></iframe>
-</div>
+    <div class=container>
+        <iframe src="https://www.youtube.com/embed/WrdCmBp1qac?si=mJD0HdX9wxjQm4lj" title="YouTube video player" allowfullscreen></iframe>
+    </div>
 </div>
 
 <b class="alert">NOTE: This game is best experienced with as little knowledge as possible (see store page). If you are interested in this project, I highly recommend playing through the game (available for <a href="https://store.steampowered.com/app/2260800?utm_source=portfolio" target="_blank"  rel="noopener noreferrer">free on Steam</a>, ~1.2 hours in length) before reading the full details below to get the intended experience.</b>
@@ -165,10 +165,21 @@ A detailed clone of the original Pong. Evolves into a pseudo multiplayer game (b
 <!-- TODO: add video "FLIP FLOP", show apps, writing examples, acronym lore list-->
 Part II is the largest part of the game, MalusOS is an elaborate implementation of an in-universe OS. Explore a clean, user friendly UI as a dark narrative unfolds in the background. All while countless app and news notifications fight for the user's attention.
 
+<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
+  <source src="{{ site.baseurl }}/assets/videos/nm-os.mp4" type="video/mp4">
+  OS Video
+</video>
+
 <!-- TODO: add video of subfrag -->
 
 <h4 id="ironic-design">Ironically Designed</h4> 
 Although very polished, the friendly UI/UX design in MalusOS is intentionally overdesigned to mimic contemporary UI design tropes. Pointless, drawn out UI animations and text fades are frivolously added to symbolize the shallow "form over function" philosophy of this game's universe.
+
+<video id="subfrag" class="scroll-auto embedded-video mini" muted controls playsinline loop>
+  <source src="{{ site.baseurl }}/assets/videos/nm-subfrag.mp4" type="video/mp4">
+  SubFrag Video
+</video>
+*SubFrag: A particularly egregious example of an intentionally overdesigned UI.*
 
 <div class="box" markdown="1">
 *Development Anecdote:*\\
@@ -178,7 +189,10 @@ Many of the ridiculous news headlines were taken directly from real life, with s
 <header id="part-III" class="page-header"><h2><span class="number">3.3</span> Part III: "9-5" FPS</h2></header>
 A surprise 3D section of the game. Comprehensive first person shooter featuring movement mechanics (e.g. jump, crouch, sprint with stamina bar), gun mechanics (e.g. recoil, ADS, and reloading) and realistic PBR graphics with baked/dynamic lighting, decals, physics enabled ragdolls and detailed blood effects. This section is designed to be an cathartic and action packed crowd pleaser after going though a largely conceptual experience. Players must kill to survive as long as possible in an eerie and otherworldly office space.
 
-<!-- TODO: add FPS video, environment screenshots -->
+<video id="fps-video" class="scroll-auto embedded-video mini" muted controls playsinline loop>
+  <source src="{{ site.baseurl }}/assets/videos/nm-fps.mp4" type="video/mp4">
+  FPS Video
+</video>
 
 <div class="box" markdown="1">
 *Development Anecdote:*\\
@@ -190,19 +204,18 @@ As a developer who has primarily made 2D projects, I took this opportunity to ch
 </div>
 
 <header id="end-game" class="page-header"><h2><span class="number">3.4</span> End Game / Achievements</h2></header>
-Although this game is designed to be completed in one sitting, bonus features and secrets are added for players who want to explore the world further. After the game is completed, a sandbox version of Part II and Part III will be unlocked, accessible from the main menu. Players can take as long as they need to read all the written content in *MalusOS* and play a survival version of the FPS.
+Although this game is designed to be completed in one sitting, bonus features and secrets are added for players who want to explore the world further. After the game is completed, a sandbox version of Part II and Part III will be unlocked, accessible from the main menu. Players can take as long as they need to read all the written content in *MalusOS* and play a survival version of the FPS. The end game features are designed to provide players with additional content and a method to obtain all the achievements without playing through the whole game again (2 missable achievements in Part I can be obtained by starting a new game and playing a few minutes).
 
-<!-- TODO: Show end game main menu, theme switching -->
 <video class="scroll-auto embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/nm-menu.mp4" type="video/mp4">
   End Game Menu Video
 </video>
+*Note: Only "start game" and "quit" buttons are available on a new save file*
 
 I decided early in development that this game would be a good opportunity for me to learn how to implement Steam achievements, as well as using it as a game mechanic to guide and encourage users to find all the secret/bonus content I spent time making. This worked very well as players are seen discussing achievement hunting in the game's Discord channel and in the Steam discussion page. This effect is reinforced by an <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2998648664" target="_blank" rel="noopener noreferrer">achievement guide</a> that a player spent time making.
 
-<!-- TODO: show achievements -->
-
-The end game features are designed to provide players with additional content and a method to obtain all the achievements without playing through the whole game again (2 missable achievements in Part I can be obtained by starting a new game and playing a few minutes).
+<img class="image center" style="width:50%" src="{% link assets/images/nm-achievements.jpg %}" alt="Achievements"/>
+*Global achievement distribution.*
 
 <header id="mixed-media" class="page-header"><h2><span class="number">3.5</span> Mixed Media</h2></header>
 With an interest in film making, I used this project as an excuse to create short real life videos to accompany the lore of the game. These videos were all scripted, acted, and filmed by myself, with the exception of the final scene (a friend operated the camera). More videos were planned, but I ran out of time as more important things needed to be completed for release.
@@ -220,7 +233,6 @@ The unique glitch effects for all the videos were developed by accident. The vid
 So I reverted to the broken iPhone setting and "baked in" the artifacts by importing the glitched footage into a video editing program and rendering the footage into a stable file type to ensure the effect is permanent across all software. I could not recreate these effects with shaders and/or video editing if I tried.
 </div>
 
-
 <header id="reception" class="major page-header"><h1><span class="number">4.</span> Reception</h1></header>
 I did not expect this project to appeal to the general public, especially with minimal marketing. Many of the game's features were developed for my own interest and entertainment, and I debated for a long time whether it was worth releasing at all. Thankfully, this became my most successful project, with "Very Positive" <a href="https://steamcommunity.com/app/2260800/reviews/?p=1&browsefilter=toprated&filterLanguage=all" target="_blank" rel="noopener noreferrer">Steam reviews</a> (159 reviews, 86% positive as of October 2023) and various playthroughs posted online.   
 
@@ -229,23 +241,20 @@ I did not expect this project to appeal to the general public, especially with m
 
 Some highlights of popular media: a <a href="https://www.tiktok.com/@papachestyp/video/7253104695281995051" target="_blank" rel="noopener noreferrer">132k view TikTok</a>, a <a href="https://youtu.be/rh0NU1ry-d4?si=0l8ix5d9jf4J5z3M" target="_blank" rel="noopener noreferrer">feature</a> on the "*AlphaBetaGamer*" Youtube channel, and a <a href="https://www.youtube.com/watch?v=mveD7KgP4YY" target="_blank" rel="noopener noreferrer">full live playthrough</a> by Brazilian Twitch streamer <a href="https://www.twitch.tv/felps" target="_blank" rel="noopener noreferrer">"*Felps*"</a>, with 1.4 million followers. I was especially surprised by the positive feedback from Brazilian viewers/players. It was rewarding to see people resonate with my game despite the language barrier.
 
-<!-- TODO: youtube videos, horrors, reviews -->
-
 <header id="implementation" class="major page-header"><h1><span class="number">5.</span> Implementation</h1></header>
 One of the main selling points of <i>nothing_matters</i> is that it contains a series of featured and polished minigames that often evolve over time. Although this is great for game development practice, the drastically different visuals and gameplay requires a large volume of ad hoc solutions that only serve small portions of the game. This increases the usual overhead required to implement and debug small features and details that players may or may not notice. Here are some examples:
 
 <h4>Part I</h4>
 <ul>
     <li>Framework to create arbitrary text, with parameters to control glitch effects, timing and screen location</li>
-    <li>Custom post processing pipeline to easily control shader parameters for scripted events</li>
     <li>Custom caret implementation for a more fitting aesthetic in certain input fields</li>
     <li>Modular and customizable AI framework for <i>Ping</i> paddle movement and chat (response to player messages, win/loss messages, score messages, etc.)</li>
 </ul>
 <h4>Part II</h4>
 <ul>
     <li>Player stat tracking (serialized) and extensive scripted tutorial in <i>War Game</i> (minigame is completely optional)</li>
+    <li>Voronoi-based gradient dissolve shader for <i>War Game</i> "kills"</li>
     <li>MalusOS app states serialized to player save, such as "read" tags in MalNews and Wax articles</li>
-    <li>Comprehensive window UI implementation involving active window layer sorting and task bar with minimize/maximize/resize logic</li>
     <li>A multi-staged side quest to unlock optional secret minigame <i>Flip Flop</i>, involving a functional command line with appropriate error messages for invalid commands</li>
 </ul>
 <h4>Part III and Epilogue</h4>
@@ -260,6 +269,7 @@ One of the main selling points of <i>nothing_matters</i> is that it contains a s
 <!-- TODO: add screenshots - input field caret,  war game stats, "read" tags -->
 
 <header id="shaders" class="page-header"><h2><span class="number">5.1</span> Shader Effects</h2></header>
+<h4>Custom Post Processing</h4>
 Considerable effort was put into technical art to create the game's atmosphere. The screen shader effects in Part I was the first thing I worked on in this game. I wanted to make my own version of the retro/scanline effect seen in <a href="https://store.steampowered.com/app/405640/Pony_Island/" target="_blank" rel="noopener noreferrer">many</a> <a href="https://store.steampowered.com/app/322500/SUPERHOT/" target="_blank" rel="noopener noreferrer">indie</a> <a href="https://store.steampowered.com/app/2088570/Tiny_Rogues/" target="_blank" rel="noopener noreferrer">games</a>. The goal was to create a familiar effect that feels slightly different, to fit the alternate reality of the story (i.e. visual artifacts that are not reflective of real life retro technology). 
 
 Instead of realistic discrete scanlines, I used the ```frac()``` function to create a series of small vertical gradients based on screen UV, which are then offset over time to create an animated scanline effect. Two sets of these vertical gradients are combined (multiplied) with differing UV scale and scroll speed to add a phase shifting effect to the vertical movement. This technique was developed for a hologram shader in my other game — *<a href="{{ site.baseurl }}/last-secutor" target="_blank" rel="noopener noreferrer">Last Secutor</a>*. To make the scanlines visible, gradients are tinted and the pre-tinted values are used to distort the screen image.
@@ -308,7 +318,8 @@ fixed4 frag (v2f i) : SV_Target {
 The need for the luminance-based scanline visibility was discovered by accident. I initially developed and previewed the screen shader on one of my two monitors. After tweaking it to exactly what I wanted, I realized the bloomed elements on the screen did not have the same "illuminating" effect to the scanlines on my other monitor. This was caused by the differing color ranges and tendency to color band, which forced me to come up with the luminance solution to keep the effect consistent on all monitors.
 </div>
 
-<!-- TODO: show glitch, talk about glitch effect -->
+<h4>Sprite/Text Glitch Effect</h4>
+<!-- TODO: show glitch video -->
 The iconic glitch effect used prominently in Part I and marketing material is a shader based on <a href="https://gist.github.com/KeyMaster-/363d3d5c35b956dfacdd" target="_blank" rel="noopener noreferrer">this one found online</a>. It works by cleverly splitting up the UV space into horizontal strips, which are then displaced in random intervals. I was happy with the results and customizable parameters, however it was designed to work with 2D sprites and I needed it for text. The original used values in the model view matrix to desync randomized effects, but I could not get this to work with Unity's font texture atlas. So I had to alter the implementation, with a few additions.
 
 <!-- https://gist.github.com/KeyMaster-/363d3d5c35b956dfacdd -->
@@ -377,14 +388,40 @@ return outline * _OutlineColor * i.color;
 <img class="image center" style="width: 50%" src="{% link assets/images/nm-panels.jpg %}" alt="Panels Screenshot"/>
 <em style="width: 100%;">Example of an "outlined panel" in Part I.</em>
 
-<h5>Bonus: Yet Another Accident</h5>
-<!-- TODO: subfrag shader -->
+<h4>Bonus: Yet Another Accident</h4>
+The SubFrag button shader effect (<a href="#subfrag" class="scrolly">seen here</a>) was originally planned to be a straight forward overlaying of multiple domain warped noise (i.e. offsetting noise uv with another noise value), something I've done many times before. At a attempt to make it a little different, I randomly added vertex position (in clip space) to the noise offset in ```line 5```. This created a fitting "pixelated wave" effect that ended up as the final shader (I'm not sure why this works theoretically).
+
+{% highlight hlsl linenos %}
+fixed4 frag(v2f i) : SV_Target {
+    fixed4 col = tex2D(_MainTex, i.uv);
+
+    float flow = _FlowDirection * _Time.x;
+    float noise2 = Unity_GradientNoise_float(i.uv + float2(0.5, 0.5) * i.vertex + flow, _NoiseScale2);
+    float noise = Unity_GradientNoise_float(i.uv - float2(flow, 0) + float2(0.5, 0.5) * noise2, _NoiseScale);
+
+    float outline = Unity_Remap_float(noise, float2(0, 2), float2(-_RemapThreshold, _RemapThreshold));
+    fixed4 noiseOverlay = saturate(noise - outline);
+
+    col *= i.vertexColor * noiseOverlay;
+    return col;
+}
+{% endhighlight %}
+
+<img class="image center" style="width: 50%" src="{% link assets/images/nm-shader.png %}" alt="SubFrag Shader Screenshot"/>
+<!-- weird styling below needed because of bad scss in _page.scss -->
+<em style="width:100%; margin-top: 1em !important;">With (left image, final effect) and without (right image) ```i.vertex``` in ```line 5```.</em>
 
 <header id="fps-mechanics" class="page-header"><h2><span class="number">5.2</span> FPS Implementation</h2></header>
 As mentioned before, I took the opportunity to create a FPS for the first time in this project. Many of these solutions may be obvious to experienced FPS developers, but hopefully my documentation of the struggles and attempts will provide some entertainment. The following are highlights of the more interesting/difficult solutions.
 
 <h4>Models in Viewport</h4>
 One of the most apparent issues to solve in a FPS is making sure the 3D first person models (hand/gun) are rendered properly. In other words, perspective looks correct and the model won't clip through close geometry. The standard solution of rendering the first person models in a separate camera and lowering the near plane to a reasonable value worked, quick and easy. However, while directional (global) light shadows work with this method, other dynamic shadow sources do not. I experimented extensively with a shader solution to render everything in one camera, but my attempts were too buggy and complex (e.g. projection matrix manipulation for FOV changes). I settled with the former solution.
+
+<h5>Muzzle Flash</h5>
+Muzzle flash is implemented as two 2D sprites in front of the first person gun model. One with bloom for glow effect, and a second larger one behind it to retain the detail of the flash texture. There is a 50% chance every shot that the muzzle flash stays on screen for one less frame, effectively making it sometimes unnoticeable (particularly apparent in lower framerates, effect can be seen in <a href="#fps-video" class="scrolly">video above</a>). This was done to mimic the <a href="https://en.wikipedia.org/wiki/Rolling_shutter" target="_blank" rel="noopener noreferrer">rolling shutter</a> effect I observed from real life gunfire footage. I assume multiplayer games would require a basic 3D model to see muzzle flashes, but my method worked well for the limited use case of this project (the full gunfire effect has additional effects like occasional sparks and world space smoke). 
+
+<img class="image center" style="width: 50%" src="{% link assets/images/nm-muzzle-flash.jpg %}" alt="Panels Screenshot"/>
+*Two sprite muzzle flash effect.*
 
 <!-- TODO: add video walking against wall -->
 
@@ -504,10 +541,14 @@ private void FixedUpdate() {
 <h4>Dynamic Decals</h4>
 In a previous 2D project, *<a href="{{ site.baseurl }}/last-secutor" target="_blank" rel="noopener noreferrer">Last Secutor</a>*, I made character blood effects by rendering a blood texture on top of the target material (akin to the blood effect in *<a href="https://imgur.com/ORZSp.jpg" target="_blank" rel="noopener noreferrer">Dragon Age: Origins</a>*) that is transitioned gradually with an alpha threshold. For this game, I wanted to make dynamic bullet hole decals that players would expect from a FPS. 
 
-<!-- TODO: add video showing off decals -->
+<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
+  <source src="{{ site.baseurl }}/assets/videos/nm-decals.mp4" type="video/mp4">
+  FPS Decals Video
+</video>
 
 This lead to a long and educational process of trying different methods. I started with the most obvious way in Unity, using the <a href="https://docs.unity3d.com/Manual/class-Projector.html" target="_blank" rel="noopener noreferrer">projector component</a> with a basic additive shader. This worked decently well, but the decal would render on top of anything that is in the target layers in the projection box. Also, decals will wrap around corners with unappealing stretched UVs. This lead me to try a few third party mesh decal renderers (I did not attempt to make my own due to time constraints). This worked great for static decals, but because of implementation technicalities, I had issues orienting them on skinned meshes correctly based on collision data.
- 
+
+After lots of flipping back and forth between methods, I settled with the Unity projector component with a custom shader (Unity documentation is quite lacking, <a href="https://en.wikibooks.org/wiki/Cg_Programming/Unity/Projectors"  target="_blank" rel="noopener noreferrer">this helped me figure out the shader</a>). I faded the alpha of the decal based on the depth coordinate of the projection box so if the decal wraps around geometry, it will fade away rather than noticeably stretch and get cut off abruptly (```line 13```). If there are other objects in the decal enabled layer group, the decal will render on all of them still (most notable with crumpled ragdolls). The depth fade helps with this issue as the bullet hit point is usually the closest object and intended decal target. I found this solution to be "good enough" as the game's release date quickly arrived. This will be a starting point for an improved dynamic decal system in future projects.
 
 <h5>Additive Cookie Shader for Unity Projector</h5>
 {% highlight hlsl linenos %}
@@ -529,16 +570,19 @@ fixed4 frag(v2f i) : SV_Target {
 {% endhighlight %}
 *Note: ```_ShadowTex``` is the decal texture provided to material, shader is alpha blended with ```Blend SrcAlpha OneMinusSrcAlpha```. ```Line 11 — 12``` clips the texture outside of the projection box as it caused some artifacts occasionally.*
 
-<!-- TODO: show projection bounding box -->
 
-After lots of flipping back and forth between methods, I settled with the Unity projector component with a custom shader (Unity documentation is quite lacking, <a href="https://en.wikibooks.org/wiki/Cg_Programming/Unity/Projectors"  target="_blank" rel="noopener noreferrer">this helped me figure out the shader</a>). I faded the alpha of the decal based on the depth coordinate of the projection box so if the decal wraps around geometry, it will fade away rather than noticeably stretch and get cut off abruptly (```line 13```). If there are other objects in the decal enabled layer group, the decal will render on all of them still (most notable with crumpled ragdolls). The depth fade helps with this issue as the bullet hit point is usually the closest object and intended decal target. I found this solution to be "good enough" as the game's release date quickly arrived. This will be a starting point for an improved dynamic decal system in future projects.
+<img class="image center" src="{% link assets/images/nm-decal-projection.jpg %}" alt="Decal Projection Screenshot"/>
+<em style="width:100%;">Projection bound of a decal, ```i.uvShadow.z``` refers to the normalized coordinate of the longest side (i.e. direction of normal) of the box.</em>
 
 <!-- TODO: write about angle check and angled projection -->
 
 <header id="ui-framework" class="page-header"><h2><span class="number">5.3</span> UI Framework</h2></header>
 It took a lot of tedious work to make the MalusOS UI convincing enough. As mentioned earlier, many small offset and fade animations are added to create an intentional "overdesigned" look. These animations are all coded as coroutines (as opposed to using Unity's animation system) and need to be reliably reset when it is interrupted (e.g. closing an app in the middle of it's bootup animation). 
 
-<!-- TODO: add video to show app intro animations -->
+<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
+  <source src="{{ site.baseurl }}/assets/videos/nm-app-open.mp4" type="video/mp4">
+  App Opening Video
+</video>
 
 To save some time, I created an object-oriented framework to create and manage these animation coroutines with high level functions. The goal is to be able to attach a class (```MalusUIElement```) to any UI element as a component (i.e. object instance) to add the animation capability with convenient functions. This is done by interfacing with the mandated ```RectTransform``` and ```CanvasGroup``` (Unity component to easily control alpha) components and keeping track of all the coroutine instances in a dynamic dictionary in the object instance to allow animation interruption.
 
@@ -617,7 +661,7 @@ private IEnumerator SetVisibilityStateCoroutine(CanvasGroup elementCanvasGroup, 
 {% endhighlight %}
 *Note: ```OnOpenPanel``` and ```OnClosePanel``` are public events that can be subscribed to, not necessarily only used for panels*
 
-<h5>Some Animation Coroutine Interruption Logic</h5>
+<h5>Some Animation Coroutine Interruption Logic (Calls Function Above)</h5>
 {% highlight csharp linenos %}
 if(!visibilityCoroutineDict.TryGetValue(elementCanvasGroup, out PanelElementVisibilityData existentElementVisibilityData)) {
     PanelElementVisibilityData elementData = new PanelElementVisibilityData();
@@ -639,7 +683,6 @@ else {
     existentElementVisibilityData.coroutineInstance = StartCoroutine(SetVisibilityStateCoroutine(elementCanvasGroup, state, transitionDuration, transitionDirection, positionOffset, existentElementVisibilityData));
 }
 {% endhighlight %}
-*Note: Called before every animation start.*
 
 For example, the app window controller class that manages various open/close/resize operations and events inherits from the ```MalusUIElement``` class. One of the motivations for an object-oriented solution was to encourage encapsulation by storing all managed animation coroutines within the relevant UI objects. In hindsight, this was mostly unnecessary as it would be possible to store all UI animation coroutines in a singleton class.
 
