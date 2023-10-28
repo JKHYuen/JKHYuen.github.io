@@ -8,7 +8,7 @@ page-banner: assets/images/physarum-page-banner.jpg
 nav-menu: true
 
 button-icon: fa-steam
-button-url: https://store.steampowered.com/app/1667120/PHYSARUM_Slime_Mold_Simulator/
+button-url: https://store.steampowered.com/app/1667120?utm_source=portfolio
 button-text: Steam Store Page
 team-text: Solo project, with help from a composer for trailer and gameplay music
 date-text: April 2021 — August 2021
@@ -39,7 +39,7 @@ date-text: April 2021 — August 2021
     <iframe src="https://www.youtube.com/embed/rW9ZsO6LYdk" title="YouTube video player" allowfullscreen></iframe>
 </div>
 </div>
-*Note: UI aesthetic design was not finalized in the trailer, see screenshots on <a href="https://store.steampowered.com/app/1667120/PHYSARUM_Slime_Mold_Simulator/" target="_blank" rel="noopener noreferrer">Steam</a> or below for the final UI look.*
+*Note: UI aesthetic design was not finalized in the trailer, see screenshots on <a href="https://store.steampowered.com/app/1667120?utm_source=portfolio" target="_blank" rel="noopener noreferrer">Steam</a> or below for the final UI look.*
 
 A project that evolved into a fully featured product while learning how to make <a href="https://learn.microsoft.com/en-us/windows/win32/direct3d11/direct3d-11-advanced-stages-compute-shader" red="noopner noreferrer">compute shaders</a>. I took the opportunity to release this small game publicly to also learn the process of marketing and shipping a game on Steam.
 
@@ -93,7 +93,7 @@ Discovery is a core theme for this game, there are no intrusive tutorials (see <
 
 For example, the UI will appear when the cursor is placed in the left or right sections of the screen and clicking anywhere on the screen pushes or pulls (left and right click) the slimes. These kinds of user actions do not need to be explicitly told to the user, this passive design along with a calming soundtrack invites users to explore at their leisure.
 
-<video class="scroll-auto embedded-video mini" muted controls>
+<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/phys-randomize.mp4" type="video/mp4">
   Randomize Video
 </video>
@@ -187,7 +187,7 @@ An early alpha of *PHYSARUM: Slime Mold Simulator* was sent to Sebastian Lague a
 <header id="tooltip" class="page-header"><h2><span class="number">5.2</span> Tooltip Framework</h2></header>
 Text tooltips can be challenging because they must stay within a screen of any resolution/aspect ratio, while having an arbitrary width and height to fit text content. Additionally, we must account for scale of the UI element we are creating the tooltip from, this is because the game features a scalable UI. 
 
-I used a solution I developed in a previous Unity project: use a reference UI resolution of 1920 x 1080 and fit arbitrary resolutions by height. The Unity <a href="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/script-CanvasScaler.html" target="_blank" rel="noopener noreferrer">canvas scaler</a> component does this by altering the scale of all UI objects. Which is why the "lossy scale" (i.e. the global scale: this includes the canvas scaler multiplier AND the scale multiplier from my scalable UI feature) is used to get a coefficient representing the aspect ratio difference between the run time screen and the reference resolution (line 13 of code snippet below). Using this method with the appropriate position anchors also allows the UI as a whole to work predictably with any screen size and aspect ratio.
+I used a solution I developed in a previous Unity project: use a reference UI resolution of 1920 x 1080 and fit arbitrary resolutions by height. The Unity <a href="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/script-CanvasScaler.html" target="_blank" rel="noopener noreferrer">canvas scaler</a> component does this by altering the scale of all UI objects. Which is why the "lossy scale" (i.e. the global scale: this includes the canvas scaler multiplier AND the scale multiplier from my scalable UI feature) is used to get a coefficient representing the aspect ratio difference between the run time screen and the reference resolution (```line 13``` of code below). Using this method with the appropriate position anchors also allows the UI as a whole to work predictably with any screen size and aspect ratio.
 
 <h4>Function used to position text tooltips of arbitrary size:</h4>
 {% highlight csharp linenos %}
@@ -218,7 +218,7 @@ private IEnumerator CalculateTooltipPosition(RectTransform targetObjectRect, Vec
     // top edge of tooltip when it is above hovered object with padding
     float topTooltipY = scaledTargetObjectPosition.y + verticalAdjustOffset + tooltipHeight / 2f;
 
-    // left and right edge of tooltip where middle of tooltip is centered on hoveredObject
+    // left and right edge of tooltip where middle of tooltip is centreed on hoveredObject
     float leftTooltipX = scaledTargetObjectPosition.x - horizontalAdjustOffset;
     float rightTooltipX = scaledTargetObjectPosition.x + horizontalAdjustOffset;
 

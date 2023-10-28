@@ -11,6 +11,8 @@
     tab-size: 2em;
     max-height: 800px; 
     overflow-y: auto;
+
+    margin: 0;
 }
 
 pre.lineno {

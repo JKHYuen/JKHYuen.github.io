@@ -72,7 +72,7 @@ body {
 		}
 	}	
 
-	h4 {
+	h4, h5 {
 		margin: 0; 
 	}
 
@@ -197,24 +197,32 @@ body {
 		}
 	}
 
-	// For italic notes after code snippets and videos
-	.highlight, .embedded-video {
-		+ p em {
-			display: block;
-			margin-top: -1.5em !important;
-			text-align: center;
-		}
+	/// For italic notes after code snippets and videos
+	.embedded-video + p em  {
+		display: block;
+		margin-top: -1.5em !important;
+		text-align: center;
 	}
 
+	.highlight + p em {
+		display: block;
+		margin-top: -1.5em !important;
+	}
+	///
+
 	// For centred italic notes after images
-	img {
-		+ em {
-			display: block;
-			text-align: justify;
-			margin: 0.5em auto 0 auto;
-			width: 33%;
-			font-size: 13pt;
-		}
+	img + em {
+		display: block;
+		text-align: center;
+		margin: 0.5em auto 0 auto;
+		width: 33%;
+		font-size: 13pt;
+	}
+
+	// For exaggerated, important notes
+	b.alert {
+		font-size:18pt; 
+		color:#ff9587;
 	}
 
 	.image.centred {
@@ -240,8 +248,12 @@ body {
 		&.mini {
 			display: block;
 			width: 75%;
-		}
 
+			@include breakpoint(small) {
+				width: 100%;
+			}
+		}
+		
 		.container {
 			position: relative;
 			overflow: hidden;
