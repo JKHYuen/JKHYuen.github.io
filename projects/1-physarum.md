@@ -187,7 +187,7 @@ An early alpha of *PHYSARUM: Slime Mold Simulator* was sent to Sebastian Lague a
 <header id="tooltip" class="page-header"><h2><span class="number">5.2</span> Tooltip Framework</h2></header>
 Text tooltips can be challenging because they must stay within a screen of any resolution/aspect ratio, while having an arbitrary width and height to fit text content. Additionally, we must account for scale of the UI element we are creating the tooltip from, this is because the game features a scalable UI. 
 
-I used a solution I developed in a previous Unity project: use a reference UI resolution of 1920 x 1080 and fit arbitrary resolutions by height. The Unity <a href="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/script-CanvasScaler.html" target="_blank" rel="noopener noreferrer">canvas scaler</a> component does this by altering the scale of all UI objects. Which is why the "lossy scale" (i.e. the global scale: this includes the canvas scaler multiplier AND the scale multiplier from my scalable UI feature) is used to get a coefficient representing the aspect ratio difference between the run time screen and the reference resolution (line 13 of code snippet below). Using this method with the appropriate position anchors also allows the UI as a whole to work predictably with any screen size and aspect ratio.
+I used a solution I developed in a previous Unity project: use a reference UI resolution of 1920 x 1080 and fit arbitrary resolutions by height. The Unity <a href="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/script-CanvasScaler.html" target="_blank" rel="noopener noreferrer">canvas scaler</a> component does this by altering the scale of all UI objects. Which is why the "lossy scale" (i.e. the global scale: this includes the canvas scaler multiplier AND the scale multiplier from my scalable UI feature) is used to get a coefficient representing the aspect ratio difference between the run time screen and the reference resolution (```line 13``` of code below). Using this method with the appropriate position anchors also allows the UI as a whole to work predictably with any screen size and aspect ratio.
 
 <h4>Function used to position text tooltips of arbitrary size:</h4>
 {% highlight csharp linenos %}
@@ -218,7 +218,7 @@ private IEnumerator CalculateTooltipPosition(RectTransform targetObjectRect, Vec
     // top edge of tooltip when it is above hovered object with padding
     float topTooltipY = scaledTargetObjectPosition.y + verticalAdjustOffset + tooltipHeight / 2f;
 
-    // left and right edge of tooltip where middle of tooltip is centered on hoveredObject
+    // left and right edge of tooltip where middle of tooltip is centreed on hoveredObject
     float leftTooltipX = scaledTargetObjectPosition.x - horizontalAdjustOffset;
     float rightTooltipX = scaledTargetObjectPosition.x + horizontalAdjustOffset;
 

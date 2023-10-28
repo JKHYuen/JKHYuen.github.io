@@ -38,17 +38,17 @@ date-text: 2014 — 2022
 <!-- TODO: combat features interaction and positioning, some video -->
 
 <h4>An Unfinished Game</h4>
-I worked on this game for 8 years — first 6 years while in university, and 2 years full time. Unfortunately the project was ultimately too ambitious and it was not financially viable to finish the game. I had only been programming for about a year (Python/Java/C#) when I started developing *Last Secutor* and this was the first project I made without following tutorials. This project eventually became an invaluable learning tool I used to teach myself game development. I learned to be autodidactic by always attempting to code things as low-level as possible, rather than using plugins or online solutions. This taught me to build arbitrary game mechanics without outside help (other than documentation). 
+I worked on this game for 8 years — first 5 years while in university, and 3 years full time. Unfortunately the project was ultimately too ambitious and it was not financially viable to finish the game. I had only been programming for about a year (Python/Java/C#) when I started developing *Last Secutor* and this was the first project I made without following tutorials. However, this project became an invaluable learning tool I used to teach myself game development. I learned to be autodidactic by always attempting to code things as low-level as possible, rather than using plugins or online solutions. This allowed me to build arbitrary game mechanics without outside help (other than documentation). 
 
 <!-- TODO: 2015 phone video -->
 
-I experimented a lot over the years and learned to code common game systems from scratch, many of the implementations in *Last Secutor* have been completely rewritten multiple times. This experience allowed me to quickly develop improved versions for my future projects by avoiding implementation pitfalls (i.e. weighing the pros and cons of different implementations I've tried in the past), improving object-oriented design, and adapting to the unique requirements of each project. 
+I experimented a lot over the years and learned to code common game systems from scratch, many of the implementations in *Last Secutor* have been completely rewritten multiple times. This experience allowed me to efficiently develop future projects by avoiding implementation pitfalls (i.e. weighing the pros and cons of different implementations I've tried in the past), improving object-oriented design, and adapting to the unique requirements of each project. 
 
 Several of my projects (including my <a href="{{ site.baseurl }}/nothing-matters" target="_blank" rel="noopener noreferrer">two</a> <a href="{{ site.baseurl }}/physarum" target="_blank" rel="noopener noreferrer">games</a> released on Steam) use improved systems that were first developed in this project; such as serialization (user saves), shaders (e.g. procedural texture effects and material manipulation), UI that works on any resolution/aspect ratio, and a tooltip framework that positions tooltips of any size. 
 
 <header id="highlights" class="major page-header"><h1><span class="number">2.</span> Highlights</h1></header>
 <ul class="highlights-list">
-    <li>8 years of RPG game development experience (6 years part time, 2 years full time)
+    <li>8 years of RPG game development experience (5 years part time, 3 years full time)
         <ul class="highlights-list sub">
             <li>Although this game is unfinished, systems used in my <a href="{{ site.baseurl }}/nothing-matters" target="_blank" rel="noopener noreferrer">released</a> <a href="{{ site.baseurl }}/physarum" target="_blank" rel="noopener noreferrer">games</a> are based off of implementations developed in this project</li> 
             <li>See <a href="#implementation" class="scrolly">4. Implementation</a> for some code examples of game features that have been implemented</li> 

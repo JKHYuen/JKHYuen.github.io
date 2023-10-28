@@ -72,7 +72,7 @@ body {
 		}
 	}	
 
-	h4 {
+	h4, h5 {
 		margin: 0; 
 	}
 
@@ -248,8 +248,12 @@ body {
 		&.mini {
 			display: block;
 			width: 75%;
-		}
 
+			@include breakpoint(small) {
+				width: 100%;
+			}
+		}
+		
 		.container {
 			position: relative;
 			overflow: hidden;
