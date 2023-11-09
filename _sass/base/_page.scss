@@ -237,6 +237,15 @@ body {
 		width: 100%;
 	}
 
+	.image.mini {
+		display: block;
+		width: 75%;
+
+		@include breakpoint(medium) {
+			width: 100%;
+		}
+	}
+
 	// embedded youtube videos (16:9 auto sizing)
 	.embedded-video {
 		border: 3px solid #ffffff;
@@ -249,7 +258,7 @@ body {
 			display: block;
 			width: 75%;
 
-			@include breakpoint(small) {
+			@include breakpoint(medium) {
 				width: 100%;
 			}
 		}

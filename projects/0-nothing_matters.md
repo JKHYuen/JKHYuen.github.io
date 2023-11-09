@@ -45,7 +45,7 @@ date-text: April 2022 — June 2023
 
 "<i>nothing_matters</i>" is an experimental narrative game inspired by my personal experience as an indie developer. This game features three different sections with escalating complexity, each with distinct visual design and gameplay. The game is primarily a point & click adventure accompanied by minigames, and ending with a climactic FPS; a short experience designed to be played in one session (~1.2 hours, checkpoint saves available). Although not intended to be a horror game, *nothing_matters* features an unsettling and disturbing atmosphere based in realism.
 
-Many aspects of <i>nothing_matters</i> are kept abstract by design. Players are encouraged to make there own interpretations of the experience. However, for the sake of this portfolio page, this is what I had in mind before and during development:
+Many aspects of <i>nothing_matters</i> are kept abstract by design. Players are encouraged to make their own interpretations of the experience. However, for the sake of this portfolio page, this is what I had in mind before and during development:
 
 <blockquote style="margin: -1.5em 0 2em 0;">"<i>nothing_matters</i>" is a nihilistic juxtaposition of the games industry (in the perspective of both developers and players) and modern consumer capitalism. This concept is conveyed through satirical gameplay such as patronizing tutorials and overdesigned UI elements. The core theme of hyper production and consumerism is set in an exaggerated dystopian world to explore how/if art fits into a futuristic bureaucratic technocracy. I also wanted to highlight the mundanity of the creative process as it is often glorified as a strictly enjoyable and linear procedure.</blockquote>
 
@@ -61,7 +61,8 @@ My main goal for this project is to stylistically simulate the experience of bei
             <li><a href="#end-game" class="scrolly">Steam achievements</a> implemented to guide players to all the game's hidden content (Using <a href="https://github.com/rlabrecque/Steamworks.NET" target="_blank"  rel="noopener noreferrer">Steamworks.NET</a>)</li>
             <li>Total of 40 USD spent to develop the game (all for 3D models in the FPS section)</li>
             <li>Communication with users to quickly fix bugs post release</li>
-            <li>All game systems and logic programmed in C# from scratch</li>
+            <li>Short game length, with a focus on detail</li>
+            <li>All game systems and logic programmed in C# from scratch (no Unity plug-ins)</li>
         </ul>
     </li>
     <li>Scripted, storyboarded, edited, and voice acted for <a href="#video" class="scrolly">game reveal trailer</a>
@@ -148,8 +149,12 @@ Unfortunately, I could not negotiate the rights to use the quote from *Simon & S
 <h4>Flip the Coin</h4>
 A deconstruction of what a game is, starting with only the bare essentials: a "play" button that indicates whether the player has won or loss.
 
+<img class="image center mini" src="{% link assets/images/nm-coin.jpg %}" alt="Flip the Coin Screenshot"/>
+
 <h4>Game of Life</h4>
 A simple puzzle/guessing game using a real time implementation of <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank" rel="noopener noreferrer">Conway's Game of Life</a>.
+
+<img class="image center mini" src="{% link assets/images/nm-life.jpg %}" alt="Game of Life Screenshot"/>
 
 <div class="box" markdown="1">
 *Development Anecdote:*\\
@@ -159,7 +164,10 @@ A day of converting everything into value types later, the multi-threaded simula
 </div>
 
 <h4>Ping</h4> 
-A detailed clone of the original Pong. Evolves into a pseudo multiplayer game (bots with game and chat AI). Name of the game and creator Al Alcorn slightly altered to avoid copyright issues.
+A detailed clone of the original *Pong*. Evolves into a pseudo multiplayer game (bots with game and chat AI). Name of the game and creator Al Alcorn slightly altered to avoid copyright issues.
+
+<img class="image center mini" src="{% link assets/images/nm-ping.jpg %}" alt="Ping Screenshot"/>
+<em style="width: 100%;">Pong emulation includes "floaty" controls (paddle inertia) and asymmetrical offsets for the score displays.</em>
 
 <header id="part-II" class="page-header"><h2><span class="number">3.2</span> Part II: MalusOS</h2></header>
 <!-- TODO: add video "FLIP FLOP", show apps, writing examples, acronym lore list-->
@@ -170,7 +178,11 @@ Part II is the largest part of the game, MalusOS is an elaborate implementation 
   OS Video
 </video>
 
-<!-- TODO: add video of subfrag -->
+<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
+  <source src="{{ site.baseurl }}/assets/videos/nm-flipflop.mp4" type="video/mp4">
+  Flip Flop Video
+</video>
+*Spoiler: Secret Optional Mini Game*
 
 <h4 id="ironic-design">Ironically Designed</h4> 
 Although very polished, the friendly UI/UX design in MalusOS is intentionally overdesigned to mimic contemporary UI design tropes. Pointless, drawn out UI animations and text fades are frivolously added to symbolize the shallow "form over function" philosophy of this game's universe.
@@ -239,25 +251,26 @@ I did not expect this project to appeal to the general public, especially with m
 <img class="image center" src="{% link assets/images/nm-reviews.jpg %}" alt="Reviews Screenshot"/>
 *Steam Review Breakdown.*
 
-Some highlights of popular media: a <a href="https://www.tiktok.com/@papachestyp/video/7253104695281995051" target="_blank" rel="noopener noreferrer">132k view TikTok</a>, a <a href="https://youtu.be/rh0NU1ry-d4?si=0l8ix5d9jf4J5z3M" target="_blank" rel="noopener noreferrer">feature</a> on the "*AlphaBetaGamer*" Youtube channel, and a <a href="https://www.youtube.com/watch?v=mveD7KgP4YY" target="_blank" rel="noopener noreferrer">full live playthrough</a> by Brazilian Twitch streamer <a href="https://www.twitch.tv/felps" target="_blank" rel="noopener noreferrer">"*Felps*"</a>, with 1.4 million followers. I was especially surprised by the positive feedback from Brazilian viewers/players. It was rewarding to see people resonate with my game despite the language barrier.
+Some highlights of popular media: a <a href="https://www.tiktok.com/@papachestyp/video/7253104695281995051" target="_blank" rel="noopener noreferrer">132k view TikTok</a>, a <a href="https://www.freegameplanet.com/nothing_matters-downloadable-game/" target="_blank" rel="noopener noreferrer">feature</a> on the "*AlphaBetaGamer*" Youtube channel, and a <a href="https://www.youtube.com/watch?v=mveD7KgP4YY" target="_blank" rel="noopener noreferrer">full live playthrough</a> by Brazilian Twitch streamer <a href="https://www.twitch.tv/felps" target="_blank" rel="noopener noreferrer">"*Felps*"</a>, with 1.4 million followers. I was especially surprised by the positive feedback from Brazilian viewers/players. It was rewarding to see people resonate with my game despite the language barrier.
 
 <header id="implementation" class="major page-header"><h1><span class="number">5.</span> Implementation</h1></header>
-One of the main selling points of <i>nothing_matters</i> is that it contains a series of featured and polished minigames that often evolve over time. Although this is great for game development practice, the drastically different visuals and gameplay requires a large volume of ad hoc solutions that only serve small portions of the game. This increases the usual overhead required to implement and debug small features and details that players may or may not notice. Here are some examples:
+One of the main features of <i>nothing_matters</i> is that it contains a series of polished minigames that evolve over time. Although this is great for game development practice, the drastically different visuals and gameplay required a large volume of ad hoc solutions that only serve small portions of the game. This increases the usual overhead required to implement and debug small features and details that players may or may not notice. Here are some examples:
 
-<h4>Part I</h4>
+<h4>Part I: Retro</h4>
 <ul>
     <li>Framework to create arbitrary text, with parameters to control glitch effects, timing and screen location</li>
-    <li>Custom caret implementation for a more fitting aesthetic in certain input fields</li>
+    <li>Custom caret implementation for a more fitting aesthetic in certain input fields (frustratingly non-trivial)</li>
     <li>Modular and customizable AI framework for <i>Ping</i> paddle movement and chat (response to player messages, win/loss messages, score messages, etc.)</li>
+    <li>Positive and negative edge audio effect for keyboard presses (for Part I and II, with differing set of audio clips)</li>
 </ul>
-<h4>Part II</h4>
+<h4>Part II: MalusOS</h4>
 <ul>
     <li>Player stat tracking (serialized) and extensive scripted tutorial in <i>War Game</i> (minigame is completely optional)</li>
     <li>Voronoi-based gradient dissolve shader for <i>War Game</i> "kills"</li>
     <li>MalusOS app states serialized to player save, such as "read" tags in MalNews and Wax articles</li>
-    <li>A multi-staged side quest to unlock optional secret minigame <i>Flip Flop</i>, involving a functional command line with appropriate error messages for invalid commands</li>
+    <li>A multi-staged side quest to unlock optional secret minigame <i>Flip Flop</i>, involving a functional OS console with appropriate error messages for invalid commands and command parameters</li>
 </ul>
-<h4>Part III and Epilogue</h4>
+<h4>Part III: "9-5" FPS and Epilogue</h4>
 <ul>
     <li>Weapon sway effects based on movement speed and mouse movements for FPS</li>
     <li>Locational damage (i.e. head vs body) detection for high speed bullets</li>
@@ -272,13 +285,23 @@ One of the main selling points of <i>nothing_matters</i> is that it contains a s
 <h4>Custom Post Processing</h4>
 Considerable effort was put into technical art to create the game's atmosphere. The screen shader effects in Part I was the first thing I worked on in this game. I wanted to make my own version of the retro/scanline effect seen in <a href="https://store.steampowered.com/app/405640/Pony_Island/" target="_blank" rel="noopener noreferrer">many</a> <a href="https://store.steampowered.com/app/322500/SUPERHOT/" target="_blank" rel="noopener noreferrer">indie</a> <a href="https://store.steampowered.com/app/2088570/Tiny_Rogues/" target="_blank" rel="noopener noreferrer">games</a>. The goal was to create a familiar effect that feels slightly different, to fit the alternate reality of the story (i.e. visual artifacts that are not reflective of real life retro technology). 
 
+<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
+  <source src="{{ site.baseurl }}/assets/videos/nm-post.mp4" type="video/mp4">
+  Custom Post Video
+</video>
+*Custom post processing shader parameters.*
+
 Instead of realistic discrete scanlines, I used the ```frac()``` function to create a series of small vertical gradients based on screen UV, which are then offset over time to create an animated scanline effect. Two sets of these vertical gradients are combined (multiplied) with differing UV scale and scroll speed to add a phase shifting effect to the vertical movement. This technique was developed for a hologram shader in my other game — *<a href="{{ site.baseurl }}/last-secutor" target="_blank" rel="noopener noreferrer">Last Secutor</a>*. To make the scanlines visible, gradients are tinted and the pre-tinted values are used to distort the screen image.
+
+<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
+  <source src="{{ site.baseurl }}/assets/videos/nm-bloom.mp4" type="video/mp4">
+  Bloom Video
+</video>
+*Stock bloom with luminance-based visibility for custom shader effect.*
 
 I <a href="#luminance" class="scrolly">later discovered</a> I needed to make the scanlines more prominent. So I multiplied the scanline values with a luminance value calculated from the screen image (using <a href="https://en.wikipedia.org/wiki/Relative_luminance" target="_blank" rel="noopener noreferrer">relative luminance</a>, ```line 24``` below). This effectively makes the scanlines more prominent near any on-screen elements (Part I is built entirely in Unity's UI, with no background elements). I applied my custom post processing by applying my screen shader in Unity's ```OnRenderImage()``` function (I learned to do this in my *<a href="{{ site.baseurl }}/bloom-attenuation" target="_blank" rel="noopener noreferrer">Bloom Attenuation</a> project*). This happens to render after Unity's built in post processing stack, which means the stock bloom I used effects the luminance value calculated. In other words, the more objects glow from bloom, the more it "illuminates" the surrounding scanlines. This visually appealing interaction was admittedly found by accident, but I took advantage of it with HDR materials throughout Part I. 
 
 The custom chromatic aberration implementation is pretty standard, other than being amplified (multiplied) by scanline values. I wanted to experiment with the CMYK color space to make it a little different, but ultimately ran out of time. To finish the aesthetic, I added some large colored grain from the Unity post processing stack. Conveniently, the grain visibility is also proportional to the amount of bloom, like the scanlines.
-
-<!-- TODO: show scanlines/luminance -->
 
 <h5>Custom Post Processing Fragment Shader</h5>
 {% highlight hlsl linenos %}
@@ -319,8 +342,13 @@ The need for the luminance-based scanline visibility was discovered by accident.
 </div>
 
 <h4>Sprite/Text Glitch Effect</h4>
-<!-- TODO: show glitch video -->
 The iconic glitch effect used prominently in Part I and marketing material is a shader based on <a href="https://gist.github.com/KeyMaster-/363d3d5c35b956dfacdd" target="_blank" rel="noopener noreferrer">this one found online</a>. It works by cleverly splitting up the UV space into horizontal strips, which are then displaced in random intervals. I was happy with the results and customizable parameters, however it was designed to work with 2D sprites and I needed it for text. The original used values in the model view matrix to desync randomized effects, but I could not get this to work with Unity's font texture atlas. So I had to alter the implementation, with a few additions.
+
+<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
+  <source src="{{ site.baseurl }}/assets/videos/nm-glitch.mp4" type="video/mp4">
+  Glitch Text Video
+</video>
+*Glitched text shader parameters.*
 
 <!-- https://gist.github.com/KeyMaster-/363d3d5c35b956dfacdd -->
 <h5>Text Glitch Fragment Shader</h5>
@@ -389,7 +417,7 @@ return outline * _OutlineColor * i.color;
 <em style="width: 100%;">Example of an "outlined panel" in Part I.</em>
 
 <h4>Bonus: Yet Another Accident</h4>
-The SubFrag button shader effect (<a href="#subfrag" class="scrolly">seen here</a>) was originally planned to be a straight forward overlaying of multiple domain warped noise (i.e. offsetting noise uv with another noise value), something I've done many times before. At a attempt to make it a little different, I randomly added vertex position (in clip space) to the noise offset in ```line 5```. This created a fitting "pixelated wave" effect that ended up as the final shader (I'm not sure why this works theoretically).
+The SubFrag button shader effect (<a href="#subfrag" class="scrolly">seen here</a>) was originally planned to be a straight forward effect — overlapped domain warped noises (i.e. offsetting noise uv with another noise value), something I've done many times before. At a attempt to make it a little different, I randomly added vertex position (in clip space) to the noise offset in ```line 5```. This created an aesthetic "pixelated wave" effect that ended up as the final shader (I'm not sure why this works theoretically).
 
 {% highlight hlsl linenos %}
 fixed4 frag(v2f i) : SV_Target {
@@ -417,20 +445,19 @@ As mentioned before, I took the opportunity to create a FPS for the first time i
 <h4>Models in Viewport</h4>
 One of the most apparent issues to solve in a FPS is making sure the 3D first person models (hand/gun) are rendered properly. In other words, perspective looks correct and the model won't clip through close geometry. The standard solution of rendering the first person models in a separate camera and lowering the near plane to a reasonable value worked, quick and easy. However, while directional (global) light shadows work with this method, other dynamic shadow sources do not. I experimented extensively with a shader solution to render everything in one camera, but my attempts were too buggy and complex (e.g. projection matrix manipulation for FOV changes). I settled with the former solution.
 
-<h5>Muzzle Flash</h5>
+<h4>Muzzle Flash</h4>
 Muzzle flash is implemented as two 2D sprites in front of the first person gun model. One with bloom for glow effect, and a second larger one behind it to retain the detail of the flash texture. There is a 50% chance every shot that the muzzle flash stays on screen for one less frame, effectively making it sometimes unnoticeable (particularly apparent in lower framerates, effect can be seen in <a href="#fps-video" class="scrolly">video above</a>). This was done to mimic the <a href="https://en.wikipedia.org/wiki/Rolling_shutter" target="_blank" rel="noopener noreferrer">rolling shutter</a> effect I observed from real life gunfire footage. I assume multiplayer games would require a basic 3D model to see muzzle flashes, but my method worked well for the limited use case of this project (the full gunfire effect has additional effects like occasional sparks and world space smoke). 
 
 <img class="image center" style="width: 50%" src="{% link assets/images/nm-muzzle-flash.jpg %}" alt="Panels Screenshot"/>
 *Two sprite muzzle flash effect.*
 
-<!-- TODO: add video walking against wall -->
-
 <h4>Bullet/Tracer Visuals</h4>
 A much more time consuming visual issue to resolve was bullet tracer visuals. The core issue is that in almost all modern FPS's, bullets are shot from the middle of the screen from the world position of the camera. If the projectile is realistically shot from the end of the gun barrel, bullets will often not hit where the crosshair is aiming (especially true for sheer angles and shooting right in front of a wall). However, if the bullet visuals do not come from the gun barrel, it will not look right (i.e. tracers come straight from the centre of the viewport). 
 
-<!-- TODO: add shooting video -->
-
 After a few days of <a href="#silly-solutions" class="scrolly">silly solutions</a>, I came to the conclusion that the answer is the use of **two** projectiles. An invisible one for collision detection — coming from the centre of the viewport and a second one coming out of the tip of the gun barrel towards a far away position straight ahead for the trail effect. The visual projectile will disappear as soon as the collision projectile hits something (<a href="#bullet-physics" class="scrolly">see details</a>). Although there is a technical difference in trajectory, it is not noticeable at all in gameplay. The biggest discrepancy is when players are shooting close objects, but since the bullet moves and gets destroyed fast, it looks correct visually. This cements a concept I learned early in game development — that game visuals often only need to be *close enough*.
+
+<img class="image center" style="width: 75%" src="{% link assets/images/nm-bullet-trail.jpg %}" alt="Panels Screenshot"/>
+<em style="width: 100%;">Visual projectile with smoke effects.</em>
 
 <div id="silly-solutions" class="box" markdown="1">
 *Development Anecdote:*\\
@@ -574,7 +601,7 @@ fixed4 frag(v2f i) : SV_Target {
 <img class="image center" src="{% link assets/images/nm-decal-projection.jpg %}" alt="Decal Projection Screenshot"/>
 <em style="width:100%;">Projection bound of a decal, ```i.uvShadow.z``` refers to the normalized coordinate of the longest side (i.e. direction of normal) of the box.</em>
 
-<!-- TODO: write about angle check and angled projection -->
+An attempt was made to keep the projector orientation (as opposed to making it orthogonal to surface) when attaching the bullet decals to objects to dynamically create stretched bullet holes with an angled projection. This was to simulate the look of angled or grazed bullet hits, like in <a href="https://www.reddit.com/r/GamingDetails/comments/qb4klu/in_back_4_blood_when_shooting_metallic_surfaces/" target="_blank" rel="noreferrer noopener">Back 4 Blood</a>. However, I could not make it look natural enough by fading out edges in the shader. My best guess is that Back 4 Blood uses a separate decal texture based on the angle of approach, a much simpler solution than my angled projector. 
 
 <header id="ui-framework" class="page-header"><h2><span class="number">5.3</span> UI Framework</h2></header>
 It took a lot of tedious work to make the MalusOS UI convincing enough. As mentioned earlier, many small offset and fade animations are added to create an intentional "overdesigned" look. These animations are all coded as coroutines (as opposed to using Unity's animation system) and need to be reliably reset when it is interrupted (e.g. closing an app in the middle of it's bootup animation). 

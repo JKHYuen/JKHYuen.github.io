@@ -27,7 +27,7 @@ date-text: April 2021 — August 2021
         <li><a href="#learn" class="button small scrolly sub-section"><span class="number">3.5</span> Learn</a></li>
     <li><a href="#reception" class="button small scrolly"><span class="number">4.</span> Reception</a></li>
     <li><a href="#implementation" class="button small scrolly"><span class="number">5.</span> Implementation</a></li>
-        <li><a href="#compute-shaders" class="button small scrolly sub-section"><span class="number">5.1</span> Compute Shaders</a></li>
+        <li><a href="#compute-shader" class="button small scrolly sub-section"><span class="number">5.1</span> Compute Shader</a></li>
         <li><a href="#tooltip" class="button small scrolly sub-section"><span class="number">5.2</span> Tooltip Framework</a></li>
         <li><a href="#color-picker" class="button small scrolly sub-section"><span class="number">5.3</span> Color Picker</a></li>
 </ul>
@@ -41,7 +41,7 @@ date-text: April 2021 — August 2021
 </div>
 *Note: UI aesthetic design was not finalized in the trailer, see screenshots on <a href="https://store.steampowered.com/app/1667120?utm_source=portfolio" target="_blank" rel="noopener noreferrer">Steam</a> or below for the final UI look.*
 
-A project that evolved into a fully featured product while learning how to make <a href="https://learn.microsoft.com/en-us/windows/win32/direct3d11/direct3d-11-advanced-stages-compute-shader" red="noopner noreferrer">compute shaders</a>. I took the opportunity to release this small game publicly to also learn the process of marketing and shipping a game on Steam.
+A project that evolved into a fully featured product while learning how to make <a href="https://learn.microsoft.com/en-us/windows/win32/direct3d11/direct3d-11-advanced-stages-compute-shader" red="noopner noreferrer">compute shader</a>. I took the opportunity to release this small game publicly to also learn the process of marketing and shipping a game on Steam.
 
 *PHYSARUM: Slime Mold Simulator* is an interactive sandbox visualizer of the real life organism *Physarum polycephalum*; all simulated on a single compute shader (simulation model of the slime mold is based on <a href="https://uwe-repository.worktribe.com/output/980579" target="_blank" rel="noopener noreferrer">this paper</a>). The GPU bound AI easily allows for millions of slime agents to be simulated in real time. Although not a traditional "game", *PHYSARUM: Slime Mold Simulator* is designed to encourage users to explore and discover in the sandbox environment for entertainment value. See trailer above for a full feature showcase.
 
@@ -49,8 +49,8 @@ A project that evolved into a fully featured product while learning how to make 
 <ul class="highlights-list">
     <li>Simulation and UI implementation done in the Unity game engine, with the built-in renderer
         <ul class="highlights-list sub">
-			<li>C# and Cg/HLSL programming</li>
-			<li>Experience dispatching GPU processes with compute shaders</li>
+			<li>Extensive C# and Cg/HLSL programming</li>
+			<li><a href="#compute-shader" class="scrolly">Experience</a> dispatching GPU threads for compute shaders</li>
             <li>All shaders, game logic and UI implementations coded solo from scratch, without plug-ins or store assets (See <a href="#implementation" class="scrolly">5. Implementation</a> for examples)</li>
         </ul>
     </li>
@@ -73,7 +73,7 @@ A project that evolved into a fully featured product while learning how to make 
 			<li>Live development twitch streams 5+ days a week</li>
 			<li><a href="https://youtu.be/rW9ZsO6LYdk" target="_blank" rel="noopener noreferrer">Full game trailer</a>, with <a href="https://youtu.be/sfBsXX5rWfY" target="_blank" rel="noopener noreferrer">several</a> <a href="https://youtu.be/fkV4ea-P8Ic" target="_blank" rel="noopener noreferrer">teasers</a>: storyboarding, scripting, and video editing</li>
 			<li>High engagement reddit posts: <a href="https://www.reddit.com/r/Simulated/comments/pekgaj/physarum_slime_mold_simulator_is_now_out_on_steam/?utm_source=share&utm_medium=web2x&context=3" target="_blank" rel="noopener noreferrer">(1)</a> <a href="https://www.reddit.com/r/proceduralgeneration/comments/oo6suw/recently_announced_physarum_slime_mold_simulator/?utm_source=share&utm_medium=web2x&context=3" target="_blank" rel="noopener noreferrer">(2)</a> <a href="https://www.reddit.com/r/proceduralgeneration/comments/pekbck/physarum_slime_mold_simulator_is_now_out_on_steam/?utm_source=share&utm_medium=web2x&context=3" target="_blank" rel="noopener noreferrer">(3)</a></li>
-			<li>Facebook ad, pro bono via a Facebook employee connection</li>
+			<li>Experience running a Facebook ad, pro bono via employee connection</li>
 			<li>A marketing post mortem <a href="https://youtu.be/EsHigYW1Qb8" target="_blank" rel="noopener noreferrer">video</a></li>
 		</ul>
     </li>
@@ -180,9 +180,222 @@ See below for some code examples and implementation details from the project. Th
 An early alpha of *PHYSARUM: Slime Mold Simulator* was sent to Sebastian Lague and Dr. Jones before release. Both were very gracious and enjoyed the game. Dr. Jones was responsible for suggesting a periodic boundary feature and a scalable UI.
 </div>
 
-<header id="compute-shaders" class="page-header"><h2><span class="number">5.1</span> Compute Shaders</h2></header>
+<header id="compute-shader" class="page-header"><h2><span class="number">5.1</span> Compute Shader</h2></header>
+The entire simulation runs on a single compute shader that updates a texture for a quad that fits to the screen. The quad aspect ratio is calculated in runtime based on in-game settings and user screen resolution. A second identically scaled quad is rendered underneath to optimally show the "environment" (i.e. user images and videos). *Note: comments are added into original code below for clarity.*
+
+<h5>Simulation Data is split into 4 buffers:</h5>
+{% highlight hlsl linenos %}
+struct Agent {
+	float2 position;
+	float angle;
+};
+
+// Stores background color data (e.g. image, video, drawn pixels)
+RWTexture2D<float4> _environmentMap;
+// Stores slime attractant trails, used by slime sense algorithm and trail diffuse step (3x3 blur filter)
+RWTexture2D<float4> _trailMap; 
+ // Final pixel map for main simulation quad
+RWTexture2D<float4> _displayTex;
+ // Stores individual slime agent data
+RWStructuredBuffer<Agent> _agentBuffer;
+{% endhighlight %}
+
+<h5>The compute shader contains 4 main kernels:</h5>
+
+{% highlight scala linenos %}
+// diffuses chemoattractant trails and writes result to _trailMap and _displayTex
+#pragma kernel Fade			
+
+// for GPU accelerated filled circle drawing in "Draw Mode"
+#pragma kernel DrawCircleAtMousePos 
+
+// main slime agent behavior algorithm, reads and writes to _trailMap
+#pragma kernel SlimeAgentCalc16		
+#pragma kernel SlimeAgentCalc32		
+#pragma kernel SlimeAgentCalc64		
+
+// reads _agentBuffer to color all pixel locations with slime agents in _displayTex (overrides Fade kernel result)
+#pragma kernel DrawAgents16		
+#pragma kernel DrawAgents32		
+#pragma kernel DrawAgents64	
+{% endhighlight %}
+*Note: 16, 32, and 64 suffixes refer to thread group versions (e.g. ```SlimeAgentCalc32``` has attribute ```[numthreads(32, 1, 1)]```)*
+
+Buffers and kernels are separated more than needed to encourage modularity in the implementation, and to allow the user to turn different color maps on and off during runtime. The simulation also features customizable thread group sizes (CPU dispatcher will adjust thread group parameters accordingly). Through light research, single dimension 32 and 64 thread groups seem to be recommended for most hardware, but I found that group size 8 worked best for my system at the time, so it is included as well. I also found that 2 dimensional thread groups did not help with performance through brief testing, so it is not an option in the simulation.
+
+<h5>Main slime agent movement behavior algorithm:</h5>
+{% highlight hlsl linenos %}
+void SlimeAgentCalcBase(uint id) {
+	if (id > (uint)_instanceAgentCount - 1) {
+		return;
+	}
+
+	int slimeIndex = id + _indexOffset;
+
+	// agent before movement update
+	Agent agent = _agentBuffer[slimeIndex];
+
+	float seededRandomValue = hash(17 + 31 * hash(agent.position.y + 53 * hash(agent.position.x + _time * 100000)) + 97 * hash(id + _time * 100000)) / 4294967295.0;
+
+	// MOVEMENT STEP
+	float sensoryStepSize = _slimeSpeed * _deltaTime;
+	float2 newPos = agent.position + sensoryStepSize * float2(cos(agent.angle), sin(agent.angle));
+
+	// Gravity
+	newPos += float2(_gravityX, _gravityY);
+
+	// Mouse attractant
+	float2 mousePos = float2(_mousePosX, _mousePosY);
+	float mousPosDistance = distance(newPos, float2(_mousePosX, _mousePosY));
+	newPos += _mouseAttractantToggle * normalize(mousePos - newPos) * clamp(_mouseAttractantStrength / (mousPosDistance * mousPosDistance), -5, 5);
+
+	// No periodic boundary, pick random direction and don't move if out of boundary
+	if (_periodicBoundaryToggle == 0) {
+		// if movement not succesful
+		if (newPos.x <= 0 || newPos.x >= _resX || newPos.y <= 0 || newPos.y >= _resY) {
+			// pick new random angle
+			_agentBuffer[slimeIndex].angle = seededRandomValue * 2.0 * PI;
+
+			// Don't move this agent
+			return;
+		}
+	}
+	// Periodic Boundary
+	else {
+		if (newPos.x <= 0) {
+			newPos.x = _resX - 1;
+		}
+		else if (newPos.x >= _resX) {
+			newPos.x = 1;
+		}
+
+		if (newPos.y <= 0) {
+			newPos.y = _resY - 1;
+		}
+		else if (newPos.y >= _resY) {
+			newPos.y = 1;
+		}
+	}
+
+	// Move
+	_agentBuffer[slimeIndex].position = newPos;
+
+	// Chemoattractant deposition
+	_trailMap[newPos] = _slimeColor * _slimeAttractantDeposition;
+
+	// SENSORY STEP (change angle)
+	float F = sense(_agentBuffer[slimeIndex], 0);
+	float FL = sense(_agentBuffer[slimeIndex], -_slimeSensorAngle);
+	float FR = sense(_agentBuffer[slimeIndex], _slimeSensorAngle);
+
+	// angle randomization
+	float randomizedValue = _slimeRotateRandomStrength * seededRandomValue;
+	float randomAngleStrength = (1 - _slimeRotateRandomToggle) + _slimeRotateRandomToggle * randomizedValue;
+	float randomizedAngle = _slimeRotateAngle * randomAngleStrength;
+
+	// stay in same direction
+	if (F > FL && F > FR) {
+		return;
+	}
+	// Rotate Randomly left or right
+	else if (F < FL && F < FR) {
+		if (seededRandomValue < 0.5) {
+			_agentBuffer[slimeIndex].angle += randomizedAngle;
+		}
+		else {
+			_agentBuffer[slimeIndex].angle -= randomizedAngle;
+		}
+	}
+	else if (FL < FR) {
+		_agentBuffer[slimeIndex].angle += randomizedAngle;
+	}
+	else if (FR < FL) {
+		_agentBuffer[slimeIndex].angle -= randomizedAngle;
+	}
+}
+{% endhighlight %}
+*Note: Algorithm is implemented mostly verbatim from <a href="https://uwe-repository.worktribe.com/output/980579" target="_blank" rel="noopener noreferrer">Dr. Jeff Jones' paper</a>, with additional features from my simulation (e.g. gravity, mouse forces, periodic boundary). Extensive branching is generally not recommended for a shader, but I left the branches to keep things readable. Theoretically, most of it should be optimized away by the compiler, but I did not test it and the performance is good enough.*
+
+I opted for multiplicative color mixing in ```line 57``` out of preference because I did not like the colors often mixing to white. However, I found that many implementations on the internet use additive color mixing, which achieves color effects my simulation is not capable of. I wanted to include a feature to pick the color mixing method, but ran out of time.
+
+<div class="box" markdown="1">
+*Development Anecdote:*\\
+Some effort was needed to make a "good enough" hash. In other words, one that will produce minimal noticeable patterning artifacts for large resolutions and slime agent counts. The ```hash(...)``` function used is just a random one <a href="https://www.cs.ubc.ca/~rbridson/docs/schechter-sca08-turbulence.pdf">found online</a>. I added the mess in ```line 11``` above to produce a random enough hash through experimentation. Without much experience making good hashes, I'm sure a much better implementation exists for this algorithm.
+</div>
+
+<h5>"sense(...)" function from above:</h5>
+{% highlight hlsl linenos %}
+float sense(Agent agent, float sensorAngleOffset) {
+	int sensorWidth = _slimeSensorWidth;
+
+	float sensorAngle = agent.angle + sensorAngleOffset;
+	float2 sensorPos = agent.position + _slimeSensorOffset * float2(cos(sensorAngle), sin(sensorAngle));
+
+	int sensorCentreX = (int)sensorPos.x;
+	int sensorCentreY = (int)sensorPos.y;
+
+	float sum = 0;
+	for (int offsetX = -sensorWidth; offsetX <= sensorWidth; offsetX++) {
+		for (int offsetY = -sensorWidth; offsetY <= sensorWidth; offsetY++) {
+			int sampleX = min(_resX - 1, max(0, sensorCentreX + offsetX));
+			int sampleY = min(_resY - 1, max(0, sensorCentreY + offsetY));
+            // simple dot product comparison of color to differentiate slimes
+			sum += dot(_slimeColor, _trailMap[int2(sampleX, sampleY)]);
+		}
+	}
+
+	// Environment sensing
+	sum += dot(_slimeColor, _environmentMap[int2(min(_resX - 1, max(0, sensorCentreX)), min(_resY - 1, max(0, sensorCentreY)))]) * _environmentStrength;
+
+	return sum;
+}
+{% endhighlight %}
+*Note: this is a refactored version of <a href="https://youtu.be/X-iSQQgOd1A?si=7pIOyvsba7aWwk_6" target="_blank" rel="noopener noreferrer">Sebastian Lague's algorithm</a>, with my addition in ```line 21``` to include "environmental" influences such as user uploaded images and videos*
+
+<h4>Draw Mode Algorithm</h4>
+The ```DrawCircleAtMousePos``` kernel is just a clever algorithm I <a href="https://stackoverflow.com/a/24453110" target="_blank" rel="noopener noreferrer">found online</a>. I initially attempted to write to the texture on the CPU side, but I quickly realized that it was way too slow without GPU acceleration.
+
+<h4>CPU Dispatcher</h4>
+CPU side code is largely uninteresting and longwinded. Below is an excerpt of code updating textures after all the user settings are loaded and slime positions/trails are calculated (happens every frame in ```Update()```).
+
+{% highlight csharp linenos %}
+private void LateUpdate() {
+    if (slimeTotalAgentCount <= 0 || isDisabled) {
+        return;
+    }
+
+    // draw agents
+    if (isDrawAgents) {
+        uint currentIndexOffset = 0;
+        foreach (SlimeSettings slimeSettings in SlimeManager.slimes) {
+            uint individualSlimeCount = isDynamicSlimeCountLoading ? slimeSettings.count : slimeSettings.currentCount;
+            if(individualSlimeCount == 0) {
+                continue;
+            }
+
+            computeShader.SetInt(instanceAgentCountID, (int)individualSlimeCount);
+            computeShader.SetInt(indexOffsetID, (int)currentIndexOffset);
+            computeShader.SetVector(slimeColorID, new Vector4(slimeSettings.r, slimeSettings.g, slimeSettings.b, 1));
+
+            computeShader.Dispatch(drawAgentKernel, Mathf.CeilToInt(individualSlimeCount / threadGroupSize), 1, 1);
+
+            currentIndexOffset += isDynamicSlimeCountLoading ? maxIndividualSlimeCount : slimeSettings.currentCount;
+        }
+    }
+
+    // Update environment textures
+    if (currentPlayMode == PlayMode.DRAW || currentPlayMode == PlayMode.IMAGE) return; 
+    if(currentPlayMode == PlayMode.WEBCAM && webCamTex != null) {
+        Graphics.Blit(webCamTex, environmentMap);
+    }
+    else if(currentPlayMode == PlayMode.VIDEO) {
+        Graphics.Blit(backgroundEnvironment, environmentMap);
+    }
+}
+{% endhighlight %}
+*Note: ```Lines 10 — 13``` allows for slimes to appear and disappear in real time as the user changes slime count, this normally requires the "Resimulation" button to be pressed. This feature can be toggled on and off in-game.*
+
 <!-- TODO: Show early sims, early compute shader stuff -->
-<!-- TODO: drawing + slimes -->
 
 <header id="tooltip" class="page-header"><h2><span class="number">5.2</span> Tooltip Framework</h2></header>
 Text tooltips can be challenging because they must stay within a screen of any resolution/aspect ratio, while having an arbitrary width and height to fit text content. Additionally, we must account for scale of the UI element we are creating the tooltip from, this is because the game features a scalable UI. 
