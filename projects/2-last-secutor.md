@@ -3,14 +3,14 @@ layout: page
 title: Last Secutor
 permalink: /last-secutor
 description: 2D Turn Based RPG — an unfinished 8 year project where I experimented and honed my skills in game development and programming
-image: assets/images/rpgDemo.gif
-page-banner: assets/images/rpgDemo.gif
+image: assets/images/last-secutor.jpg
+page-banner: assets/images/ls-banner.jpg
 nav-menu: true
 
-button-url: UPDATE THIS
+button-url: https://github.com/JKHYuen/LastSecutorBuild
 button-text: Download Tech Demo
 
-team-text: Solo Project, with help on 2D sprite art
+team-text: Solo Project, with help on placeholder 2D sprite art
 date-text: 2014 — 2022
 ---
 
@@ -35,7 +35,7 @@ date-text: 2014 — 2022
     <li>Repeat</li>
 </ul>
 
-<!-- TODO: combat features interaction and positioning, some video -->
+<!-- TODO: combat features interaction and positioning, some overview video -->
 
 <h4>An Unfinished Game</h4>
 I worked on this game for 8 years — first 5 years while in university, and 3 years full time. Unfortunately the project was ultimately too ambitious and it was not financially viable to finish the game. I had only been programming for about a year (Python/Java/C#) when I started developing *Last Secutor* and this was the first project I made without following tutorials. However, this project became an invaluable learning tool I used to teach myself game development. I learned to be autodidactic by always attempting to code things as low-level as possible, rather than using plugins or online solutions. This allowed me to build arbitrary game mechanics without outside help (other than documentation). 
@@ -44,7 +44,7 @@ I worked on this game for 8 years — first 5 years while in university, and 3 y
 
 I experimented a lot over the years and learned to code common game systems from scratch, many of the implementations in *Last Secutor* have been completely rewritten multiple times. This experience allowed me to efficiently develop future projects by avoiding implementation pitfalls (i.e. weighing the pros and cons of different implementations I've tried in the past), improving object-oriented design, and adapting to the unique requirements of each project. 
 
-Several of my projects (including my <a href="{{ site.baseurl }}/nothing-matters" target="_blank" rel="noopener noreferrer">two</a> <a href="{{ site.baseurl }}/physarum" target="_blank" rel="noopener noreferrer">games</a> released on Steam) use improved systems that were first developed in this project; such as serialization (user saves), shaders (e.g. procedural texture effects and material manipulation), UI that works on any resolution/aspect ratio, and a tooltip framework that positions tooltips of any size. 
+Several of my projects (including my <a href="{{ site.baseurl }}/nothing-matters" target="_blank" rel="noopener noreferrer">two</a> <a href="{{ site.baseurl }}/physarum" target="_blank" rel="noopener noreferrer">games</a> released on Steam) directly benefitted from the experience gained from this project; particularly in the implementation of user saves (serialization), shaders (e.g. procedural noise effects and general HLSL coding), aspect ratio/resolution agnostic UI, and frameworks for arbitrary tooltips. 
 
 <header id="highlights" class="major page-header"><h1><span class="number">2.</span> Highlights</h1></header>
 <ul class="highlights-list">
@@ -65,14 +65,16 @@ Several of my projects (including my <a href="{{ site.baseurl }}/nothing-matters
             <li>Allows developers with no programming experience to easily create and tweak game content through the Unity editor</li>
         </ul>
     </li>
+    <li>Experience animating and rigging multi-part sprite characters/ragdolls</li>
     <li>2D Turn based combat that encourages methodical gameplay
         <ul class="highlights-list sub">
             <li>Tile movement in combat for position management with a variety of skills that can push, pull, and trap characters</li>
             <li>A <a href="#reactions" class="scrolly">reaction</a> system that allows players to queue actions that can trigger during an opponents turn if the reaction skill's conditions are met</li>
-            <li>Traditional RPG mechanics such as damage resistance, armor, dodge, status effects, mana/stamina costs, summons, stuns, healing and back hits</li>
+            <li>Implemented traditional RPG mechanics such as damage resistance, armor, dodge, status effects, mana/stamina costs, summons, stuns, healing and back hits</li>
         </ul>
     </li>
-    <li>Original "build your own" <a href="#skill-tree" class="scrolly">skill tree mechanic</a></li>
+    <li>Experience designing 2D RPG mechanics with flexible/modular implementation; allowing complex interactions enabled by equipment, skill trees and skills</li>
+    <li>Original "build your own" <a href="#skill-tree" class="scrolly">modular skill tree mechanic</a></li>
     <li>RPG systems coded from scratch with C# including but not limited to:
         <ul class="highlights-list sub">
             <li>Grid based inventory/stash supporting items of any size, with serialization support for player saves</li>
@@ -97,12 +99,25 @@ Several of my projects (including my <a href="{{ site.baseurl }}/nothing-matters
 <header id="skill-tree" class="page-header"><h2><span class="number">3.1</span> Unique Skill Tree System</h2></header>
 The core mechanic of character progression is the unique skill tree system. *Last Secutor*'s skill tree is comprised of 4 swappable subtrees. Subtrees have outer "transition nodes" that allows players to connect to an adjacent subtree. Like other RPGs, players will gain a skill point when leveling to assign to their skill tree. Assigned nodes must have a path to at least one of the subtree's root node.
 
-<!-- TODO: demonstration video with narration -->
+<div id="video" class="embedded-video mini">
+<div class=container>
+    <iframe src="https://www.youtube.com/embed/Sb1z9gkpm68?si=qaBHLehC29rBYMZ7" title="YouTube video player" allowfullscreen></iframe>
+</div>
+</div>
+*Demo and explanation of skill tree system described above.*
 
 The intent of this skill tree design is to encourage players to experiment with subtrees that are compatible with their builds; while also trying to find the optimal path (least amount of skill points) to the desired skill tree nodes. Nodes are generally more powerful/desirable the farther they are from the subtree root nodes. This rewards players for interacting with the transition nodes mechanic to efficiently reach more powerful nodes in adjacent trees.
 
 <!-- TODO: Combat positioning/effects - Combat Log -->
 <header id="combat" class="page-header"><h2><span class="number">3.2</span> 2D Turn Based Combat</h2></header>
+
+<div id="video" class="embedded-video">
+<div class=container>
+    <iframe src="https://www.youtube.com/embed/_lz07iOkC6w?si=5mDLqFqTDOpHpWRu" title="YouTube video player" allowfullscreen></iframe>
+</div>
+</div>
+*Demonstration of most skills in the game.*
+
 During a combat turn, Players and NPCs will take turns performing actions until they run out of resources. Skills costs can use any consumable resource, including health, armor, stamina and *adrenaline*. Adrenaline is a resource that is gained only if dealing and taking damage. There is also a stun bar for each character. Certain skills will deal "stun" damage, adding to this bar. Once the bar is filled, the character is forced to skip a turn and the stun bar is reset. 
 
 <h4>Damage</h4>
@@ -112,6 +127,8 @@ Like other RPGs, *Last Secutor* provides various ways to attack and defend with 
 <span class="image"><img src="{% link assets/images/ls-damage.png %}" alt="Damage Formula Figure"/></span>
 
 Once damage is taken, damage mitigation is then calculated from character stats. Each damage type (e.g. ice, fire, physical, etc.) has a corresponding percent mitigation and flat mitigation stat. Skills have "tags" (Figure 1.) system similar to *Path of Exile*. Any damage mitigation stat that matches these tags will be used to reduce the damage taken. In the implementation, tags and damage types are all the same stat objects (see <a href="#skill-implementation" class="scrolly">4. Implementation</a> for more details), this means every tag has corresponding damage mitigation stats in this game (e.g. "Projectile", "AOE", "Buff", etc.).
+
+<!-- TODO: show messy damage calc -->
 
 <img class="image center" src="{% link assets/images/ls-tooltip-1.jpg %}" alt="Tooltip Example"/>
 <em style="width:30%;">Figure 1. Skill tooltip: tags highlighted in red (not highlighted in game).</em>
@@ -128,10 +145,7 @@ After damage mitigation is calculated, it is finally time to apply the damage. I
 <h4>Skills</h4>
 Although not completely finished, many skills were designed to encourage combinations and deliberate positioning.
 
-<!-- TODO: show knife throw skill -->
-<!-- TODO: show marker skill -->
-
-<!-- TODO: video showing all skills -->
+<!-- TODO: video showing all skills, mention timestamps of combos -->
 
 <header id="itemization" class="page-header"><h2><span class="number">3.3</span> RPG Itemization and Stats</h2></header>
 <!-- TODO: video equipping items, show stats changing, show enemy stats -->
@@ -148,6 +162,13 @@ The cult represents a sci-fi interpretation of *<a href="https://en.wikipedia.or
 <!-- TODO: Inventory, Scriptable Objects / database - Use skill as example -->
 <header id="implementation" class="major page-header"><h1><span class="number">4.</span> Implementation</h1></header>
 
+<div id="video" class="embedded-video">
+<div class=container>
+    <iframe src="https://www.youtube.com/embed/UHkDUjA1NUs?si=Hu0gWQxxis3oodEj" title="YouTube video player" allowfullscreen></iframe>
+</div>
+</div>
+*In-depth overview of most of the RPG system implementations, with code examples and commentary.*
+
 <header id="scriptable-objects" class="page-header"><h2><span class="number">4.1</span> Scriptable Objects</h2></header>
 <h4 id="rapid-development">Rapid High-Level Development</h4>
 Early in development, I decided to implement game systems in such a way that people with no programming experience could make content through the Unity GUI. This allows anyone to easily create new skill trees, skills, and enemies. This was originally done as a programming challenge, but it was also motivated by the prospect of hiring/inviting others to work on the project. These implementations also allowed myself to quickly prototype and tweak existing game content.
@@ -155,15 +176,16 @@ Early in development, I decided to implement game systems in such a way that peo
 This is done primarily by using Unity's <a href="https://docs.unity3d.com/Manual/class-ScriptableObject.html" target="_blank" rel="noopener noreferrer">scriptable objects</a> combined with <a href="https://github.com/Siccity/xNode" target="_blank" rel="noopener noreferrer">xNode</a> to create a high-level way
 <!-- TODO: briefly explain scriptable objects -->
 
-<h4 id="skill-implementation">Modular Skill Implementation</h4>
-<!-- TODO: video showing skill construction -->
-
-<!-- TODO: avoid repetitive code/hardcoding -->
-
-<header id="content-graphs" class="page-header"><h2><span class="number">4.2</span> Content Graph Building</h2></header>
+<header id="shaders" class="page-header"><h2><span class="number">4.2</span> Custom Shader Effects</h2></header>
 
 
-<header id="shaders" class="page-header"><h2><span class="number">4.3</span> Custom Shader Effects</h2></header>
+<div id="video" class="embedded-video">
+<div class=container>
+    <iframe src="https://www.youtube.com/embed/Xq6KeXNt6ZQ?si=gh5-QAZZM3Nu1WMx" title="YouTube video player" allowfullscreen></iframe>
+</div>
+</div>
+*Quick run through of my HLSL shaders, with code examples and commentary.*
+
 As a solo programmer with no experience hand drawing 2D illustrations, obtaining art assets are often a road block in game development. At first, I used shaders found online to easily add visual flair at first, but this quickly became a hinderance as I could not make specific effects to my liking.
 
 I soon decided (~2015) the best way to move forward was to learn how to write low-level HLSL shaders myself to create whatever effect I needed. Although daunting at first, this was one of the most valuable skills I learned from this project. This not only allowed me to create countless custom effects in my future projects, but also allowed me to work on my projects without the need to hire other artists. 
@@ -206,12 +228,17 @@ private IEnumerator ChangeFloatPropertyValue(Renderer renderer, int materialInde
 
 The drawback of having multiple materials is that there will be multiple draw calls. I decided to use <a href="https://docs.unity3d.com/ScriptReference/MaterialPropertyBlock.html" target="_blank" rel="noopener noreferrer">Unity material property blocks</a>, which batches all of the same materials in one call while changing a shader property. This was ultimately unnecessary premature optimization since there are very few characters using the same material in the 2D combat scenes (lesson learned once again). It's possible that using a monolithic shader with shader keywords to conditionally calculate needed effects would be more time efficient. However, it would be significantly less convenient to add new status effects; which is a much more important feature.
 
-<header id="inventory" class="page-header"><h2><span class="number">4.4</span> Inventory</h2></header>
+<header id="inventory" class="page-header"><h2><span class="number">4.3</span> Inventory</h2></header>
 The grid based inventory was one of the more tricky game systems I implemented. As a challenge, I wanted to replicate *Path of Exile*'s inventory UI functionality exactly. 
 
 <!-- TODO: inventory demo video: edit with path of exile -->
+<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
+  <source src="{{ site.baseurl }}/assets/videos/ls-inventory.mp4" type="video/mp4">
+  Inventory Demo
+</video>
+*Side by side Comparison with Path of Exile's Inventory System*
 
-After an initial attempt with assumptions of how the UI worked, I found that my UI felt different and less comfortable than *Path of Exile*'s. This lead to a realization I never noticed while playing the game — which is that the grid highlighting (when hovering over grid space with an item on cursor) does not update when the cursor crosses a border of a grid square, but rather, when it crosses a **midpoint** of a grid square. To my surprise, this non-trivial difference noticeably affects to the look and feel of the inventory system.
+After an initial attempt with assumptions of how the UI worked, I found that my UI felt different and less comfortable than <i>Path of Exile</i>'s. This lead to a realization I never noticed while playing the game — which is that the grid highlighting (when hovering over grid space with an item on cursor) does not update when the cursor crosses a border of a grid square, but rather, when it crosses a **midpoint** of a grid square. To my surprise, this non-trivial difference noticeably affects to the look and feel of the inventory system.
 
 <h4>Find Half Square Index From Mouse Pointer Location</h4>
 {% highlight csharp linenos %}
@@ -320,7 +347,7 @@ private void HighlightCalc(int[] halfSquareIndex) {
 {% endhighlight %}
 *Note: indices are rounded to match Path of Exile's inventory UI behavior*
 
-<header id="AI" class="page-header"><h2><span class="number">4.5</span> AI</h2></header>
+<header id="AI" class="page-header"><h2><span class="number">4.4</span> AI</h2></header>
 Combat AI is scripted with a custom AI framework.
 
 A comprehensive AI framework was developed to allow combat NPCs to perform any action players can, while abiding to the rules of the 2D combat system. This can be challenging, since animations must be interrupted properly and mechanics like knockback can happen during any given action. Spin locks within coroutines are often used to solve these issues, however a proper state machine would probably be much more robust.

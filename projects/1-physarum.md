@@ -3,7 +3,7 @@ layout: page
 permalink: /physarum
 title: "PHYSARUM: Slime Mold Simulator"
 description: Interactive sandbox/visualizer of the real life organism <i>Physarum polycephalum</i>
-image: assets/images/physarum.jpg
+image: assets/images/physarum1.jpg
 page-banner: assets/images/physarum-page-banner.jpg
 nav-menu: true
 
@@ -39,7 +39,7 @@ date-text: April 2021 — August 2021
     <iframe src="https://www.youtube.com/embed/rW9ZsO6LYdk" title="YouTube video player" allowfullscreen></iframe>
 </div>
 </div>
-*Note: UI aesthetic design was not finalized in the trailer, see screenshots on <a href="https://store.steampowered.com/app/1667120?utm_source=portfolio" target="_blank" rel="noopener noreferrer">Steam</a> or below for the final UI look.*
+*Note: UI aesthetic design was not finalized in the trailer, see screenshots on <a href="https://store.steampowered.com/app/1667120?utm_source=portfolio" target="_blank" rel="noopener noreferrer">Steam</a> or media below for the final UI look.*
 
 A project that evolved into a fully featured product while learning how to make <a href="https://learn.microsoft.com/en-us/windows/win32/direct3d11/direct3d-11-advanced-stages-compute-shader" red="noopner noreferrer">compute shader</a>. I took the opportunity to release this small game publicly to also learn the process of marketing and shipping a game on Steam.
 
@@ -52,6 +52,15 @@ A project that evolved into a fully featured product while learning how to make 
 			<li>Extensive C# and Cg/HLSL programming</li>
 			<li><a href="#compute-shader" class="scrolly">Experience</a> dispatching GPU threads for compute shaders</li>
             <li>All shaders, game logic and UI implementations coded solo from scratch, without plug-ins or store assets (See <a href="#implementation" class="scrolly">5. Implementation</a> for examples)</li>
+        </ul>
+    </li>
+    <li>Simulation features include:
+            <ul class="highlights-list sub">
+			<li>Several <a href="#game-modes" class="scrolly">game modes</a> to create custom attractant maps to manipulate slime patterns</li>
+			<li>"<a href="#morph" class="scrolly">Morph</a>" feature that allows any user made slime species to "mutate" (interpolate) into each other</li>
+			<li><a href="#share" class="scrolly">Share</a> full simulations to others with PHYSARUM with the import/export feature</li> 
+			<li>Take a snapshot of the simulation anytime and export it as a PNG with transparency</li> 
+			<li>Undo/Redo functionality for all settings</li>
         </ul>
     </li>
     <li>UI/UX design
@@ -134,11 +143,11 @@ Upload image and/or video files to the game simply by copying them into a game f
 
 <h4>Webcam Mode</h4>
 Lastly, users can interact with the slime mold simulation with a live video feed via webcam.
-<div class="row">
-<div class="6u"><span class="image fit"><img src="{% link assets/images/phys-ui.jpg %}" alt="" /></span></div>
-<div class="6u"><span class="image fit"><img src="{% link assets/images/phys-limits.jpg %}" alt="" /></span></div>
-</div>
-<!-- TODO: Webcam gif -->
+
+<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
+  <source src="{{ site.baseurl }}/assets/videos/phys-webcam.mp4" type="video/mp4">
+  Webcam Video
+</video>
 
 <header id="morph" class="page-header"><h2><span class="number">3.3</span> Morph</h2></header>
 The morph feature allows users to linearly interpolate between two user defined simulation states. This effectively make slime molds look like they are mutating and evolving into each other in real time.
@@ -402,7 +411,7 @@ Text tooltips can be challenging because they must stay within a screen of any r
 
 I used a solution I developed in a previous Unity project: use a reference UI resolution of 1920 x 1080 and fit arbitrary resolutions by height. The Unity <a href="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/script-CanvasScaler.html" target="_blank" rel="noopener noreferrer">canvas scaler</a> component does this by altering the scale of all UI objects. Which is why the "lossy scale" (i.e. the global scale: this includes the canvas scaler multiplier AND the scale multiplier from my scalable UI feature) is used to get a coefficient representing the aspect ratio difference between the run time screen and the reference resolution (```line 13``` of code below). Using this method with the appropriate position anchors also allows the UI as a whole to work predictably with any screen size and aspect ratio.
 
-<h4>Function used to position text tooltips of arbitrary size:</h4>
+<h4>Function used to position text tooltips of arbitrary size within any screen size:</h4>
 {% highlight csharp linenos %}
 private IEnumerator CalculateTooltipPosition(RectTransform targetObjectRect, Vector2 customOffset) {
     LayoutRebuilder.ForceRebuildLayoutImmediate(tooltipRectTransform);
@@ -431,7 +440,7 @@ private IEnumerator CalculateTooltipPosition(RectTransform targetObjectRect, Vec
     // top edge of tooltip when it is above hovered object with padding
     float topTooltipY = scaledTargetObjectPosition.y + verticalAdjustOffset + tooltipHeight / 2f;
 
-    // left and right edge of tooltip where middle of tooltip is centreed on hoveredObject
+    // left and right edge of tooltip where middle of tooltip is centred on hoveredObject
     float leftTooltipX = scaledTargetObjectPosition.x - horizontalAdjustOffset;
     float rightTooltipX = scaledTargetObjectPosition.x + horizontalAdjustOffset;
 
@@ -528,3 +537,4 @@ fixed4 frag (v2f i) : SV_Target
 }
 {% endhighlight %}
 
+<!-- TODO: damage numbers algorithm -->

@@ -45,6 +45,16 @@
 			font-size: 3.25em;
 		}
 
+		#front-page-content {
+			p:first-child {
+				margin-bottom: 1em;
+			}
+
+			// p:last-child {
+			// 	margin-bottom: 4em;
+			// }
+		}
+
 		> .inner {
 			@include vendor('transition', (
 				'opacity 1.5s ease',

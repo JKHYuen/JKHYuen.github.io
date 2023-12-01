@@ -3,7 +3,7 @@ layout: page
 title: nothing_matters
 permalink: /nothing-matters
 description: My latest released project — An experimental point & click narrative game inspired by my indie game dev career
-image: assets/images/nothing_matters.png
+image: assets/images/nothing_matters.jpg
 page-banner: assets/images/nm-banner.jpg
 nav-menu: true
 
