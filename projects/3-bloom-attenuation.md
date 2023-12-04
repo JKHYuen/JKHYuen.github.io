@@ -25,7 +25,7 @@ date-text: November 2021 — December 2021
 
 <header id="overview" class="major page-header"><h1><span class="number">1.</span> Overview</h1></header>
 
-<video class="scroll-auto embedded-video" muted controls playsinline loop poster="{{ site.baseurl }}/assets/images/bloomAttenuation.png">
+<video class="embedded-video" muted controls playsinline loop poster="{{ site.baseurl }}/assets/images/bloomAttenuation.png">
   <source src="{{ site.baseurl }}/assets/videos/bloom-preview.mp4" type="video/mp4">
   bloom preview video
 </video>
@@ -60,11 +60,9 @@ See video below for a full project explanation.
 </ul>
 
 <header id="shader" class="major page-header"><h1><span class="number">3.</span> Implementation</h1></header>
-This project is done in Unity 2019, using the built-in render pipeline. To apply the depth bloom intensity multiplier, post processing bloom had to be implemented from scratch. This is done with a Cg/HLSL multi-pass bloom shader applied to the main camera's final image using Unity's ```OnRenderImage()``` function in C#.
+This project was done in Unity 2019, using the built-in render pipeline. To apply the depth bloom intensity multiplier, post processing bloom had to be implemented from scratch. This is done with a Cg/HLSL multi-pass bloom shader applied to the main camera's final image using Unity's ```OnRenderImage()``` function in C#.
 
 <h4>Snippet of Custom Bloom Shader</h4>
-Note: Bloom attenuation is applied in line 38, a ```max(...)``` function with a tweakable ```_MaxBloomReduction``` variable is added so very far objects can still have bloom if desired (e.g. the moon). See <a href="#video" class="scrolly">video</a> for full details.
-
 {% highlight hlsl linenos %}
 half3 Sample(float2 uv) {
 	return tex2D(_MainTex, uv).rgb;
@@ -169,6 +167,7 @@ SubShader{
 	}
 }
 {% endhighlight %}
+*Note: Bloom attenuation is applied in line 38, a ```max(...)``` function with a tweakable ```_MaxBloomReduction``` variable is added so very far objects can still have bloom if desired (e.g. the moon). See <a href="#video" class="scrolly">video</a> for full details.*
 
 <h4>Applying the Screen Shader in C#</h4>
 {% highlight csharp linenos %}
@@ -249,7 +248,7 @@ private void OnRenderImage(RenderTexture source, RenderTexture destination) {
 
 <header id="other-shaders" class="page-header"><h2><span class="number">3.1</span> Other Shaders</h2></header>
 <h4>Depth Camera Shader</h4>
-Since we are using the default forward renderer, a second camera is needed to render depth into a render texture. This texture is sampled in the bloom shader as the attenuation multiplier. Having a second camera also allows us to fine tune the attenuation distance scale (i.e. set the distance where attenuation is max, with zero bloom) since we can set the far plane of the depth camera independently from the main camera. This can be adjusted in real time with the "Distance Scale" parameter in the tech demo. 
+Since we are using the default forward renderer, a second camera is needed to render depth into a render texture. This texture is sampled in the bloom shader as the attenuation multiplier. Having a second camera also allows us to fine tune the attenuation distance scale (i.e. set the distance where attenuation is max, with zero bloom) by setting the far plane distance of the depth camera independently from the main camera. This can be adjusted in real time with the "Distance Scale" parameter in the tech demo. 
 {% highlight hlsl linenos %}
 half4 frag(v2f i) : SV_Target {
 	return 1 - Linear01Depth(tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(i.scrPos)));

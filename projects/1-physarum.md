@@ -3,7 +3,7 @@ layout: page
 permalink: /physarum
 title: "PHYSARUM: Slime Mold Simulator"
 description: Interactive sandbox/visualizer of the real life organism <i>Physarum polycephalum</i>
-image: assets/images/physarum.jpg
+image: assets/images/physarum1.jpg
 page-banner: assets/images/physarum-page-banner.jpg
 nav-menu: true
 
@@ -27,7 +27,7 @@ date-text: April 2021 — August 2021
         <li><a href="#learn" class="button small scrolly sub-section"><span class="number">3.5</span> Learn</a></li>
     <li><a href="#reception" class="button small scrolly"><span class="number">4.</span> Reception</a></li>
     <li><a href="#implementation" class="button small scrolly"><span class="number">5.</span> Implementation</a></li>
-        <li><a href="#compute-shaders" class="button small scrolly sub-section"><span class="number">5.1</span> Compute Shaders</a></li>
+        <li><a href="#compute-shader" class="button small scrolly sub-section"><span class="number">5.1</span> Compute Shader</a></li>
         <li><a href="#tooltip" class="button small scrolly sub-section"><span class="number">5.2</span> Tooltip Framework</a></li>
         <li><a href="#color-picker" class="button small scrolly sub-section"><span class="number">5.3</span> Color Picker</a></li>
 </ul>
@@ -39,19 +39,28 @@ date-text: April 2021 — August 2021
     <iframe src="https://www.youtube.com/embed/rW9ZsO6LYdk" title="YouTube video player" allowfullscreen></iframe>
 </div>
 </div>
-*Note: UI aesthetic design was not finalized in the trailer, see screenshots on <a href="https://store.steampowered.com/app/1667120?utm_source=portfolio" target="_blank" rel="noopener noreferrer">Steam</a> or below for the final UI look.*
+*Note: UI aesthetic design was not finalized in the trailer, see screenshots on <a href="https://store.steampowered.com/app/1667120?utm_source=portfolio" target="_blank" rel="noopener noreferrer">Steam</a> or media below for the final UI look.*
 
-A project that evolved into a fully featured product while learning how to make <a href="https://learn.microsoft.com/en-us/windows/win32/direct3d11/direct3d-11-advanced-stages-compute-shader" red="noopner noreferrer">compute shaders</a>. I took the opportunity to release this small game publicly to also learn the process of marketing and shipping a game on Steam.
+This project evolved into a fully featured product while learning how to make <a href="https://learn.microsoft.com/en-us/windows/win32/direct3d11/direct3d-11-advanced-stages-compute-shader" red="noopner noreferrer">compute shaders</a>. I took the opportunity to release this small game publicly to also learn the process of marketing and shipping a game on Steam.
 
-*PHYSARUM: Slime Mold Simulator* is an interactive sandbox visualizer of the real life organism *Physarum polycephalum*; all simulated on a single compute shader (simulation model of the slime mold is based on <a href="https://uwe-repository.worktribe.com/output/980579" target="_blank" rel="noopener noreferrer">this paper</a>). The GPU bound AI easily allows for millions of slime agents to be simulated in real time. Although not a traditional "game", *PHYSARUM: Slime Mold Simulator* is designed to encourage users to explore and discover in the sandbox environment for entertainment value. See trailer above for a full feature showcase.
+*PHYSARUM: Slime Mold Simulator* is an interactive sandbox visualizer of the real life organism *Physarum polycephalum*; all simulated on a single compute shader (simulation model of the slime mold is based on <a href="https://uwe-repository.worktribe.com/output/980579" target="_blank" rel="noopener noreferrer">this paper</a>). The GPU bound AI easily allows for millions of slime agents to be simulated in real time. Although not a traditional "game", *PHYSARUM* is designed to encourage users to explore and experiment in a sandbox environment for entertainment value. This is inspired by old browser sandbox games such as *<a href="https://en.wikipedia.org/wiki/Falling-sand_game" target="_blank" rel="noopener noreferrer">Falling Sand</a>*. See trailer above for a full feature showcase.
 
 <header id="highlights" class="major page-header"><h1><span class="number">2.</span> Highlights</h1></header>
 <ul class="highlights-list">
     <li>Simulation and UI implementation done in the Unity game engine, with the built-in renderer
         <ul class="highlights-list sub">
-			<li>C# and Cg/HLSL programming</li>
-			<li>Experience dispatching GPU processes with compute shaders</li>
+			<li>Extensive C# and Cg/HLSL programming</li>
+			<li><a href="#compute-shader" class="scrolly">Experience</a> dispatching GPU threads for compute shaders</li>
             <li>All shaders, game logic and UI implementations coded solo from scratch, without plug-ins or store assets (See <a href="#implementation" class="scrolly">5. Implementation</a> for examples)</li>
+        </ul>
+    </li>
+    <li>Simulation features include:
+            <ul class="highlights-list sub">
+			<li>Several <a href="#game-modes" class="scrolly">game modes</a> to create custom attractant maps to manipulate slime patterns</li>
+			<li>"<a href="#morph" class="scrolly">Morph</a>" feature that allows any user made slime species to "mutate" (interpolate) into each other</li>
+			<li><a href="#share" class="scrolly">Share</a> full simulations to others with PHYSARUM with the import/export feature</li> 
+			<li>Take a snapshot of the simulation anytime and export it as a PNG with transparency</li> 
+			<li>Undo/Redo functionality for all settings</li>
         </ul>
     </li>
     <li>UI/UX design
@@ -73,7 +82,7 @@ A project that evolved into a fully featured product while learning how to make 
 			<li>Live development twitch streams 5+ days a week</li>
 			<li><a href="https://youtu.be/rW9ZsO6LYdk" target="_blank" rel="noopener noreferrer">Full game trailer</a>, with <a href="https://youtu.be/sfBsXX5rWfY" target="_blank" rel="noopener noreferrer">several</a> <a href="https://youtu.be/fkV4ea-P8Ic" target="_blank" rel="noopener noreferrer">teasers</a>: storyboarding, scripting, and video editing</li>
 			<li>High engagement reddit posts: <a href="https://www.reddit.com/r/Simulated/comments/pekgaj/physarum_slime_mold_simulator_is_now_out_on_steam/?utm_source=share&utm_medium=web2x&context=3" target="_blank" rel="noopener noreferrer">(1)</a> <a href="https://www.reddit.com/r/proceduralgeneration/comments/oo6suw/recently_announced_physarum_slime_mold_simulator/?utm_source=share&utm_medium=web2x&context=3" target="_blank" rel="noopener noreferrer">(2)</a> <a href="https://www.reddit.com/r/proceduralgeneration/comments/pekbck/physarum_slime_mold_simulator_is_now_out_on_steam/?utm_source=share&utm_medium=web2x&context=3" target="_blank" rel="noopener noreferrer">(3)</a></li>
-			<li>Facebook ad, pro bono via a Facebook employee connection</li>
+			<li>Experience running a Facebook ad, pro bono via employee connection</li>
 			<li>A marketing post mortem <a href="https://youtu.be/EsHigYW1Qb8" target="_blank" rel="noopener noreferrer">video</a></li>
 		</ul>
     </li>
@@ -89,11 +98,9 @@ A project that evolved into a fully featured product while learning how to make 
 <header id="features" class="major page-header"><h1><span class="number">3.</span> Game Features</h1></header>
 > Watch the slime mold Physarum polycephalum grow in real time as you tweak and mutate its properties. Learn about the real life organism and discover different ways to manipulate its behavior. Encounter countless unique and organic looking patterns with a seemingly simple multi-agent chemoattractant system.
 
-Discovery is a core theme for this game, there are no intrusive tutorials (see <a href="#learn" class="scrolly">3.5 Learn</a> for more details). The simulation starts immediately after the main menu; users are implicitly motivated by curiosity to discover the possibilities of the game. 
+Discovery is a core theme for this game, there are no intrusive tutorials (see <a href="#learn" class="scrolly">3.5 Learn</a> for more details). The simulation starts immediately after the main menu; users are implicitly motivated by curiosity to discover the possibilities of the game. For example, the UI will appear when the cursor is placed in the left or right sections of the screen and clicking anywhere on the screen pushes or pulls (left and right click) the slimes. This intentional passive design along with a calming soundtrack invites users to explore at their leisure.
 
-For example, the UI will appear when the cursor is placed in the left or right sections of the screen and clicking anywhere on the screen pushes or pulls (left and right click) the slimes. These kinds of user actions do not need to be explicitly told to the user, this passive design along with a calming soundtrack invites users to explore at their leisure.
-
-<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
+<video class="embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/phys-randomize.mp4" type="video/mp4">
   Randomize Video
 </video>
@@ -101,7 +108,7 @@ For example, the UI will appear when the cursor is placed in the left or right s
 
 <header id="customize" class="page-header"><h2><span class="number">3.1</span> Fully Customizable Simulation</h2></header>
 
-Take full control of the simulation with a completely custom UI built in the Unity game engine. The game UI is compatible with any screen resolution/aspect ratio. Users can edit the simulation resolution/aspect ratio separately from the screen UI for a flexible simulation experience.  
+Users can take control of the simulation with a completely custom UI built in the Unity game engine. The game UI is compatible with any screen resolution/aspect ratio. Users can edit the simulation resolution/aspect ratio separately from the screen UI for a flexible simulation experience.  
 
 <div class="row">
 <div class="6u"><span class="image fit"><img src="{% link assets/images/phys-ui.jpg %}" alt="" /></span></div>
@@ -110,7 +117,7 @@ Take full control of the simulation with a completely custom UI built in the Uni
 
 The UI is designed to be as simplistic as possible to condense all the simulation parameters in an easy to read manner. Although possibly daunting at first, every UI element provide tooltips to emergently teach the user the purpose of every button and slider without being overwhelming.
 
-<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
+<video class="embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/phys-tooltip.mp4" type="video/mp4">
   Tooltip Video
 </video>
@@ -120,30 +127,30 @@ Media can be uploaded/created to direct the slime mold into any shape or pattern
 
 <h4>Draw Mode</h4>
 Draw environmental attractant using the mouse. Supports line drawing with arbitrary width and color and erasing.
-<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
+<video class="embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/phys-draw.mp4" type="video/mp4">
   Draw Video
 </video>
 
 <h4>Video/Image Mode</h4>
 Upload image and/or video files to the game simply by copying them into a game folder. Images and videos can be rotated. Videos can be loaded into the simulation via URL if it is a direct path to a video file. There is also a basic playback UI with video scrubbing, pause/play, and muting.
-<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
+<video class="embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/phys-image-video.mp4" type="video/mp4">
   Video/Image Video
 </video>
 
 <h4>Webcam Mode</h4>
 Lastly, users can interact with the slime mold simulation with a live video feed via webcam.
-<div class="row">
-<div class="6u"><span class="image fit"><img src="{% link assets/images/phys-ui.jpg %}" alt="" /></span></div>
-<div class="6u"><span class="image fit"><img src="{% link assets/images/phys-limits.jpg %}" alt="" /></span></div>
-</div>
-<!-- TODO: Webcam gif -->
+
+<video class="embedded-video mini" muted controls playsinline loop>
+  <source src="{{ site.baseurl }}/assets/videos/phys-webcam.mp4" type="video/mp4">
+  Webcam Video
+</video>
 
 <header id="morph" class="page-header"><h2><span class="number">3.3</span> Morph</h2></header>
 The morph feature allows users to linearly interpolate between two user defined simulation states. This effectively make slime molds look like they are mutating and evolving into each other in real time.
 
-<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
+<video class="embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/phys-morph.mp4" type="video/mp4">
   Morph Video
 </video>
@@ -151,7 +158,7 @@ The morph feature allows users to linearly interpolate between two user defined 
 <header id="share" class="page-header"><h2><span class="number">3.4</span> Share</h2></header>
 Simulation sessions can be serialized at anytime with an export feature. Every parameter in the simulation can be encoded into an easily sharable string. These strings can be imported into *PHYSARUM: Slime Mold Simulator* running on another computer to obtain an identical simulation (initial conditions only, individual particle positions are not encoded). A custom encoder was implemented to ensure that these sharable codes are both backward compatible with previous versions of the game and culture-insensitive.
 
-<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
+<video class="embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/phys-share.mp4" type="video/mp4">
   Share Video
 </video>
@@ -170,26 +177,239 @@ For users who are curious about the inner workings of the simulation or want to 
 </div>
 
 <header id="reception" class="major page-header"><h1><span class="number">4.</span> Reception</h1></header>
-*PHYSARUM: Slime Mold Simulator* has sold 450+ units, with 13 Steam reviews (84% positive) as of August 2023. Although a very niche and small game, reception has been very positive. Master's students in AI, biology and engineering as well as fashion and graphic designers have reached out with questions about the software and permission to use it in their works (explicit permission is not needed!).
+*PHYSARUM: Slime Mold Simulator* has sold 450+ units, with 13 Steam reviews (84% positive) as of August 2023. Although a very niche and small game, reception has been very positive. Master's students in AI, biology and engineering as well as fashion and graphic designers have reached out with questions about the software and permission to use it in their works (explicit permission is not needed).
 
 <header id="implementation" class="major page-header"><h1><span class="number">5.</span> Implementation</h1></header>
-See below for some code examples and implementation details from the project. The slime agent algorithm was taken from <a href="https://uwe-repository.worktribe.com/output/980579" target="_blank" rel="noopener noreferrer">this paper</a> by Dr. Jeff Jones and the compute shader implementation is based on <a href="https://youtu.be/X-iSQQgOd1A?si=7pIOyvsba7aWwk_6" target="_blank" rel="noopener noreferrer">Sebastian Lague's video</a> and <a href="https://catlikecoding.com/unity/tutorials/basics/compute-shaders/" target="_blank" rel="noopener noreferrer">Catlike Coding's tutorial</a>.
+The slime agent algorithm was taken from <a href="https://uwe-repository.worktribe.com/output/980579" target="_blank" rel="noopener noreferrer">this paper</a> by Dr. Jeff Jones and the compute shader implementation is based on <a href="https://youtu.be/X-iSQQgOd1A?si=7pIOyvsba7aWwk_6" target="_blank" rel="noopener noreferrer">Sebastian Lague's video</a> and <a href="https://catlikecoding.com/unity/tutorials/basics/compute-shaders/" target="_blank" rel="noopener noreferrer">Catlike Coding's tutorial</a>.
 
 <div class="box" markdown="1">
 *Development Anecdote:*\\
 An early alpha of *PHYSARUM: Slime Mold Simulator* was sent to Sebastian Lague and Dr. Jones before release. Both were very gracious and enjoyed the game. Dr. Jones was responsible for suggesting a periodic boundary feature and a scalable UI.
 </div>
 
-<header id="compute-shaders" class="page-header"><h2><span class="number">5.1</span> Compute Shaders</h2></header>
+<header id="compute-shader" class="page-header"><h2><span class="number">5.1</span> Compute Shader</h2></header>
+The entire simulation runs on a single compute shader that updates a texture for a quad that fits to the screen. The quad aspect ratio is calculated in runtime based on in-game settings and user screen resolution. A second identically scaled quad is rendered underneath to optionally show the "environment" (i.e. user images and videos). *Note: comments are added into original code below for clarity.*
+
+<h5>Simulation Data is split into 4 buffers:</h5>
+{% highlight hlsl linenos %}
+struct Agent {
+	float2 position;
+	float angle;
+};
+
+// Stores background color data (e.g. image, video, drawn pixels)
+RWTexture2D<float4> _environmentMap;
+// Stores slime attractant trails, used by slime sense algorithm and trail diffuse step (3x3 blur filter)
+RWTexture2D<float4> _trailMap; 
+ // Final pixel map for main simulation quad
+RWTexture2D<float4> _displayTex;
+ // Stores individual slime agent data
+RWStructuredBuffer<Agent> _agentBuffer;
+{% endhighlight %}
+
+<h5>The compute shader contains 4 main kernels:</h5>
+
+{% highlight scala linenos %}
+// diffuses chemoattractant trails and writes result to _trailMap and _displayTex
+#pragma kernel Fade			
+
+// for GPU accelerated filled circle drawing in "Draw Mode"
+#pragma kernel DrawCircleAtMousePos 
+
+// main slime agent behavior algorithm, reads and writes to _trailMap
+#pragma kernel SlimeAgentCalc16		
+#pragma kernel SlimeAgentCalc32		
+#pragma kernel SlimeAgentCalc64		
+
+// reads _agentBuffer to color all pixel locations with slime agents in _displayTex (overrides Fade kernel result)
+#pragma kernel DrawAgents16		
+#pragma kernel DrawAgents32		
+#pragma kernel DrawAgents64	
+{% endhighlight %}
+*Note: 16, 32, and 64 suffixes refer to thread group versions (e.g. ```SlimeAgentCalc32``` has attribute ```[numthreads(32, 1, 1)]```)*
+
+Buffers and kernels are separated more than needed to encourage modularity in the implementation, and to allow the user to turn different color maps on and off during runtime. The simulation also features customizable thread group sizes (CPU dispatcher will adjust thread group parameters accordingly). Through light research, single dimension 32 and 64 thread groups seem to be recommended for most hardware, but I found that group size 8 worked best for my system at the time, so it is included as well. I also found that 2 dimensional thread groups did not help with performance through brief testing, so it is not an option in the simulation.
+
+<h5>Main slime agent movement behavior algorithm:</h5>
+{% highlight hlsl linenos %}
+void SlimeAgentCalcBase(uint id) {
+	if (id > (uint)_instanceAgentCount - 1) {
+		return;
+	}
+
+	int slimeIndex = id + _indexOffset;
+
+	// agent before movement update
+	Agent agent = _agentBuffer[slimeIndex];
+
+	float seededRandomValue = hash(17 + 31 * hash(agent.position.y + 53 * hash(agent.position.x + _time * 100000)) + 97 * hash(id + _time * 100000)) / 4294967295.0;
+
+	// MOVEMENT STEP
+	float sensoryStepSize = _slimeSpeed * _deltaTime;
+	float2 newPos = agent.position + sensoryStepSize * float2(cos(agent.angle), sin(agent.angle));
+
+	// Gravity
+	newPos += float2(_gravityX, _gravityY);
+
+	// Mouse attractant
+	float2 mousePos = float2(_mousePosX, _mousePosY);
+	float mousPosDistance = distance(newPos, float2(_mousePosX, _mousePosY));
+	newPos += _mouseAttractantToggle * normalize(mousePos - newPos) * clamp(_mouseAttractantStrength / (mousPosDistance * mousPosDistance), -5, 5);
+
+	// No periodic boundary, pick random direction and don't move if out of boundary
+	if (_periodicBoundaryToggle == 0) {
+		// if movement not succesful
+		if (newPos.x <= 0 || newPos.x >= _resX || newPos.y <= 0 || newPos.y >= _resY) {
+			// pick new random angle
+			_agentBuffer[slimeIndex].angle = seededRandomValue * 2.0 * PI;
+
+			// Don't move this agent
+			return;
+		}
+	}
+	// Periodic Boundary
+	else {
+		if (newPos.x <= 0) {
+			newPos.x = _resX - 1;
+		}
+		else if (newPos.x >= _resX) {
+			newPos.x = 1;
+		}
+
+		if (newPos.y <= 0) {
+			newPos.y = _resY - 1;
+		}
+		else if (newPos.y >= _resY) {
+			newPos.y = 1;
+		}
+	}
+
+	// Move
+	_agentBuffer[slimeIndex].position = newPos;
+
+	// Chemoattractant deposition
+	_trailMap[newPos] = _slimeColor * _slimeAttractantDeposition;
+
+	// SENSORY STEP (change angle)
+	float F = sense(_agentBuffer[slimeIndex], 0);
+	float FL = sense(_agentBuffer[slimeIndex], -_slimeSensorAngle);
+	float FR = sense(_agentBuffer[slimeIndex], _slimeSensorAngle);
+
+	// angle randomization
+	float randomizedValue = _slimeRotateRandomStrength * seededRandomValue;
+	float randomAngleStrength = (1 - _slimeRotateRandomToggle) + _slimeRotateRandomToggle * randomizedValue;
+	float randomizedAngle = _slimeRotateAngle * randomAngleStrength;
+
+	// stay in same direction
+	if (F > FL && F > FR) {
+		return;
+	}
+	// Rotate Randomly left or right
+	else if (F < FL && F < FR) {
+		if (seededRandomValue < 0.5) {
+			_agentBuffer[slimeIndex].angle += randomizedAngle;
+		}
+		else {
+			_agentBuffer[slimeIndex].angle -= randomizedAngle;
+		}
+	}
+	else if (FL < FR) {
+		_agentBuffer[slimeIndex].angle += randomizedAngle;
+	}
+	else if (FR < FL) {
+		_agentBuffer[slimeIndex].angle -= randomizedAngle;
+	}
+}
+{% endhighlight %}
+*Note: Algorithm is implemented mostly verbatim from <a href="https://uwe-repository.worktribe.com/output/980579" target="_blank" rel="noopener noreferrer">Dr. Jeff Jones' paper</a>, with additional features from my simulation (e.g. gravity, mouse forces, periodic boundary). Extensive branching is generally not recommended for a shader, but I left the branches to keep things readable. Theoretically, most of it should be optimized away by the compiler, but I did not test it and the performance is good enough.*
+
+I opted for multiplicative color mixing in ```line 57``` out of preference because I did not like the colors often mixing to white. However, I found that many implementations on the internet use additive color mixing, which achieves color effects my simulation is not capable of. I wanted to include a feature to pick the color mixing method, but ran out of time.
+
+<div class="box" markdown="1">
+*Development Anecdote:*\\
+Some effort was needed to make a "good enough" hash. In other words, one that will produce minimal noticeable patterning artifacts for large resolutions and slime agent counts. The ```hash(...)``` function used is just a random one <a href="https://www.cs.ubc.ca/~rbridson/docs/schechter-sca08-turbulence.pdf">found online</a>. I added the mess in ```line 11``` above to produce a random enough hash through experimentation. Without much experience making good hashes, I'm sure a much better implementation exists for this algorithm.
+</div>
+
+<h5>"sense(...)" function from above:</h5>
+{% highlight hlsl linenos %}
+float sense(Agent agent, float sensorAngleOffset) {
+	int sensorWidth = _slimeSensorWidth;
+
+	float sensorAngle = agent.angle + sensorAngleOffset;
+	float2 sensorPos = agent.position + _slimeSensorOffset * float2(cos(sensorAngle), sin(sensorAngle));
+
+	int sensorCentreX = (int)sensorPos.x;
+	int sensorCentreY = (int)sensorPos.y;
+
+	float sum = 0;
+	for (int offsetX = -sensorWidth; offsetX <= sensorWidth; offsetX++) {
+		for (int offsetY = -sensorWidth; offsetY <= sensorWidth; offsetY++) {
+			int sampleX = min(_resX - 1, max(0, sensorCentreX + offsetX));
+			int sampleY = min(_resY - 1, max(0, sensorCentreY + offsetY));
+            // simple dot product comparison of color to differentiate slimes
+			sum += dot(_slimeColor, _trailMap[int2(sampleX, sampleY)]);
+		}
+	}
+
+	// Environment sensing
+	sum += dot(_slimeColor, _environmentMap[int2(min(_resX - 1, max(0, sensorCentreX)), min(_resY - 1, max(0, sensorCentreY)))]) * _environmentStrength;
+
+	return sum;
+}
+{% endhighlight %}
+*Note: this is a refactored version of <a href="https://youtu.be/X-iSQQgOd1A?si=7pIOyvsba7aWwk_6" target="_blank" rel="noopener noreferrer">Sebastian Lague's algorithm</a>, with my addition in ```line 21``` to include "environmental" influences such as user uploaded images and videos*
+
+<h4>Draw Mode Algorithm</h4>
+The ```DrawCircleAtMousePos``` kernel is just a clever algorithm I <a href="https://stackoverflow.com/a/24453110" target="_blank" rel="noopener noreferrer">found online</a>. I initially attempted to write to the texture on the CPU side, but I quickly realized that it was way too slow without GPU acceleration.
+
+<h4>CPU Dispatcher</h4>
+CPU side code is largely uninteresting and longwinded. Below is an excerpt of code updating textures after all the user settings are loaded and slime positions/trails are calculated (happens every frame in ```Update()```).
+
+{% highlight csharp linenos %}
+private void LateUpdate() {
+    if (slimeTotalAgentCount <= 0 || isDisabled) {
+        return;
+    }
+
+    // draw agents
+    if (isDrawAgents) {
+        uint currentIndexOffset = 0;
+        foreach (SlimeSettings slimeSettings in SlimeManager.slimes) {
+            uint individualSlimeCount = isDynamicSlimeCountLoading ? slimeSettings.count : slimeSettings.currentCount;
+            if(individualSlimeCount == 0) {
+                continue;
+            }
+
+            computeShader.SetInt(instanceAgentCountID, (int)individualSlimeCount);
+            computeShader.SetInt(indexOffsetID, (int)currentIndexOffset);
+            computeShader.SetVector(slimeColorID, new Vector4(slimeSettings.r, slimeSettings.g, slimeSettings.b, 1));
+
+            computeShader.Dispatch(drawAgentKernel, Mathf.CeilToInt(individualSlimeCount / threadGroupSize), 1, 1);
+
+            currentIndexOffset += isDynamicSlimeCountLoading ? maxIndividualSlimeCount : slimeSettings.currentCount;
+        }
+    }
+
+    // Update environment textures
+    if (currentPlayMode == PlayMode.DRAW || currentPlayMode == PlayMode.IMAGE) return; 
+    if(currentPlayMode == PlayMode.WEBCAM && webCamTex != null) {
+        Graphics.Blit(webCamTex, environmentMap);
+    }
+    else if(currentPlayMode == PlayMode.VIDEO) {
+        Graphics.Blit(backgroundEnvironment, environmentMap);
+    }
+}
+{% endhighlight %}
+*Note: ```Lines 10 — 13``` allows for slimes to appear and disappear in real time as the user changes slime count, this normally requires the "Resimulation" button to be pressed. This feature can be toggled on and off in-game.*
+
 <!-- TODO: Show early sims, early compute shader stuff -->
-<!-- TODO: drawing + slimes -->
 
 <header id="tooltip" class="page-header"><h2><span class="number">5.2</span> Tooltip Framework</h2></header>
 Text tooltips can be challenging because they must stay within a screen of any resolution/aspect ratio, while having an arbitrary width and height to fit text content. Additionally, we must account for scale of the UI element we are creating the tooltip from, this is because the game features a scalable UI. 
 
-I used a solution I developed in a previous Unity project: use a reference UI resolution of 1920 x 1080 and fit arbitrary resolutions by height. The Unity <a href="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/script-CanvasScaler.html" target="_blank" rel="noopener noreferrer">canvas scaler</a> component does this by altering the scale of all UI objects. Which is why the "lossy scale" (i.e. the global scale: this includes the canvas scaler multiplier AND the scale multiplier from my scalable UI feature) is used to get a coefficient representing the aspect ratio difference between the run time screen and the reference resolution (```line 13``` of code below). Using this method with the appropriate position anchors also allows the UI as a whole to work predictably with any screen size and aspect ratio.
+I used a solution I developed in *<a href="{{ site.baseurl }}/last-secutor" target="_blank" rel="noopener noreferrer">Last Secutor</a>*: use a reference UI resolution of 1920 x 1080 and fit arbitrary resolutions by height. The Unity <a href="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/script-CanvasScaler.html" target="_blank" rel="noopener noreferrer">canvas scaler</a> component does this by altering the scale of all UI objects. Which is why the "lossy scale" (i.e. the global scale: this includes the canvas scaler multiplier AND the scale multiplier from my scalable UI feature) is used to get a coefficient representing the aspect ratio difference between the run time screen and the reference resolution (```line 13``` of code below). Using this method with the appropriate position anchors also allows the UI as a whole to work predictably with any screen size and aspect ratio.
 
-<h4>Function used to position text tooltips of arbitrary size:</h4>
+<h5>Function used to position text tooltips of arbitrary size within any screen size:</h5>
 {% highlight csharp linenos %}
 private IEnumerator CalculateTooltipPosition(RectTransform targetObjectRect, Vector2 customOffset) {
     LayoutRebuilder.ForceRebuildLayoutImmediate(tooltipRectTransform);
@@ -218,7 +438,7 @@ private IEnumerator CalculateTooltipPosition(RectTransform targetObjectRect, Vec
     // top edge of tooltip when it is above hovered object with padding
     float topTooltipY = scaledTargetObjectPosition.y + verticalAdjustOffset + tooltipHeight / 2f;
 
-    // left and right edge of tooltip where middle of tooltip is centreed on hoveredObject
+    // left and right edge of tooltip where middle of tooltip is centred on hoveredObject
     float leftTooltipX = scaledTargetObjectPosition.x - horizontalAdjustOffset;
     float rightTooltipX = scaledTargetObjectPosition.x + horizontalAdjustOffset;
 
@@ -249,21 +469,21 @@ private IEnumerator CalculateTooltipPosition(RectTransform targetObjectRect, Vec
 {% endhighlight %}
 
 <header class="page-header"><h3>Non-Text Tooltips</h3></header>
-Menus like the color picker and "randomize settings" menu have a similar placement requirement of fitting within any screen size, but I used more ad hoc solutions. This reduced the need to make a overly robust (i.e. buggy) solution when simpler solutions work fine for the scope of this project.
+Menus like the color picker and "randomize settings" menu have a similar placement requirement of fitting within any screen size. However, I used simpler ad hoc solutions by taking advantage of invariant properties of the UI design.
 
-<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
+<video class="embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/phys-other-tooltip.mp4" type="video/mp4">
   Non-text Tooltips Video
 </video>
 
-For example, it is an invariant in the UI design that the color picker menu will always show on the right side of the color picker buttons. By default, color picker menus are always placed with the same horizontal offset from the button, with the top of the button flush with the top of the menu. Therefore, we only need to check if the bottom of the color picker goes lower than the bottom of the screen and adjust accordingly since color picker buttons are never above the screen.
+For example, it is guaranteed in the UI design that the color picker menu will always show on the right side of the color picker buttons. By default, color picker menus are always placed with the same horizontal offset from the button, with the top of the button flush with the top of the menu. Therefore, we only need to check if the bottom of the color picker goes lower than the bottom of the screen and adjust accordingly since color picker buttons are never above the screen.
 
 <header id="color-picker" class="page-header"><h2><span class="number">5.3</span> Color Picker</h2></header>
 Many UI elements are custom solutions built from scratch in Unity. One of the more complex elements is the color picker. My interface uses HSL color representation for intuitive color picking. Saturation and lightness is represented by the horizontal and vertical (respectively) 2D texture coordinates in the main color picking square; hue can be chosen in a vertical gradient on the side. RGB sliders with input boxes can also be used as an alternative. When one color representation value (i.e. HSL or RGB) is changed, the other color representation values and UI elements are updated in real time. 
 
 The hue gradient and saturation/lightness square are rendered via uv coordinate interpolation and mouse coordinates are normalized, this means the color picker will work with any width and height without changing any code.
 
-<video class="scroll-auto embedded-video mini" muted controls playsinline loop>
+<video class="embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/phys-color-picker.mp4" type="video/mp4">
   Color Picker Video
 </video>
@@ -315,3 +535,4 @@ fixed4 frag (v2f i) : SV_Target
 }
 {% endhighlight %}
 
+<!-- TODO: damage numbers algorithm -->

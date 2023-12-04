@@ -48,15 +48,15 @@ Players can shoot, throw grenades, jump, climb walls, crouch, and dive. All acti
 <ul class="highlights-list">
     <li>Unique multiplayer time reversal combat
     <ul class="highlights-list sub">
-        <li>Inspired by <a href="https://youtu.be/4xj0KRqzo-0?si=C0E3o7mncO0CjlLk" target="_blank" rel="noopener noreferrer">Tenet</a>, started project after walking out of the movie theatre</li>
+        <li>Inspired by the movie <a href="https://youtu.be/4xj0KRqzo-0?si=C0E3o7mncO0CjlLk" target="_blank" rel="noopener noreferrer">Tenet</a></li>
         <li>Reversible player actions, audio, and visual effects</li>
         <li>Management of 3 independent timelines</li>
     </ul>
     </li>
-    <li>Rapid 6 day development for a playable proof of concept build
+    <li>Quick 6 day development for a playable proof of concept build
         <ul class="highlights-list sub">
-            <li>Some shader effects are modified from previous projects (mainly from <a href="{{ site.baseurl }}/last-secutor" target="_blank" rel="noopener noreferrer">Last Secutor</a>)</li>
-            <li><a href="#time-reversal" class="scrolly">Chronos</a> (framework) used to speed up development</li>
+            <li>Some shader effects are adapted from previous projects (mainly from <a href="{{ site.baseurl }}/last-secutor" target="_blank" rel="noopener noreferrer">Last Secutor</a>)</li>
+            <li>Plugin "<a href="https://ludiq.io/chronos/features" target="_blank" rel="noopener noreferrer">Chronos</a>" used to speed up development</li>
         </ul>
     </li>
     <li>Full local multiplayer <a href="#gameplay-loop" class="scrolly">gameplay loop</a>, with round logic and scoring</li>
@@ -73,7 +73,7 @@ Each player has two buttons to control time. Pressing ```Q``` (```LT``` for cont
 Players can't input controls other than resuming to normal time while reversing. Time reversing players can still be hurt and all reversing bullets and explosions still do damage. The amount of time left for a player to reverse is represented by a draining bar in the UI when they are reversing time.
 <!-- TODO: short video of time bar going down -->
 
-Since actions and positions are always being recorded, it is possible for the computer to run out of memory if a player never rewinds time (See <a href="#time-reversal" class="scrolly">4.1 Time Reversal</a> for more implementation details). Making time reversal automatically end when a player reaches the point where they last resumed to normal time (previous timeline cache is flushed) alleviates this problem completely for most rounds. This problem can also be solved by making a maximum amount of time the player can reverse (not implemented in proof of concept demo).
+Since actions and positions are always being recorded, it is possible for the computer to run out of memory if a player never rewinds time (See <a href="#time-reversal" class="scrolly">4.1 Time Reversal</a> for more implementation details). Making time reversal automatically end when a player reaches the point where they last resumed to normal time alleviates this problem completely for most rounds (previous timeline cache is flushed). This problem can also be solved by making a maximum amount of time the player can reverse (not implemented in proof of concept demo).
 
 
 <header id="gameplay-loop" class="page-header"><h2><span class="number">3.2</span> Gameplay Loop</h2></header>
@@ -82,11 +82,11 @@ The proof of concept demo has all the features for two local players to play com
 Once a player is dead with no revives, the opposing players get a point, and the next round starts when both players press ready. First to 3 points win the game. Player names (shown in score screen), number of points needed to win, and number of starting revives can all be tweaked in the main menu.
 
 <header id="implementation" class="major page-header"><h1><span class="number">4.</span> Implementation</h1></header>
-Below are a few code examples of how the time reversal effects are implemented. Since this was a proof of concept, code is not optimized and encapsulation was not prioritized.
+Below are a few code examples of how the time reversal effects are implemented. Since this was a proof of concept, optimization and code readability was not a priority.
 
 <!-- TODO: Assigning timelines -->
 <header id="time-reversal" class="page-header"><h2><span class="number">4.1</span> Time Reversal</h2></header>
-To save time, I used <a href="https://ludiq.io/chronos/features" target="_blank" rel="noopener noreferrer">Chronos</a> (a deprecated framework) to keep track of time events in individual timelines. Although it works great for this proof of concept, the implementation is relatively crude, with little to no space optimization (a non-trivial problem to solve unless you are <a href="https://www.youtube.com/watch?v=8dinUbg2h70" target="_blank" rel="noopener noreferrer">Jonathan Blow </a>). The plugin comes with accurate-enough position tracking, however other time reverse effects require additional code. 
+To save time, I used <a href="https://ludiq.io/chronos/features" target="_blank" rel="noopener noreferrer">Chronos</a> (a deprecated framework) to keep track of time events in individual timelines. Although it works great for this proof of concept, the implementation is relatively crude, with little to no space optimization (a non-trivial problem to solve unless you are <a href="https://www.youtube.com/watch?v=8dinUbg2h70" target="_blank" rel="noopener noreferrer">Jonathan Blow </a>). The plugin comes with decent position tracking out of the box. However, other time reversible effects such as explosion animations, health management, and particles required additional code. 
 
 Chronos allows for time events to be scheduled into timelines, a delegate is given for the forward passage of the event, and a different delegate for the backwards passage. For example, the following is the scheduling of events for a bullet impact on a wall using the ```Do(...)``` function from Chronos, with ```time``` as one of the player's timeline:
 

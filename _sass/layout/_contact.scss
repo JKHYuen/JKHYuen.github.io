@@ -7,20 +7,23 @@
 /* Contact */
 
 	#contact {
-		// border-bottom: solid 1px _palette(border);
 		overflow-x: hidden;
 
 		> .inner {
 			@include vendor('display', 'flex');
 			padding: 0 !important;
+			align-items: center;
+    		justify-content: center;
 
 			> * {
 				@include padding(4em, 3em);
-				width: 50%;
+				width: 33%;
 				z-index: 1;
 				
 				&:first-child {
-					border-right: solid 1px _palette(border);
+					div.contact-method {
+						float: right;
+					}
 				}
 			}
 
@@ -52,18 +55,40 @@
 
 		@include breakpoint(medium) {
 			> .inner {
-				display: block;
+				align-items: center;
+				justify-content: space-around;
 
-				> :nth-child(2n - 1) {
-					@include padding(4em, 0, (0, 0, 0, 0));
-					border-right: 0;
-					width: 100%;
-				}
+				> * {
+					width: 50%;
 
-				> :nth-child(2n) {
-					padding-left: 0;
-					width: 100%;
+					&:first-child {
+						div.contact-method {
+							float: none;
+						}
+					}
 				}
+				// display: block;
+
+				// > :nth-child(2n - 1) {
+				// 	@include padding(4em, 0, (0, 0, 0, 0));
+				// 	border-right: 0;
+				// 	margin: auto;
+				// 	width: 50%;
+
+				// 	div {
+				// 		margin: 0;
+				// 	}
+				// }
+
+				// > :nth-child(2n) {
+				// 	padding-left: 0;
+				// 	margin: auto;
+				// 	width: 33%;
+
+				// 	div {
+				// 		margin: 0;
+				// 	}
+				// }
 
 				> .split {
 					> * {
@@ -81,11 +106,23 @@
 				}
 			}
 		}
-
+		
 		@include breakpoint(small) {
 			> .inner {
-				> :nth-child(2n - 1) {
-					@include padding(3em, 0, (0, 0, 0, 0));
+				display: block;
+				> * {
+					width: 100%;
+
+					margin: auto;
+					@include padding(2em, 3em);
+				}
+			}
+		}
+
+		@include breakpoint(xsmall) {
+			> .inner {
+				> * {
+					width: 100%;
 				}
 			}
 		}

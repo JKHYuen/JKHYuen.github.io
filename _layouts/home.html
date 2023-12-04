@@ -14,19 +14,19 @@
 
     <!-- Banner -->
     <section id="banner" class="major">
-            <!-- add max-width here to override @mixin inner (different from page .inner) -->
-            <div class="inner" style="max-width: 65em !important;">
+        <!-- add max-width here to override @mixin inner (different from page .inner) -->
+        <div class="inner" style="max-width: 65em !important;">
             <header class="major">
                 <h1>{{ page.landing-title }}</h1>
             </header>
             <div class="content">
                 <p>{{ site.description }}</p>
                 <ul class="actions">
-                    <li><a href="#about-me" class="button icon fa-download scrolly">Resume</a></li>
-                    <!-- <li><a href="#project-grid" class="button next scrolly">Projects</a></li> -->
+                    <!-- <li><a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer" class="button icon fa-download scrolly">Resume (Coming Soon)</a></li> -->
+                    <li><a href="#about" class="button icon fa-download scrolly">Resume (Coming Soon)</a></li>
                 </ul>
             </div>
-            <p>{{ content }}</p>
+            <p><div id="front-page-content" style="font-size: 0.9em; text-align: justify;">{{ content }}</div></p>
         </div>
     </section>
 
