@@ -88,7 +88,9 @@ All variables that start with an underscore can be controlled in gameplay code. 
 </video>
 *Note: For a real project I would probably limit all shader variables in the inspector with sliders with normalized values.*
 
-Since the scene uses many elements with the same shader, the noise generation will noticeable synchronize and look unnatural. To alleviate this, I added the ```_UVShift``` variable in ```line 10``` so a random noise offset can be generated in gameplay code when the scene loads. A more elegant solution would be to generate a hash value based on object position within the shader. Lastly, a ```mask``` value is calculated in the shader based on UV to create an optional diagonal alpha mask (controlled by only one variable for convenience; not very flexible but good enough). This was done to make the angled dissolved UI bars on the top of the screen.
+Since the scene uses many elements with the same shader, the noise generation will noticeable synchronize and look unnatural. To alleviate this, I added the ```_UVShift``` variable in ```line 10``` so a random noise offset can be generated in gameplay code when the scene loads. A more elegant solution would be to generate a hash value based on object position within the shader.
+
+Lastly, a ```mask``` value is calculated in the shader based on UV to create an optional diagonal alpha mask (```line 7 — 8```). The angle of this mask is controlled by only one variable for convenience; not very flexible but it is good enough for the demo. This mask is used to make the angled dissolved UI bars on the top of the screen.
 
 <header id="alto" class="major page-header"><h1><span class="number">2.</span> Alto Clone</h1></header>
 <a href="https://github.com/JKHYuen/AltoCloneBuild" target="_blank" rel="noopener noreferrer" class="button icon fa-download">Download Playable Build</a>
@@ -118,12 +120,16 @@ In my implementation, the player object will still occasionally launch over smoo
 <header id="website" class="major page-header"><h1><span class="number">3.</span> This Website</h1></header>
 <div class="project-icon-info other-projects">
     <div>
+        <span class="icon fa-users"></span>
+        <span>Solo Project</span>
+    </div>
+    <div>
         <span class="icon fa-calendar-days"></span>
-        <span>August 2023</span>
+        <span>August 2023, Ongoing</span>
     </div>
 </div>
 My first website.\\
-**Web technologies used:** Jekyll, Liquid, Kramdown, Bundler, jQuery, SASS (in Ruby, Javascript, HTML, and CSS/SCSS).\\
+**Web technologies used:** Jekyll, Liquid, Kramdown, Bundler, jQuery, SASS (Ruby, Javascript, HTML, and CSS/SCSS).\\
 **Theme:** A heavily modified version of the <a href="https://html5up.net/forty" target="_blank" rel="noopener noreferrer">"Forty" theme by HTML5 UP</a>, adapted to Jekyll by <a href="https://github.com/andrewbanchich/forty-jekyll-theme" target="_blank" rel="noopener noreferrer">Andrew Banchich</a>.
 
 <header id="tutoring" class="major page-header"><h1><span class="number">4.</span> Twitch/Discord Programming Tutoring</h1></header>
@@ -133,6 +139,6 @@ My first website.\\
         <span>2020 — Present</span>
     </div>
 </div>
-I streamed the development of *<a href="{{ site.baseurl }}/last-secutor" target="_blank" rel="noopener noreferrer">Last Secutor</a>* full time (5+ streams a week) from 2020 - 2022 on Twitch. My streams primarily consists of C#/HLSL programming. I also developed almost the entirety of *<a href="{{ site.baseurl }}/physarum" target="_blank" rel="noopener noreferrer">Physarum</a>* live on stream. Other streams activities include shader experiments, game rendering/programming research, game design discussion, and C++ practice. I still do occasional programming streams currently, but much less often.
+I streamed the development of *<a href="{{ site.baseurl }}/last-secutor" target="_blank" rel="noopener noreferrer">Last Secutor</a>* full time (5+ streams a week) from 2020 - 2022 on Twitch. My streams primarily consisted of C#/HLSL programming. I also developed almost the entirety of *<a href="{{ site.baseurl }}/physarum" target="_blank" rel="noopener noreferrer">PHYSARUM</a>* live on stream. Other streams activities include shader experiments, game rendering/programming research, game design discussion, and C++ practice. I still do occasional programming streams currently, but much less often.
 
- Despite being a very small stream I always encourage aspiring game devs and programmers in chat to ask any programming questions they may have. This has lead to impromptu lessons on beginner-friendly fundamental programming topics such as memory management, value vs. reference types, classes vs. structs and hash functions. As well as frequent explanations on how my game code/shaders work and pros and cons of different implementations. I have tutored many viewers in game development/programming over the years and gained a small following on my Twitch and Discord channel, where I answer questions off stream and personally handle all bug reports for my released projects.
+ Despite being a very small stream I always encourage aspiring game devs and programmers in chat to ask any technical questions that they may have. This has lead to impromptu lessons on beginner-friendly fundamental programming topics such as memory management, value vs. reference types, classes vs. structs and hash functions. As well as frequent explanations on how my game code/shaders work and pros and cons of different implementations. I have tutored many viewers in game development and programming over the years and gained a small following on my Twitch and Discord channel, where I answer questions off stream and personally handle all bug reports for my released projects.

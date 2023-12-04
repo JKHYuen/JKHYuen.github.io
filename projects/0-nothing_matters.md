@@ -43,13 +43,13 @@ date-text: April 2022 — June 2023
 
 <b class="alert">NOTE: This game is best experienced with as little knowledge as possible (see store page). If you are interested in this project, I highly recommend playing through the game (available for <a href="https://store.steampowered.com/app/2260800?utm_source=portfolio" target="_blank"  rel="noopener noreferrer">free on Steam</a>, ~1.2 hours in length) before reading the full details below to get the intended experience.</b>
 
-"<i>nothing_matters</i>" is an experimental narrative game inspired by my personal experience as an indie developer. This game features three different sections with escalating complexity, each with distinct visual design and gameplay. The game is primarily a point & click adventure accompanied by minigames, and ending with a climactic FPS; a short experience designed to be played in one session (~1.2 hours, checkpoint saves available). Although not intended to be a horror game, *nothing_matters* features an unsettling and disturbing atmosphere based in realism.
+"<i>nothing_matters</i>" is an experimental narrative game inspired by my personal experience as an indie developer. It features three different sections with escalating complexity, each with distinct visual design and gameplay. The game is primarily a point & click adventure accompanied by minigames, that ends with a climactic FPS. It is a short experience designed to be played in one session (~1.2 hours, checkpoint saves available). Although not intended to be a horror game, *nothing_matters* features an unsettling and disturbing atmosphere based in realism.
 
 Many aspects of <i>nothing_matters</i> are kept abstract by design. Players are encouraged to make their own interpretations of the experience. However, for the sake of this portfolio page, this is what I had in mind before and during development:
 
-<blockquote style="margin: -1.5em 0 2em 0;">"<i>nothing_matters</i>" is a nihilistic juxtaposition of the games industry (in the perspective of both developers and players) and modern consumer capitalism. This concept is conveyed through satirical gameplay such as patronizing tutorials and overdesigned UI elements. The core theme of hyper production and consumerism is set in an exaggerated dystopian world to explore how/if art fits into a futuristic bureaucratic technocracy. I also wanted to highlight the mundanity of the creative process as it is often glorified as a strictly enjoyable and linear procedure.</blockquote>
+<blockquote style="margin: -1.5em 0 2em 0;">"<i>nothing_matters</i>" is a nihilistic juxtaposition of the games industry and modern consumer capitalism (in the perspective of both developers and players). This concept is conveyed through satirical gameplay such as patronizing tutorials and overdesigned UI elements. The core theme of hyper production and consumerism is set in an exaggerated dystopian world to explore how/if art fits into a futuristic bureaucratic technocracy. I also wanted to highlight the mundanity of the creative process as it is often glorified as a strictly enjoyable and linear procedure.</blockquote>
 
-My main goal for this project is to stylistically simulate the experience of being an artist, in hopes to resonate with both creative and non-creative audiences. **Ultimately, the game's message is intended to be positive; encouraging artists to keep creating despite inhibitive obstacles outside of their control.**
+My primary goal for this project is to stylistically simulate the experience of being an artist, in hopes to resonate with both creative and non-creative audiences. **Ultimately, the game's message is intended to be positive; encouraging artists to keep creating despite obstacles outside of their control.**
  
  <!-- TODO: add screenshots above to break paragraphs -->
  
@@ -57,11 +57,11 @@ My main goal for this project is to stylistically simulate the experience of bei
 <ul class="highlights-list">
     <li>Fully featured narrative game released on <a href="https://store.steampowered.com/app/2260800?utm_source=portfolio" target="_blank"  rel="noopener noreferrer">Steam</a>, developed completely solo on Unity (Built-in Renderer)
         <ul class="highlights-list sub">
-            <li>"Very Positive" <a href="#reception" class="scrolly">Steam reviews</a> (159 reviews, 86% positive) as of October 2023</li>
+            <li>"Very Positive" <a href="#reception" class="scrolly">Steam reviews</a> (173 reviews, 85% positive) as of November 2023</li>
             <li><a href="#end-game" class="scrolly">Steam achievements</a> implemented to guide players to all the game's hidden content (Using <a href="https://github.com/rlabrecque/Steamworks.NET" target="_blank"  rel="noopener noreferrer">Steamworks.NET</a>)</li>
             <li>Total of 40 USD spent to develop the game (all for 3D models in the FPS section)</li>
             <li>Communication with users to quickly fix bugs post release</li>
-            <li>Short game length, with a focus on detail</li>
+            <li>Short game length, with a focus on quality and detail</li>
             <li>All game systems and logic programmed in C# from scratch (no Unity plug-ins)</li>
         </ul>
     </li>
@@ -98,6 +98,7 @@ My main goal for this project is to stylistically simulate the experience of bei
             <li>Detailed functional OS UI (window management, draggable desktop icons, task bars, etc.)</li>
             <li>A more realistic and subtle writing style in contrast with Part I</li>
             <li>"<i>War Game</i>" minigame - a more complex version of Rock Paper Scissors</li>
+            <li>"Flip Flop" secret minigame - a simple physics game where the player must bounce a block for as long as possible </li>
             <li>Usable OS Apps for emergent story telling, each with it's own UI design</li>
             <li><a href="#ironic-design" class="scrolly">Ironically overdesigned</a> UI visuals to mimic modern tropes</li>
         </ul>
@@ -158,7 +159,7 @@ A simple puzzle/guessing game using a real time implementation of <a href="https
 
 <div class="box" markdown="1">
 *Development Anecdote:*\\
-A classic and embarrassing case of premature optimization: This minigame was implemented early in the game's development. So with seemingly abundant time and excitement of a new project, I decided to use this opportunity to learn multi-threading in Unity; using the novel Unity <a href="https://docs.unity3d.com/Manual/JobSystemOverview.html" target="_blank" rel="noopener noreferrer">Jobs system</a> and <a href="https://docs.unity3d.com/Packages/com.unity.burst@1.2/manual/index.html" target="_blank" rel="noopener noreferrer">Burst compiler</a>. This was encouraged by slowdowns happening with bigger Game of Life simulation grids.
+A classic and embarrassing case of premature optimization: This minigame was implemented early in the game's development. So with the seemingly abundant time and excitement of a new project, I decided to use this opportunity to learn multi-threading in Unity; using the novel Unity <a href="https://docs.unity3d.com/Manual/JobSystemOverview.html" target="_blank" rel="noopener noreferrer">Jobs system</a> and <a href="https://docs.unity3d.com/Packages/com.unity.burst@1.2/manual/index.html" target="_blank" rel="noopener noreferrer">Burst compiler</a>. This was encouraged by slowdowns happening with bigger Game of Life simulation grids.
 
 A day of converting everything into value types later, the multi-threaded simulation seems to be working. However, no performance difference. Turns out the slowdown was primarily caused by redraws in the UI system whenever a grid element is updated (the entirety of Part I and II is implemented in the UI system to easily accommodate for all screen sizes). I ended up simply using slightly smaller grid sizes in the later parts of this section. Lesson once again learned.
 </div>
@@ -171,7 +172,7 @@ A detailed clone of the original *Pong*. Evolves into a pseudo multiplayer game 
 
 <header id="part-II" class="page-header"><h2><span class="number">3.2</span> Part II: MalusOS</h2></header>
 <!-- TODO: add video "FLIP FLOP", show apps, writing examples, acronym lore list-->
-Part II is the largest part of the game, MalusOS is an elaborate implementation of an in-universe OS. Explore a clean, user friendly UI as a dark narrative unfolds in the background. All while countless app and news notifications fight for the user's attention.
+Part II is the largest part of the game, MalusOS is an elaborate implementation of an in-universe OS. Explore a clean, user friendly UI as a dark narrative unfolds in the background. All while countless app and news notifications fight for your attention.
 
 <video class="scroll-auto embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/nm-os.mp4" type="video/mp4">
@@ -182,7 +183,7 @@ Part II is the largest part of the game, MalusOS is an elaborate implementation 
   <source src="{{ site.baseurl }}/assets/videos/nm-flipflop.mp4" type="video/mp4">
   Flip Flop Video
 </video>
-*Spoiler: Secret Optional Mini Game*
+*Spoiler: Secret Optional Mini Game "Flip Flop"*
 
 <h4 id="ironic-design">Ironically Designed</h4> 
 Although very polished, the friendly UI/UX design in MalusOS is intentionally overdesigned to mimic contemporary UI design tropes. Pointless, drawn out UI animations and text fades are frivolously added to symbolize the shallow "form over function" philosophy of this game's universe.
@@ -195,7 +196,7 @@ Although very polished, the friendly UI/UX design in MalusOS is intentionally ov
 
 <div class="box" markdown="1">
 *Development Anecdote:*\\
-Many of the ridiculous news headlines were taken directly from real life, with slight changes to fit the game's world and avoid copyright issues. An attempt was also made to emulate the sensationalized writing style from real news sources in the articles; such as calling celebrities by their most famous roles/affiliations rather than using their names and exploiting tragedy to push corporate agendas. This is in contrast with the more technical and grounded writing of the "Wax" documents, which gives an anthological look into the inner workings of the dystopian world.
+Many of the ridiculous news headlines were taken directly from real life, with slight changes to fit the game's world and avoid copyright issues. An attempt was also made to emulate the sensationalized writing style from real news sources in the articles; such as calling celebrities by their most famous roles/affiliations rather than using their names and exploiting tragedy to push biased agendas. This is in contrast with the more technical and grounded writing of the "Wax" documents, which gives an anthological look into the inner workings of the dystopian world.
 </div>
 
 <header id="part-III" class="page-header"><h2><span class="number">3.3</span> Part III: "9-5" FPS</h2></header>
@@ -224,7 +225,7 @@ Although this game is designed to be completed in one sitting, bonus features an
 </video>
 *Note: Only "start game" and "quit" buttons are available on a new save file*
 
-I decided early in development that this game would be a good opportunity for me to learn how to implement Steam achievements, as well as using it as a game mechanic to guide and encourage users to find all the secret/bonus content I spent time making. This worked very well as players are seen discussing achievement hunting in the game's Discord channel and in the Steam discussion page. This effect is reinforced by an <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2998648664" target="_blank" rel="noopener noreferrer">achievement guide</a> that a player spent time making.
+I decided early in development that this game would be a good opportunity for me to learn how to implement Steam achievements (I ran out of time in my previous <a href="{{ site.baseurl }}/physarum" target="_blank" rel="noopener noreferrer">Steam release</a>), as well as using it as a game mechanic to guide and encourage users to find all the secret/bonus content I spent time making. This worked very well as players are seen discussing achievement hunting in the game's Discord channel and in the Steam discussion page. This effect is reinforced by an <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2998648664" target="_blank" rel="noopener noreferrer">achievement guide</a> that a player spent time making.
 
 <img class="image center" style="width:50%" src="{% link assets/images/nm-achievements.jpg %}" alt="Achievements"/>
 *Global achievement distribution.*
@@ -246,7 +247,7 @@ So I reverted to the broken iPhone setting and "baked in" the artifacts by impor
 </div>
 
 <header id="reception" class="major page-header"><h1><span class="number">4.</span> Reception</h1></header>
-I did not expect this project to appeal to the general public, especially with minimal marketing. Many of the game's features were developed for my own interest and entertainment, and I debated for a long time whether it was worth releasing at all. Thankfully, this became my most successful project, with "Very Positive" <a href="https://steamcommunity.com/app/2260800/reviews/?p=1&browsefilter=toprated&filterLanguage=all" target="_blank" rel="noopener noreferrer">Steam reviews</a> (159 reviews, 86% positive as of October 2023) and various playthroughs posted online.   
+I did not expect this project to appeal to the general public, especially with minimal marketing. Many of the game's features were developed for my own interest and entertainment, and I debated for a long time whether it was worth releasing at all. Thankfully, this became my most successful project, with "Very Positive" <a href="https://steamcommunity.com/app/2260800/reviews/?p=1&browsefilter=toprated&filterLanguage=all" target="_blank" rel="noopener noreferrer">Steam reviews</a> (173 reviews, 85% positive as of November 2023) and various playthroughs posted online.   
 
 <img class="image center" src="{% link assets/images/nm-reviews.jpg %}" alt="Reviews Screenshot"/>
 *Steam Review Breakdown.*
@@ -283,7 +284,7 @@ One of the main features of <i>nothing_matters</i> is that it contains a series 
 
 <header id="shaders" class="page-header"><h2><span class="number">5.1</span> Shader Effects</h2></header>
 <h4>Custom Post Processing</h4>
-Considerable effort was put into technical art to create the game's atmosphere. The screen shader effects in Part I was the first thing I worked on in this game. I wanted to make my own version of the retro/scanline effect seen in <a href="https://store.steampowered.com/app/405640/Pony_Island/" target="_blank" rel="noopener noreferrer">many</a> <a href="https://store.steampowered.com/app/322500/SUPERHOT/" target="_blank" rel="noopener noreferrer">indie</a> <a href="https://store.steampowered.com/app/2088570/Tiny_Rogues/" target="_blank" rel="noopener noreferrer">games</a>. The goal was to create a familiar effect that feels slightly different, to fit the alternate reality of the story (i.e. visual artifacts that are not reflective of real life retro technology). 
+Considerable effort was put into technical art to create the game's atmosphere. The screen shader effects in Part I was the first thing I worked on in this game. I wanted to make my own version of the retro/scanline effect, often seen in <a href="https://store.steampowered.com/app/405640/Pony_Island/" target="_blank" rel="noopener noreferrer">many</a> <a href="https://store.steampowered.com/app/322500/SUPERHOT/" target="_blank" rel="noopener noreferrer">indie</a> <a href="https://store.steampowered.com/app/2088570/Tiny_Rogues/" target="_blank" rel="noopener noreferrer">games</a>. The goal was to create a familiar effect that feels slightly different, to fit the alternate reality of the story (i.e. visual artifacts that are not reflective of real life retro technology). 
 
 <video class="scroll-auto embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/nm-post.mp4" type="video/mp4">
@@ -291,7 +292,7 @@ Considerable effort was put into technical art to create the game's atmosphere. 
 </video>
 *Custom post processing shader parameters.*
 
-Instead of realistic discrete scanlines, I used the ```frac()``` function to create a series of small vertical gradients based on screen UV, which are then offset over time to create an animated scanline effect. Two sets of these vertical gradients are combined (multiplied) with differing UV scale and scroll speed to add a phase shifting effect to the vertical movement. This technique was developed for a hologram shader in my other game — *<a href="{{ site.baseurl }}/last-secutor" target="_blank" rel="noopener noreferrer">Last Secutor</a>*. To make the scanlines visible, gradients are tinted and the pre-tinted values are used to distort the screen image.
+Instead of realistic discrete scanlines, I used the ```frac()``` function to create a series of small vertical gradients based on screen UV, which are then offset over time to create an animated scanline effect. Two sets of these vertical gradients are combined (multiplied) with differing UV scales and scroll speeds to add a phase shifting effect to the vertical movement. This technique was developed for a hologram shader in my other game — *<a href="{{ site.baseurl }}/last-secutor" target="_blank" rel="noopener noreferrer">Last Secutor</a>*. To make the scanlines visible, gradients are tinted and the pre-tinted values are used to distort the screen image.
 
 <video class="scroll-auto embedded-video mini" muted controls playsinline loop>
   <source src="{{ site.baseurl }}/assets/videos/nm-bloom.mp4" type="video/mp4">
@@ -299,7 +300,12 @@ Instead of realistic discrete scanlines, I used the ```frac()``` function to cre
 </video>
 *Stock bloom with luminance-based visibility for custom shader effect.*
 
-I <a href="#luminance" class="scrolly">later discovered</a> I needed to make the scanlines more prominent. So I multiplied the scanline values with a luminance value calculated from the screen image (using <a href="https://en.wikipedia.org/wiki/Relative_luminance" target="_blank" rel="noopener noreferrer">relative luminance</a>, ```line 24``` below). This effectively makes the scanlines more prominent near any on-screen elements (Part I is built entirely in Unity's UI, with no background elements). I applied my custom post processing by applying my screen shader in Unity's ```OnRenderImage()``` function (I learned to do this in my *<a href="{{ site.baseurl }}/bloom-attenuation" target="_blank" rel="noopener noreferrer">Bloom Attenuation</a> project*). This happens to render after Unity's built in post processing stack, which means the stock bloom I used effects the luminance value calculated. In other words, the more objects glow from bloom, the more it "illuminates" the surrounding scanlines. This visually appealing interaction was admittedly found by accident, but I took advantage of it with HDR materials throughout Part I. 
+I <a href="#luminance" class="scrolly">later discovered</a> that I needed to make the scanlines more prominent. So I multiplied the scanline values with a luminance value calculated from the screen image (using <a href="https://en.wikipedia.org/wiki/Relative_luminance" target="_blank" rel="noopener noreferrer">relative luminance</a>, ```line 24``` below). This effectively makes the scanlines more prominent near any on-screen elements (Part I is built entirely in Unity's UI, with no background elements). I applied my custom post processing by applying my screen shader in Unity's ```OnRenderImage()``` function (I learned to do this in my *<a href="{{ site.baseurl }}/bloom-attenuation" target="_blank" rel="noopener noreferrer">Bloom Attenuation</a> project*). This happens to render after Unity's built in post processing stack, which means the stock bloom I used effects the luminance value calculated. In other words, the more objects glow from bloom, the more it "illuminates" the surrounding scanlines. This visually appealing interaction was admittedly found by accident, but I took advantage of it with HDR materials throughout Part I. 
+
+<div class="box" id="luminance" markdown="1">
+*Development Anecdote:*\\
+The need for the luminance-based scanline visibility was discovered by accident. I initially developed and previewed the screen shader on one of my two monitors. After tweaking it to exactly what I wanted, I realized the bloomed elements on the screen did not have the same "illuminating" effect to the scanlines on my other monitor. This was caused by the differing color ranges and tendency to color band, which forced me to come up with the luminance solution to keep the effect consistent on all monitors.
+</div>
 
 The custom chromatic aberration implementation is pretty standard, other than being amplified (multiplied) by scanline values. I wanted to experiment with the CMYK color space to make it a little different, but ultimately ran out of time. To finish the aesthetic, I added some large colored grain from the Unity post processing stack. Conveniently, the grain visibility is also proportional to the amount of bloom, like the scanlines.
 
@@ -335,11 +341,6 @@ fixed4 frag (v2f i) : SV_Target {
 }
 {% endhighlight %}
 *Note: All variables that start with an underscore (except ```_Time```) are modulated externally in C# code during gameplay.*
-
-<div class="box" id="luminance" markdown="1">
-*An Illuminating Discovery:*\\
-The need for the luminance-based scanline visibility was discovered by accident. I initially developed and previewed the screen shader on one of my two monitors. After tweaking it to exactly what I wanted, I realized the bloomed elements on the screen did not have the same "illuminating" effect to the scanlines on my other monitor. This was caused by the differing color ranges and tendency to color band, which forced me to come up with the luminance solution to keep the effect consistent on all monitors.
-</div>
 
 <h4>Sprite/Text Glitch Effect</h4>
 The iconic glitch effect used prominently in Part I and marketing material is a shader based on <a href="https://gist.github.com/KeyMaster-/363d3d5c35b956dfacdd" target="_blank" rel="noopener noreferrer">this one found online</a>. It works by cleverly splitting up the UV space into horizontal strips, which are then displaced in random intervals. I was happy with the results and customizable parameters, however it was designed to work with 2D sprites and I needed it for text. The original used values in the model view matrix to desync randomized effects, but I could not get this to work with Unity's font texture atlas. So I had to alter the implementation, with a few additions.
@@ -446,7 +447,7 @@ As mentioned before, I took the opportunity to create a FPS for the first time i
 One of the most apparent issues to solve in a FPS is making sure the 3D first person models (hand/gun) are rendered properly. In other words, perspective looks correct and the model won't clip through close geometry. The standard solution of rendering the first person models in a separate camera and lowering the near plane to a reasonable value worked, quick and easy. However, while directional (global) light shadows work with this method, other dynamic shadow sources do not. I experimented extensively with a shader solution to render everything in one camera, but my attempts were too buggy and complex (e.g. projection matrix manipulation for FOV changes). I settled with the former solution.
 
 <h4>Muzzle Flash</h4>
-Muzzle flash is implemented as two 2D sprites in front of the first person gun model. One with bloom for glow effect, and a second larger one behind it to retain the detail of the flash texture. There is a 50% chance every shot that the muzzle flash stays on screen for one less frame, effectively making it sometimes unnoticeable (particularly apparent in lower framerates, effect can be seen in <a href="#fps-video" class="scrolly">video above</a>). This was done to mimic the <a href="https://en.wikipedia.org/wiki/Rolling_shutter" target="_blank" rel="noopener noreferrer">rolling shutter</a> effect I observed from real life gunfire footage. I assume multiplayer games would require a basic 3D model to see muzzle flashes, but my method worked well for the limited use case of this project (the full gunfire effect has additional effects like occasional sparks and world space smoke). 
+Muzzle flash is implemented as two 2D sprites in front of the first person gun model. One with bloom for glow effect, and a second larger one behind it to retain the detail of the flash texture. There is a 50% chance every shot that the muzzle flash stays on screen for one less frame, effectively making it sometimes unnoticeable (particularly apparent in lower framerates, effect can be seen in <a href="#fps-video" class="scrolly">video above</a>). This was done to mimic the <a href="https://en.wikipedia.org/wiki/Rolling_shutter" target="_blank" rel="noopener noreferrer">rolling shutter</a> effect observed from real life gunfire footage. I assume multiplayer games would require a basic 3D model to see muzzle flashes, but my method worked well for the purposes of this project (the full gunfire effect has additional effects like occasional sparks and world space smoke). 
 
 <img class="image center" style="width: 50%" src="{% link assets/images/nm-muzzle-flash.jpg %}" alt="Panels Screenshot"/>
 *Two sprite muzzle flash effect.*
@@ -454,7 +455,7 @@ Muzzle flash is implemented as two 2D sprites in front of the first person gun m
 <h4>Bullet/Tracer Visuals</h4>
 A much more time consuming visual issue to resolve was bullet tracer visuals. The core issue is that in almost all modern FPS's, bullets are shot from the middle of the screen from the world position of the camera. If the projectile is realistically shot from the end of the gun barrel, bullets will often not hit where the crosshair is aiming (especially true for sheer angles and shooting right in front of a wall). However, if the bullet visuals do not come from the gun barrel, it will not look right (i.e. tracers come straight from the centre of the viewport). 
 
-After a few days of <a href="#silly-solutions" class="scrolly">silly solutions</a>, I came to the conclusion that the answer is the use of **two** projectiles. An invisible one for collision detection — coming from the centre of the viewport and a second one coming out of the tip of the gun barrel towards a far away position straight ahead for the trail effect. The visual projectile will disappear as soon as the collision projectile hits something (<a href="#bullet-physics" class="scrolly">see details</a>). Although there is a technical difference in trajectory, it is not noticeable at all in gameplay. The biggest discrepancy is when players are shooting close objects, but since the bullet moves and gets destroyed fast, it looks correct visually. This cements a concept I learned early in game development — that game visuals often only need to be *close enough*.
+After a few days of <a href="#silly-solutions" class="scrolly">silly solutions</a>, I came to the conclusion that the answer is the use of **two** projectiles. An invisible one for collision detection — coming from the centre of the viewport and a second one coming out of the tip of the gun barrel towards a far away position straight ahead for the trail effect. The visual projectile will disappear as soon as the collision projectile hits something (<a href="#bullet-physics" class="scrolly">see details</a>). Although there is a practical difference in trajectory, it is not noticeable at all in gameplay. The biggest discrepancy is when players are shooting close objects, but since the bullet moves and gets destroyed fast, it looks correct visually. This cements a concept I learned early in game development — that game visuals often only need to be *close enough*.
 
 <img class="image center" style="width: 75%" src="{% link assets/images/nm-bullet-trail.jpg %}" alt="Panels Screenshot"/>
 <em style="width: 100%;">Visual projectile with smoke effects.</em>
