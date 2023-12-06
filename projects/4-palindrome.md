@@ -4,8 +4,7 @@ title: Palindrome
 permalink: /palindrome
 description: 2D arena shooter proof of concept demo inspired by Christopher Nolan's <i>Tenet</i>
 image: assets/images/palindrome.jpg
-# TODO: get a different page-banner
-page-banner: assets/images/palindrome.jpg
+page-banner: assets/images/palindrome-banner.jpg
 nav-menu: true
 
 button-url: https://github.com/JKHYuen/PalindromeBuild

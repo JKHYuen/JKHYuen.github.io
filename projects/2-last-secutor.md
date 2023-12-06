@@ -558,14 +558,14 @@ protected UserController FindClosestEntity(int originIndex, int range, int teamI
 {% endhighlight %}
 
 <h4>AI Behavior Scripting</h4>
-*Technical Note: I use the term "script" very loosely here. Although the following code is compiled rather than interpreted, the term "scripting" here just implies "high level code using my AI framework". Unity also refers to all ```MonoBehaviour```s as scripts.*
+*Technical Note: I use the term "script" loosely here. Although the following code is compiled rather than interpreted, the term "scripting" here just implies "high level code using my AI framework". Unity also refers to all ```MonoBehaviour```s as scripts.*
 
-Using this framework, individual AI behavior can be scripted conveniently by inheriting the ```AI``` base class (all code samples above are from this ```AI``` class). These AI scripts generally just consists of a series of game state condition checks (e.g. character health values) to pick the next skill to perform. This method is inspired by <a href="https://dragonage.fandom.com/wiki/Tactics_(Origins)" target="_blank" rel="noopener noreferrer"><i>Dragon Age: Origin</i>'s tactics system</a>, since I remembered the believable AI behavior the simplistic system could achieve. 
+Using this framework, individual AI behavior can be scripted conveniently by inheriting the ```AI``` base class (all code samples above are from this ```AI``` class). These AI scripts generally just consists of a series of game state condition checks (e.g. character health values) to pick the next skill to perform. This method is inspired by the <a href="https://dragonage.fandom.com/wiki/Tactics_(Origins)" target="_blank" rel="noopener noreferrer"><i>Dragon Age: Origin</i> "tactics" mechanic</a>, because of the believable AI behavior that was possible using that simplistic system. 
 
-<h5>Finite State Machines (FSM)</h5>
+<h4>Finite State Machines (FSM)</h4>
 I opted to not use a FSM solution at the time (~2019) because while researching and experimenting, I decided FSMs may be overkill for the limitations of my game's combat. In practice, I also preferred my lower level approach since it was easier to iterate new ideas quickly and see what was going on at a glance of the code. Admittedly, I don't have too much experience with FSMs, but it seemed harder to see what's going on without seeing a visual graph of all the AI states — that could possibly span multiple classes. I didn't end up implementing a full FSM workflow, but my <a href="#so-video" class="scrolly">scriptable object based graph visualizer (see timestamp 17:22)</a> could have alleviated some of these concerns. This is something I intend to revisit in future projects because the high level abstraction can definitely build complex behaviors much more conveniently than my implementation. I would wager that the aforementioned *Dragon Age: Origins* "tactics" system was implemented by integrating it into a larger FSM AI framework.
 
-<h5>New and Legacy AI System</h5>
+<h4>New and Legacy AI System</h4>
 Unfortunately, showing the working AI behavior scripts will be a little messy since it was still under development. The <a href="#ai-combat" class="scrolly">current AI action system</a> was a relatively late addition to this game's design so I had to convert some older working code. The old system used character resources (stamina, mana, etc.) just as the player would. I eventually decided that this made it too hard for the player to predict and react to the AI behavior, so I opted for the current more streamlined version. This conversion was never completely finished, but both workflows work in the latest build (the tech demo uses both types of AIs). For completeness I will show an example of both.
 
 <h5>Legacy AI that summons wall obstacles  in (featured in <a href="#ai-vs-ai-video" class="scrolly" style="border-bottom: dotted 1px;">AI vs AI video</a>)</h5>
@@ -721,7 +721,7 @@ public IEnumerator LightningCombo() {
 {% endhighlight %}
 *Note: "TriggerSkill" function signature: ```IEnumerator TriggerSkill(Skill skill, int cellOffset = 0, bool targetSelf = false, bool targetIntermediateObject = false)```*
 
-<h5>Current AI System</h5>
+<h4>Current AI System</h4>
 Some of the boilerplate parts of the algorithm is extracted to the base class for the updated system. New AI scripts only determine the next skill to use and potential bonus action. Repositioning can still be done by choosing a movement skill.
 
 <h5>New base StartAICoroutine() function:</h5>
@@ -795,7 +795,7 @@ protected virtual IEnumerator StartAICoroutine() {
 }
 {% endhighlight %}
 
-<h5>AI script of a basic melee NPC using new system:</h5>
+<h5 markdown="1">AI script of a basic melee NPC using new system (used in ```line 10``` above):</h5>
 {% highlight csharp linenos %}
 protected override ChosenSkillData ChooseNextSkillInAILoop() {
     Skill chosenSkill = default;
