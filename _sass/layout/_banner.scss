@@ -46,13 +46,12 @@
 		}
 
 		#front-page-content {
+			font-size: 0.9em;
+			text-align: justify;
+
 			p:first-child {
 				margin-bottom: 1em;
 			}
-
-			// p:last-child {
-			// 	margin-bottom: 4em;
-			// }
 		}
 
 		> .inner {
@@ -141,6 +140,12 @@
 
 		@include breakpoint(large) {
 			background-attachment: scroll;
+		}
+
+		@include breakpoint(medium) {
+			#front-page-content {
+				text-align: left;
+			}
 		}
 
 		@include breakpoint(small) {

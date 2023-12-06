@@ -3,18 +3,20 @@
 	Forty by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+
+    Modified by Jeffrey (Ka Hin) Yuen for game dev portfolio
 -->
 <html>
 
 {% include head.html %}
 
-<body>
-
+<body class="home">
     {% include header.html %}
 
     <!-- Banner -->
-    <section id="banner" class="major">
-        <!-- add max-width here to override @mixin inner (different from page .inner) -->
+    <!-- padding override on _page -->
+    <section id="banner" class="major" style="padding: 2em 0 2em 0 !important;"> 
+        <!-- add max-width here to override @mixin inner (different from _page .inner) -->
         <div class="inner" style="max-width: 65em !important;">
             <header class="major">
                 <h1>{{ page.landing-title }}</h1>
@@ -25,7 +27,7 @@
                     <li><a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer" class="button icon fa-download scrolly">Resume</a></li>
                 </ul>
             </div>
-            <p><div id="front-page-content" style="font-size: 0.9em; text-align: justify;">{{ content }}</div></p>
+            <p><div id="front-page-content">{{ content }}</div></p>
         </div>
     </section>
 
