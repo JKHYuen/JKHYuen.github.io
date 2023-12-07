@@ -218,7 +218,7 @@ I soon decided (~2015) the best way to move forward was to learn how to write lo
 
 <div id="video" class="embedded-video">
 <div class=container>
-    <iframe src="https://www.youtube.com/embed/Xq6KeXNt6ZQ?si=gh5-QAZZM3Nu1WMx" title="YouTube video player" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/Xq6KeXNt6ZQ?si=oL-ueUNuYdhKT7fX" title="YouTube video player" allowfullscreen></iframe>
 </div>
 </div>
 *Quick run through of my HLSL shaders, with code examples and commentary.*
