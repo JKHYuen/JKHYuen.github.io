@@ -16,15 +16,10 @@
     		justify-content: center;
 
 			> * {
+				display: block;
 				@include padding(4em, 3em);
-				width: 33%;
+				// width: 33%;
 				z-index: 1;
-				
-				&:first-child {
-					div.contact-method {
-						float: right;
-					}
-				}
 			}
 
 			> .split {
