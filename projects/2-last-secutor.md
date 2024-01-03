@@ -105,7 +105,7 @@ Several of my projects (including my <a href="{{ site.baseurl }}/nothing-matters
             <li><a href="#material-stack" class="scrolly">System to manage multi-layered character effects</a> (i.e. freezing, fire, bloody, etc.), to render an arbitrary amount of custom shaders effects on the same object</li>
             <li><a href="#ai" class="scrolly">AI framework</a> built with Unity coroutines, to create a variety of enemy behaviors in the game's 2D turn based combat system (example AI with different combat styles is shown in the <a href="https://github.com/JKHYuen/LastSecutorBuild" target="_blank" rel="noopener noreferrer">playable tech demo</a>)</li>
             <li>Custom RPG UI featuring draggable skill tree windows, character sheets, a game glossary with searchable key words, a quest journal, and skill bars that support any aspect ratio and resolutions</li>
-            <li>Robust tooltip system (for items, skills, skill trees, etc.) with item compare feature</li>
+            <li>Robust tooltip system (for items, skills, skill trees, etc.) with item compare feature (See  <a href="{{ site.baseurl }}/physarum#tooltip" target="_blank" rel="noopener noreferrer"><i>5.2 Tooltip Framework</i> in PHYSARUM</a> for implementation details, it is mostly the same.)</li>
             <li>A detailed "Battle Log" to keep track of all gameplay interactions during combat in real time (<a href="#battlelog-video" class="scrolly">video demo</a>)</li>
             <li>Randomizable items with, tiered affix groups for rewards and enemy equipment</li>
         </ul>

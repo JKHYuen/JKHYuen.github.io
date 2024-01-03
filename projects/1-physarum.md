@@ -467,6 +467,7 @@ private IEnumerator CalculateTooltipPosition(RectTransform targetObjectRect, Vec
     tooltipCanvasGroup.alpha = 1f;
 }
 {% endhighlight %}
+*Note: ```Line 13``` calculates the scaling factor between runtime screen dimensions and reference resolution (1920 x 1080).*
 
 <header class="page-header"><h3>Non-Text Tooltips</h3></header>
 Menus like the color picker and "randomize settings" menu have a similar placement requirement of fitting within any screen size. However, I used simpler ad hoc solutions by taking advantage of invariant properties of the UI design.
