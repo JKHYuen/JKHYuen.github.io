@@ -2,9 +2,9 @@
 layout: page
 permalink: /other-projects
 title: Other Projects
-description: Darkest Dungeon II Shader, Mobile game clone, and more
-image: assets/images/other-projects.jpg
-page-banner: assets/images/other-projects.jpg
+description: C++ DirectX 11 Renderer, Darkest Dungeon II Shader, Mobile game clone, and more
+image: assets/images/other-projects2.jpg
+page-banner: assets/images/other-projects2.jpg
 nav-menu: true
 
 disable-team-info: I can write anything here to disable header icons
@@ -15,15 +15,40 @@ disable-team-info: I can write anything here to disable header icons
 <div class=nav>
 <h4>Contents</h4>
 <ul>
-    <li><a href="#dd-shader" class="button small scrolly"><span class="number">1.</span> Darkest Dungeon II Shader</a></li>
-    <li><a href="#alto" class="button small scrolly"><span class="number">2.</span> Alto Clone</a></li>
-    <li><a href="#website" class="button small scrolly"><span class="number">3.</span> This Website</a></li>
-    <li><a href="#tutoring" class="button small scrolly"><span class="number">4.</span> Twitch/Discord Programming Tutoring</a></li>
+    <li><a href="#dx11" class="button small scrolly"><span class="number">1.</span>  DirectX 11 Renderer</a></li>
+    <li><a href="#dd-shader" class="button small scrolly"><span class="number">2.</span> Darkest Dungeon II Shader</a></li>
+    <li><a href="#alto" class="button small scrolly"><span class="number">3.</span> Alto Clone</a></li>
+    <li><a href="#website" class="button small scrolly"><span class="number">4.</span> This Website</a></li>
+    <li><a href="#tutoring" class="button small scrolly"><span class="number">5.</span> Twitch/Discord Programming Tutoring</a></li>
 </ul>
 </div>
 
-<!-- TODO: write readme for build -->
-<header id="dd-shader" class="major page-header"><h1><span class="number">1.</span> Darkest Dungeon II Shader</h1></header>
+<header id="dx11" class="major page-header"><h1><span class="number">1.</span> C++ DirectX 11 Renderer</h1></header>
+<a href="https://github.com/JKHYuen/DX11Engine" target="_blank" rel="noopener noreferrer" class="button icon fa-link">Full Details / Source</a>
+<a href="https://github.com/JKHYuen/DX11Engine/releases" target="_blank" rel="noopener noreferrer" class="button icon fa-download">Download Release Build</a>
+<div class="project-icon-info other-projects">
+    <div>
+        <span class="icon fa-users"></span>
+        <span>Solo Project</span>
+    </div>
+    <div>
+        <span class="icon fa-calendar-days"></span>
+        <span>January 2024 — April 2024</span>
+    </div>
+</div>
+
+\*\**Demo Video Coming Soon*\*\*
+
+<!-- 
+<video class="scroll-auto embedded-video" muted controls playsinline loop>
+  <source src="{{ site.baseurl }}/assets/videos/dd-demo.mp4" type="video/mp4">
+  Engine Demo Video
+</video>  
+-->
+
+A C++ DX11 3D renderer coded from scratch as a practice project. Features Cook-Torrance PBR shading with various rendering techniques such as parallax occlusion, bloom, image-based lighting, tessellation and shadow mapping. Click links above for details (full feature list and caveats) as well as a downloadable demo with a basic scene editor made with *Dear ImGui*. An improved renderer/engine is currently in development using DX12.
+
+<header id="dd-shader" class="major page-header"><h1><span class="number">2.</span> Darkest Dungeon II Shader</h1></header>
 <a href="https://github.com/JKHYuen/DarkestDungeonII-ShaderDemo" target="_blank" rel="noopener noreferrer" class="button icon fa-download">Download Interactive Demo</a>
 <div class="project-icon-info other-projects">
     <div>
@@ -92,7 +117,7 @@ Since the scene uses many elements with the same shader, the noise generation wi
 
 Lastly, a ```mask``` value is calculated in the shader based on UV to create an optional diagonal alpha mask (```line 7 — 8```). The angle of this mask is controlled by only one variable for convenience; not very flexible but it is good enough for the demo. This mask is used to make the angled dissolved UI bars on the top of the screen.
 
-<header id="alto" class="major page-header"><h1><span class="number">2.</span> Alto Clone</h1></header>
+<header id="alto" class="major page-header"><h1><span class="number">3.</span> Alto Clone</h1></header>
 <a href="https://github.com/JKHYuen/AltoCloneBuild" target="_blank" rel="noopener noreferrer" class="button icon fa-download">Download Playable Build</a>
 <div class="project-icon-info other-projects">
     <div>
@@ -117,7 +142,7 @@ I opted for a mix of the built in Unity physics engine and application of some m
 
 In my implementation, the player object will still occasionally launch over smooth hills. The original game is quite strict in keeping the character in contact with the smooth ground curves. This leads me to believe the original may lean more heavily in manually calculated movement rather than relying on a physics engine. I also added a couple of personal touches in my build not present in the original; such as additional particle effects and a "glide" mechanic that lets the player briefly float mid air based on number of backflips performed (indicated by UI bar element). 
 
-<header id="website" class="major page-header"><h1><span class="number">3.</span> This Website</h1></header>
+<header id="website" class="major page-header"><h1><span class="number">4.</span> This Website</h1></header>
 <div class="project-icon-info other-projects">
     <div>
         <span class="icon fa-users"></span>
@@ -132,7 +157,7 @@ My first website.\\
 **Web technologies used:** Jekyll, Liquid, Kramdown, Bundler, jQuery, SASS (Ruby, Javascript, HTML, and CSS/SCSS).\\
 **Theme:** A heavily modified version of the <a href="https://html5up.net/forty" target="_blank" rel="noopener noreferrer">"Forty" theme by HTML5 UP</a>, adapted to Jekyll by <a href="https://github.com/andrewbanchich/forty-jekyll-theme" target="_blank" rel="noopener noreferrer">Andrew Banchich</a>.
 
-<header id="tutoring" class="major page-header"><h1><span class="number">4.</span> Twitch/Discord Programming Tutoring</h1></header>
+<header id="tutoring" class="major page-header"><h1><span class="number">5.</span> Twitch/Discord Programming Tutoring</h1></header>
 <div class="project-icon-info other-projects">
     <div>
         <span class="icon fa-calendar-days"></span>
